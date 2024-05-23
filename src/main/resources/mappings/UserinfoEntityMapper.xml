@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated UserinfoEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.UserinfoEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.UserinfoEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="createdTime" jdbcType="TIMESTAMP" property="createdTime" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+        <result column="sex" jdbcType="VARCHAR" property="sex" />
+        <result column="isInbound" jdbcType="VARCHAR" property="is_inbound" />
+        <result column="isOutbound" jdbcType="VARCHAR" property="is_outbound" />
+        <result column="isDistribution" jdbcType="VARCHAR" property="is_distribution" />
+        <result column="isWarefareManage" jdbcType="VARCHAR" property="is_warefareManage" />
+        <result column="isFinance" jdbcType="VARCHAR" property="is_finance" />
+        <result column="isAdmin" jdbcType="VARCHAR" property="is_admin" />
+        <result column="warehouseId" jdbcType="BIGINT" property="warehouse_id" />
+        <result column="createdBy" jdbcType="VARCHAR" property="createdBy" />
+        <result column="orderInboundCount" jdbcType="BIGINT" property="orderInbound_count" />
+        <result column="orderOutboundCount" jdbcType="BIGINT" property="orderOutbound_count" />
+        <result column="afterSaleInboundCount" jdbcType="BIGINT" property="afterSaleInbound_count" />
+        <result column="afterSaleOutboundCount" jdbcType="BIGINT" property="afterSaleOutbound_count" />
+        <result column="otherInboundCount" jdbcType="BIGINT" property="otherInbound_count" />
+        <result column="otherOutboundCount" jdbcType="BIGINT" property="otherOutbound_count" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.UserinfoEntity"  >
+        INSERT INTO `Userinfo` (
+            `id`
+            ,`createdTime`
+            ,`username`
+            ,`password`
+            ,`phone`
+            ,`name`
+            ,`avatar`
+            ,`sex`
+            ,`isInbound`
+            ,`isOutbound`
+            ,`isDistribution`
+            ,`isWarefareManage`
+            ,`isFinance`
+            ,`isAdmin`
+            ,`warehouseId`
+            ,`createdBy`
+            ,`orderInboundCount`
+            ,`orderOutboundCount`
+            ,`afterSaleInboundCount`
+            ,`afterSaleOutboundCount`
+            ,`otherInboundCount`
+            ,`otherOutboundCount`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{username,jdbcType=VARCHAR}
+            ,#{password,jdbcType=VARCHAR}
+            ,#{phone,jdbcType=VARCHAR}
+            ,#{name,jdbcType=VARCHAR}
+            ,#{avatar,jdbcType=VARCHAR}
+            ,#{sex,jdbcType=VARCHAR}
+            ,#{is_inbound,jdbcType=VARCHAR}
+            ,#{is_outbound,jdbcType=VARCHAR}
+            ,#{is_distribution,jdbcType=VARCHAR}
+            ,#{is_warefareManage,jdbcType=VARCHAR}
+            ,#{is_finance,jdbcType=VARCHAR}
+            ,#{is_admin,jdbcType=VARCHAR}
+            ,#{warehouse_id,jdbcType=BIGINT}
+            ,#{createdBy,jdbcType=VARCHAR}
+            ,#{orderInbound_count,jdbcType=BIGINT}
+            ,#{orderOutbound_count,jdbcType=BIGINT}
+            ,#{afterSaleInbound_count,jdbcType=BIGINT}
+            ,#{afterSaleOutbound_count,jdbcType=BIGINT}
+            ,#{otherInbound_count,jdbcType=BIGINT}
+            ,#{otherOutbound_count,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" >
+        INSERT INTO `Userinfo` (
+            `id`
+            ,`createdTime`
+            ,`username`
+            ,`password`
+            ,`phone`
+            ,`name`
+            ,`avatar`
+            ,`sex`
+            ,`isInbound`
+            ,`isOutbound`
+            ,`isDistribution`
+            ,`isWarefareManage`
+            ,`isFinance`
+            ,`isAdmin`
+            ,`warehouseId`
+            ,`createdBy`
+            ,`orderInboundCount`
+            ,`orderOutboundCount`
+            ,`afterSaleInboundCount`
+            ,`afterSaleOutboundCount`
+            ,`otherInboundCount`
+            ,`otherOutboundCount`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.id,jdbcType=BIGINT}
+            ,#{item.createdTime,jdbcType=TIMESTAMP}
+            ,#{item.username,jdbcType=VARCHAR}
+            ,#{item.password,jdbcType=VARCHAR}
+            ,#{item.phone,jdbcType=VARCHAR}
+            ,#{item.name,jdbcType=VARCHAR}
+            ,#{item.avatar,jdbcType=VARCHAR}
+            ,#{item.sex,jdbcType=VARCHAR}
+            ,#{item.is_inbound,jdbcType=VARCHAR}
+            ,#{item.is_outbound,jdbcType=VARCHAR}
+            ,#{item.is_distribution,jdbcType=VARCHAR}
+            ,#{item.is_warefareManage,jdbcType=VARCHAR}
+            ,#{item.is_finance,jdbcType=VARCHAR}
+            ,#{item.is_admin,jdbcType=VARCHAR}
+            ,#{item.warehouse_id,jdbcType=BIGINT}
+            ,#{item.createdBy,jdbcType=VARCHAR}
+            ,#{item.orderInbound_count,jdbcType=BIGINT}
+            ,#{item.orderOutbound_count,jdbcType=BIGINT}
+            ,#{item.afterSaleInbound_count,jdbcType=BIGINT}
+            ,#{item.afterSaleOutbound_count,jdbcType=BIGINT}
+            ,#{item.otherInbound_count,jdbcType=BIGINT}
+            ,#{item.otherOutbound_count,jdbcType=BIGINT}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.UserinfoEntity" >
+        UPDATE `Userinfo`
+        <set>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('username')">`username` = #{bean.username,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('password')">`password` = #{bean.password,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('phone')">`phone` = #{bean.phone,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('avatar')">`avatar` = #{bean.avatar,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('sex')">`sex` = #{bean.sex,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('is_inbound')">`isInbound` = #{bean.is_inbound,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('is_outbound')">`isOutbound` = #{bean.is_outbound,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('is_distribution')">`isDistribution` = #{bean.is_distribution,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('is_warefareManage')">`isWarefareManage` = #{bean.is_warefareManage,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('is_finance')">`isFinance` = #{bean.is_finance,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('is_admin')">`isAdmin` = #{bean.is_admin,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('warehouse_id')">`warehouseId` = #{bean.warehouse_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('orderInbound_count')">`orderInboundCount` = #{bean.orderInbound_count,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('orderOutbound_count')">`orderOutboundCount` = #{bean.orderOutbound_count,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('afterSaleInbound_count')">`afterSaleInboundCount` = #{bean.afterSaleInbound_count,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('afterSaleOutbound_count')">`afterSaleOutboundCount` = #{bean.afterSaleOutbound_count,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('otherInbound_count')">`otherInboundCount` = #{bean.otherInbound_count,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('otherOutbound_count')">`otherOutboundCount` = #{bean.otherOutbound_count,jdbcType=BIGINT},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.UserinfoEntity" >
+        UPDATE `Userinfo`
+        <set>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('username')">`username` = #{bean.username,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('password')">`password` = #{bean.password,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('phone')">`phone` = #{bean.phone,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('avatar')">`avatar` = #{bean.avatar,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('sex')">`sex` = #{bean.sex,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('is_inbound')">`isInbound` = #{bean.is_inbound,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('is_outbound')">`isOutbound` = #{bean.is_outbound,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('is_distribution')">`isDistribution` = #{bean.is_distribution,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('is_warefareManage')">`isWarefareManage` = #{bean.is_warefareManage,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('is_finance')">`isFinance` = #{bean.is_finance,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('is_admin')">`isAdmin` = #{bean.is_admin,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('warehouse_id')">`warehouseId` = #{bean.warehouse_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('orderInbound_count')">`orderInboundCount` = #{bean.orderInbound_count,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('orderOutbound_count')">`orderOutboundCount` = #{bean.orderOutbound_count,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('afterSaleInbound_count')">`afterSaleInboundCount` = #{bean.afterSaleInbound_count,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('afterSaleOutbound_count')">`afterSaleOutboundCount` = #{bean.afterSaleOutbound_count,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('otherInbound_count')">`otherInboundCount` = #{bean.otherInbound_count,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('otherOutbound_count')">`otherOutboundCount` = #{bean.otherOutbound_count,jdbcType=BIGINT},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `Userinfo` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `Userinfo` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `Userinfo`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'username'">
+                    AND `username` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'password'">
+                    AND `password` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'phone'">
+                    AND `phone` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'avatar'">
+                    AND `avatar` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'sex'">
+                    AND `sex` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'is_inbound'">
+                    AND `isInbound` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'is_outbound'">
+                    AND `isOutbound` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'is_distribution'">
+                    AND `isDistribution` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'is_warefareManage'">
+                    AND `isWarefareManage` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'is_finance'">
+                    AND `isFinance` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'is_admin'">
+                    AND `isAdmin` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'warehouse_id'">
+                    AND `warehouseId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'createdBy'">
+                    AND `createdBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'orderInbound_count'">
+                    AND `orderInboundCount` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'orderOutbound_count'">
+                    AND `orderOutboundCount` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'afterSaleInbound_count'">
+                    AND `afterSaleInboundCount` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'afterSaleOutbound_count'">
+                    AND `afterSaleOutboundCount` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'otherInbound_count'">
+                    AND `otherInboundCount` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'otherOutbound_count'">
+                    AND `otherOutboundCount` = #{value, jdbcType=BIGINT}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `Userinfo` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'username'">
+                    AND `username` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'password'">
+                    AND `password` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'phone'">
+                    AND `phone` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'avatar'">
+                    AND `avatar` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'sex'">
+                    AND `sex` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'is_inbound'">
+                    AND `isInbound` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'is_outbound'">
+                    AND `isOutbound` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'is_distribution'">
+                    AND `isDistribution` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'is_warefareManage'">
+                    AND `isWarefareManage` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'is_finance'">
+                    AND `isFinance` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'is_admin'">
+                    AND `isAdmin` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'warehouse_id'">
+                    AND `warehouseId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'createdBy'">
+                    AND `createdBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'orderInbound_count'">
+                    AND `orderInboundCount` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'orderOutbound_count'">
+                    AND `orderOutboundCount` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'afterSaleInbound_count'">
+                    AND `afterSaleInboundCount` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'afterSaleOutbound_count'">
+                    AND `afterSaleOutboundCount` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'otherInbound_count'">
+                    AND `otherInboundCount` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'otherOutbound_count'">
+                    AND `otherOutboundCount` = #{value, jdbcType=BIGINT}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `Userinfo` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `Userinfo`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `Userinfo`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.UserinfoEntity">
+        INSERT INTO `Userinfo` (
+            `id`
+            ,`createdTime`
+            ,`username`
+            ,`password`
+            ,`phone`
+            ,`name`
+            ,`avatar`
+            ,`sex`
+            ,`isInbound`
+            ,`isOutbound`
+            ,`isDistribution`
+            ,`isWarefareManage`
+            ,`isFinance`
+            ,`isAdmin`
+            ,`warehouseId`
+            ,`createdBy`
+            ,`orderInboundCount`
+            ,`orderOutboundCount`
+            ,`afterSaleInboundCount`
+            ,`afterSaleOutboundCount`
+            ,`otherInboundCount`
+            ,`otherOutboundCount`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{username,jdbcType=VARCHAR}
+            ,#{password,jdbcType=VARCHAR}
+            ,#{phone,jdbcType=VARCHAR}
+            ,#{name,jdbcType=VARCHAR}
+            ,#{avatar,jdbcType=VARCHAR}
+            ,#{sex,jdbcType=VARCHAR}
+            ,#{is_inbound,jdbcType=VARCHAR}
+            ,#{is_outbound,jdbcType=VARCHAR}
+            ,#{is_distribution,jdbcType=VARCHAR}
+            ,#{is_warefareManage,jdbcType=VARCHAR}
+            ,#{is_finance,jdbcType=VARCHAR}
+            ,#{is_admin,jdbcType=VARCHAR}
+            ,#{warehouse_id,jdbcType=BIGINT}
+            ,#{createdBy,jdbcType=VARCHAR}
+            ,#{orderInbound_count,jdbcType=BIGINT}
+            ,#{orderOutbound_count,jdbcType=BIGINT}
+            ,#{afterSaleInbound_count,jdbcType=BIGINT}
+            ,#{afterSaleOutbound_count,jdbcType=BIGINT}
+            ,#{otherInbound_count,jdbcType=BIGINT}
+            ,#{otherOutbound_count,jdbcType=BIGINT}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `Userinfo`
+        <set>
+        <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('username')">`username` = #{bean.username,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('password')">`password` = #{bean.password,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('phone')">`phone` = #{bean.phone,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('avatar')">`avatar` = #{bean.avatar,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('sex')">`sex` = #{bean.sex,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('is_inbound')">`isInbound` = #{bean.is_inbound,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('is_outbound')">`isOutbound` = #{bean.is_outbound,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('is_distribution')">`isDistribution` = #{bean.is_distribution,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('is_warefareManage')">`isWarefareManage` = #{bean.is_warefareManage,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('is_finance')">`isFinance` = #{bean.is_finance,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('is_admin')">`isAdmin` = #{bean.is_admin,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('warehouse_id')">`warehouseId` = #{bean.warehouse_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('orderInbound_count')">`orderInboundCount` = #{bean.orderInbound_count,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('orderOutbound_count')">`orderOutboundCount` = #{bean.orderOutbound_count,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('afterSaleInbound_count')">`afterSaleInboundCount` = #{bean.afterSaleInbound_count,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('afterSaleOutbound_count')">`afterSaleOutboundCount` = #{bean.afterSaleOutbound_count,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('otherInbound_count')">`otherInboundCount` = #{bean.otherInbound_count,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('otherOutbound_count')">`otherOutboundCount` = #{bean.otherOutbound_count,jdbcType=BIGINT},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `Userinfo` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

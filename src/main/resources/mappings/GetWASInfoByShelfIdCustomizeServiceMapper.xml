@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated GetWASInfoByShelfIdCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.GetWASInfoByShelfIdCustomizeServiceMapper">
+
+    <resultMap id="defaultDSAnonymousStructure_72289247231C392228DF67461D1CE7EA" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_72289247231C392228DF67461D1CE7EA">
+	<result column="warehouse_name" property="warehouse_name"/>
+	<result column="w_id" property="w_id"/>
+	<result column="warehouse_area_name" property="warehouse_area_name"/>
+	<result column="wa_id" property="wa_id"/>
+	<result column="shelf_nam" property="shelf_nam"/>
+	<result column="s_id" property="s_id"/>
+</resultMap>
+<select id="getSql1" resultMap="defaultDSAnonymousStructure_72289247231C392228DF67461D1CE7EA">
+	SELECT `w`.`name` AS `warehouse_name` , `w`.`id` AS `w_id` , `wa`.`name` AS `warehouse_area_name` , `wa`.`id` AS `wa_id` , `s`.`name` AS `shelf_nam` , `s`.`id` AS `s_id` FROM `Shelf` `s` JOIN `WarehouseArea` `wa` ON `s`.`warehouseAreaId` = `wa`.`id` JOIN `Warehouse` `w` ON `wa`.`warehouseId` = `w`.`id` 
+<if test=" shelfId!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`s`.`id` = #{shelfId}
+</trim>
+</if>
+</select>
+
+
+</mapper>

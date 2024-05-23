@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated InBoundGoodEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.InBoundGoodEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.InBoundGoodEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="updatedBy" jdbcType="VARCHAR" property="updatedBy" />
+        <result column="inboundOrderId" jdbcType="BIGINT" property="inbound_order_id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="quantity" jdbcType="BIGINT" property="quantity" />
+        <result column="unit" jdbcType="VARCHAR" property="unit" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="inboundPrice" jdbcType="DECIMAL" property="inbound_price" />
+        <result column="createdTime" jdbcType="TIMESTAMP" property="createdTime" />
+        <result column="createdBy" jdbcType="VARCHAR" property="createdBy" />
+        <result column="updatedTime" jdbcType="TIMESTAMP" property="updatedTime" />
+        <result column="inboundTime" jdbcType="TIMESTAMP" property="inbound_time" />
+        <result column="inboundOp" jdbcType="VARCHAR" property="inbound_op" />
+        <result column="refuseReason" jdbcType="VARCHAR" property="refuse_reason" />
+        <result column="note" jdbcType="VARCHAR" property="note" />
+        <result column="goodCategory" jdbcType="VARCHAR" property="goodCategory" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.InBoundGoodEntity"  keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `InBoundGood` (
+            `updatedBy`
+            ,`inboundOrderId`
+            ,`name`
+            ,`quantity`
+            ,`unit`
+            ,`status`
+            ,`inboundPrice`
+            ,`createdTime`
+            ,`createdBy`
+            ,`updatedTime`
+            ,`inboundTime`
+            ,`inboundOp`
+            ,`refuseReason`
+            ,`note`
+            ,`goodCategory`
+        )
+        VALUES (
+            #{updatedBy,jdbcType=VARCHAR}
+            ,#{inbound_order_id,jdbcType=BIGINT}
+            ,#{name,jdbcType=VARCHAR}
+            ,#{quantity,jdbcType=BIGINT}
+            ,#{unit,jdbcType=VARCHAR}
+            ,#{status,jdbcType=VARCHAR}
+            ,#{inbound_price,jdbcType=DECIMAL}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{createdBy,jdbcType=VARCHAR}
+            ,#{updatedTime,jdbcType=TIMESTAMP}
+            ,#{inbound_time,jdbcType=TIMESTAMP}
+            ,#{inbound_op,jdbcType=VARCHAR}
+            ,#{refuse_reason,jdbcType=VARCHAR}
+            ,#{note,jdbcType=VARCHAR}
+            ,#{goodCategory,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `InBoundGood` (
+            `updatedBy`
+            ,`inboundOrderId`
+            ,`name`
+            ,`quantity`
+            ,`unit`
+            ,`status`
+            ,`inboundPrice`
+            ,`createdTime`
+            ,`createdBy`
+            ,`updatedTime`
+            ,`inboundTime`
+            ,`inboundOp`
+            ,`refuseReason`
+            ,`note`
+            ,`goodCategory`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.updatedBy,jdbcType=VARCHAR}
+            ,#{item.inbound_order_id,jdbcType=BIGINT}
+            ,#{item.name,jdbcType=VARCHAR}
+            ,#{item.quantity,jdbcType=BIGINT}
+            ,#{item.unit,jdbcType=VARCHAR}
+            ,#{item.status,jdbcType=VARCHAR}
+            ,#{item.inbound_price,jdbcType=DECIMAL}
+            ,#{item.createdTime,jdbcType=TIMESTAMP}
+            ,#{item.createdBy,jdbcType=VARCHAR}
+            ,#{item.updatedTime,jdbcType=TIMESTAMP}
+            ,#{item.inbound_time,jdbcType=TIMESTAMP}
+            ,#{item.inbound_op,jdbcType=VARCHAR}
+            ,#{item.refuse_reason,jdbcType=VARCHAR}
+            ,#{item.note,jdbcType=VARCHAR}
+            ,#{item.goodCategory,jdbcType=VARCHAR}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.InBoundGoodEntity" >
+        UPDATE `InBoundGood`
+        <set>
+            <if test="updateFields == null or updateFields.contains('updatedBy')">`updatedBy` = #{bean.updatedBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_order_id')">`inboundOrderId` = #{bean.inbound_order_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_price')">`inboundPrice` = #{bean.inbound_price,jdbcType=DECIMAL},</if>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_time')">`inboundTime` = #{bean.inbound_time,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_op')">`inboundOp` = #{bean.inbound_op,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('refuse_reason')">`refuseReason` = #{bean.refuse_reason,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('note')">`note` = #{bean.note,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('goodCategory')">`goodCategory` = #{bean.goodCategory,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.InBoundGoodEntity" >
+        UPDATE `InBoundGood`
+        <set>
+            <if test="updateFields == null or updateFields.contains('updatedBy')">`updatedBy` = #{bean.updatedBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_order_id')">`inboundOrderId` = #{bean.inbound_order_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_price')">`inboundPrice` = #{bean.inbound_price,jdbcType=DECIMAL},</if>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_time')">`inboundTime` = #{bean.inbound_time,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_op')">`inboundOp` = #{bean.inbound_op,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('refuse_reason')">`refuseReason` = #{bean.refuse_reason,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('note')">`note` = #{bean.note,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('goodCategory')">`goodCategory` = #{bean.goodCategory,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `InBoundGood` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `InBoundGood` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `InBoundGood`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'updatedBy'">
+                    AND `updatedBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'inbound_order_id'">
+                    AND `inboundOrderId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'quantity'">
+                    AND `quantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'unit'">
+                    AND `unit` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'inbound_price'">
+                    AND `inboundPrice` = #{value, jdbcType=DECIMAL}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'createdBy'">
+                    AND `createdBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'updatedTime'">
+                    AND `updatedTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'inbound_time'">
+                    AND `inboundTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'inbound_op'">
+                    AND `inboundOp` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'refuse_reason'">
+                    AND `refuseReason` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'note'">
+                    AND `note` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'goodCategory'">
+                    AND `goodCategory` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `InBoundGood` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'updatedBy'">
+                    AND `updatedBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'inbound_order_id'">
+                    AND `inboundOrderId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'quantity'">
+                    AND `quantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'unit'">
+                    AND `unit` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'inbound_price'">
+                    AND `inboundPrice` = #{value, jdbcType=DECIMAL}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'createdBy'">
+                    AND `createdBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'updatedTime'">
+                    AND `updatedTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'inbound_time'">
+                    AND `inboundTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'inbound_op'">
+                    AND `inboundOp` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'refuse_reason'">
+                    AND `refuseReason` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'note'">
+                    AND `note` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'goodCategory'">
+                    AND `goodCategory` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `InBoundGood` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `InBoundGood`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `InBoundGood`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.InBoundGoodEntity">
+        INSERT INTO `InBoundGood` (
+            `id`
+            ,`updatedBy`
+            ,`inboundOrderId`
+            ,`name`
+            ,`quantity`
+            ,`unit`
+            ,`status`
+            ,`inboundPrice`
+            ,`createdTime`
+            ,`createdBy`
+            ,`updatedTime`
+            ,`inboundTime`
+            ,`inboundOp`
+            ,`refuseReason`
+            ,`note`
+            ,`goodCategory`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{updatedBy,jdbcType=VARCHAR}
+            ,#{inbound_order_id,jdbcType=BIGINT}
+            ,#{name,jdbcType=VARCHAR}
+            ,#{quantity,jdbcType=BIGINT}
+            ,#{unit,jdbcType=VARCHAR}
+            ,#{status,jdbcType=VARCHAR}
+            ,#{inbound_price,jdbcType=DECIMAL}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{createdBy,jdbcType=VARCHAR}
+            ,#{updatedTime,jdbcType=TIMESTAMP}
+            ,#{inbound_time,jdbcType=TIMESTAMP}
+            ,#{inbound_op,jdbcType=VARCHAR}
+            ,#{refuse_reason,jdbcType=VARCHAR}
+            ,#{note,jdbcType=VARCHAR}
+            ,#{goodCategory,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `InBoundGood`
+        <set>
+        <if test="updateFields == null or updateFields.contains('updatedBy')">`updatedBy` = #{bean.updatedBy,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('inbound_order_id')">`inboundOrderId` = #{bean.inbound_order_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('inbound_price')">`inboundPrice` = #{bean.inbound_price,jdbcType=DECIMAL},</if>
+        <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('inbound_time')">`inboundTime` = #{bean.inbound_time,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('inbound_op')">`inboundOp` = #{bean.inbound_op,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('refuse_reason')">`refuseReason` = #{bean.refuse_reason,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('note')">`note` = #{bean.note,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('goodCategory')">`goodCategory` = #{bean.goodCategory,jdbcType=VARCHAR},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `InBoundGood` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated GetDirectObGoodsCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.GetDirectObGoodsCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_8FD804D41A24E15895CA07D7323C6F6F" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_1715D87651BEB16B18B10D5293492B9E">
+	<id column="T1_C1" property="directOutboundGoods.id"/>
+	<result column="T1_C2" property="directOutboundGoods.good_id"/>
+	<result column="T1_C3" property="directOutboundGoods.name"/>
+	<result column="T1_C4" property="directOutboundGoods.unit"/>
+	<result column="T1_C5" property="directOutboundGoods.outboundCount"/>
+	<result column="T1_C6" property="directOutboundGoods.outboundDate"/>
+	<result column="T1_C7" property="directOutboundGoods.warehouse_name"/>
+	<result column="T1_C8" property="directOutboundGoods.warehousearea_name"/>
+	<result column="T1_C9" property="directOutboundGoods.shelf_name"/>
+</resultMap>
+<select id="getAnonymousStructure_8FD804D41A24E15895CA07D7323C6F6F" resultMap="AnonymousStructure_8FD804D41A24E15895CA07D7323C6F6F">
+	 SELECT `DirectOutboundGoods`.`id` `T1_C1`,`DirectOutboundGoods`.`goodId` `T1_C2`,`DirectOutboundGoods`.`name` `T1_C3`,`DirectOutboundGoods`.`unit` `T1_C4`,`DirectOutboundGoods`.`outboundCount` `T1_C5`,`DirectOutboundGoods`.`outboundDate` `T1_C6`,`DirectOutboundGoods`.`warehouseName` `T1_C7`,`DirectOutboundGoods`.`warehouseareaName` `T1_C8`,`DirectOutboundGoods`.`shelfName` `T1_C9` FROM `DirectOutboundGoods`  
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_8FD804D41A24E15895CA07D7323C6F6F" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `DirectOutboundGoods` 
+</select>
+
+
+</mapper>

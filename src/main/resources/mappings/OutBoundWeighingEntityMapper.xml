@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated OutBoundWeighingEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.OutBoundWeighingEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.OutBoundWeighingEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="orderID" jdbcType="BIGINT" property="orderID" />
+        <result column="outBoundGoodID" jdbcType="BIGINT" property="outBoundGoodID" />
+        <result column="weighingWorkerID" jdbcType="BIGINT" property="weighingWorkerID" />
+        <result column="weighingWorkerName" jdbcType="VARCHAR" property="weighingWorkerName" />
+        <result column="weighingTime" jdbcType="TIMESTAMP" property="weighingTime" />
+        <result column="weight" jdbcType="DECIMAL" property="weight" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.OutBoundWeighingEntity"  >
+        INSERT INTO `OutBoundWeighing` (
+            `id`
+            ,`orderID`
+            ,`outBoundGoodID`
+            ,`weighingWorkerID`
+            ,`weighingWorkerName`
+            ,`weighingTime`
+            ,`weight`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{orderID,jdbcType=BIGINT}
+            ,#{outBoundGoodID,jdbcType=BIGINT}
+            ,#{weighingWorkerID,jdbcType=BIGINT}
+            ,#{weighingWorkerName,jdbcType=VARCHAR}
+            ,#{weighingTime,jdbcType=TIMESTAMP}
+            ,#{weight,jdbcType=DECIMAL}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" >
+        INSERT INTO `OutBoundWeighing` (
+            `id`
+            ,`orderID`
+            ,`outBoundGoodID`
+            ,`weighingWorkerID`
+            ,`weighingWorkerName`
+            ,`weighingTime`
+            ,`weight`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.id,jdbcType=BIGINT}
+            ,#{item.orderID,jdbcType=BIGINT}
+            ,#{item.outBoundGoodID,jdbcType=BIGINT}
+            ,#{item.weighingWorkerID,jdbcType=BIGINT}
+            ,#{item.weighingWorkerName,jdbcType=VARCHAR}
+            ,#{item.weighingTime,jdbcType=TIMESTAMP}
+            ,#{item.weight,jdbcType=DECIMAL}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.OutBoundWeighingEntity" >
+        UPDATE `OutBoundWeighing`
+        <set>
+            <if test="updateFields == null or updateFields.contains('orderID')">`orderID` = #{bean.orderID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('outBoundGoodID')">`outBoundGoodID` = #{bean.outBoundGoodID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('weighingWorkerID')">`weighingWorkerID` = #{bean.weighingWorkerID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('weighingWorkerName')">`weighingWorkerName` = #{bean.weighingWorkerName,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('weighingTime')">`weighingTime` = #{bean.weighingTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('weight')">`weight` = #{bean.weight,jdbcType=DECIMAL},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.OutBoundWeighingEntity" >
+        UPDATE `OutBoundWeighing`
+        <set>
+            <if test="updateFields == null or updateFields.contains('orderID')">`orderID` = #{bean.orderID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('outBoundGoodID')">`outBoundGoodID` = #{bean.outBoundGoodID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('weighingWorkerID')">`weighingWorkerID` = #{bean.weighingWorkerID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('weighingWorkerName')">`weighingWorkerName` = #{bean.weighingWorkerName,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('weighingTime')">`weighingTime` = #{bean.weighingTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('weight')">`weight` = #{bean.weight,jdbcType=DECIMAL},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `OutBoundWeighing` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `OutBoundWeighing` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `OutBoundWeighing`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'orderID'">
+                    AND `orderID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'outBoundGoodID'">
+                    AND `outBoundGoodID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'weighingWorkerID'">
+                    AND `weighingWorkerID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'weighingWorkerName'">
+                    AND `weighingWorkerName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'weighingTime'">
+                    AND `weighingTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'weight'">
+                    AND `weight` = #{value, jdbcType=DECIMAL}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `OutBoundWeighing` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'orderID'">
+                    AND `orderID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'outBoundGoodID'">
+                    AND `outBoundGoodID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'weighingWorkerID'">
+                    AND `weighingWorkerID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'weighingWorkerName'">
+                    AND `weighingWorkerName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'weighingTime'">
+                    AND `weighingTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'weight'">
+                    AND `weight` = #{value, jdbcType=DECIMAL}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `OutBoundWeighing` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `OutBoundWeighing`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `OutBoundWeighing`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.OutBoundWeighingEntity">
+        INSERT INTO `OutBoundWeighing` (
+            `id`
+            ,`orderID`
+            ,`outBoundGoodID`
+            ,`weighingWorkerID`
+            ,`weighingWorkerName`
+            ,`weighingTime`
+            ,`weight`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{orderID,jdbcType=BIGINT}
+            ,#{outBoundGoodID,jdbcType=BIGINT}
+            ,#{weighingWorkerID,jdbcType=BIGINT}
+            ,#{weighingWorkerName,jdbcType=VARCHAR}
+            ,#{weighingTime,jdbcType=TIMESTAMP}
+            ,#{weight,jdbcType=DECIMAL}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `OutBoundWeighing`
+        <set>
+        <if test="updateFields == null or updateFields.contains('orderID')">`orderID` = #{bean.orderID,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('outBoundGoodID')">`outBoundGoodID` = #{bean.outBoundGoodID,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('weighingWorkerID')">`weighingWorkerID` = #{bean.weighingWorkerID,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('weighingWorkerName')">`weighingWorkerName` = #{bean.weighingWorkerName,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('weighingTime')">`weighingTime` = #{bean.weighingTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('weight')">`weight` = #{bean.weight,jdbcType=DECIMAL},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `OutBoundWeighing` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

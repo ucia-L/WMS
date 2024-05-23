@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated LoadCANGCHUGUANLITableView6CustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.LoadCANGCHUGUANLITableView6CustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_8B7A01F9E9F20DE75E42AAFB1EC465EE" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_5FCA4D0BC12DD21DE8AB0B014AC1F1E5">
+	<id column="T1_C1" property="outboundPacking.id"/>
+	<result column="T2_C1" property="outBoundGood.id"/>
+	<result column="T2_C2" property="outBoundGood.outbound_order_id"/>
+	<result column="T2_C3" property="outBoundGood.name"/>
+	<result column="T2_C4" property="outBoundGood.quantity"/>
+	<result column="T2_C5" property="outBoundGood.unit"/>
+	<result column="T2_C6" property="outBoundGood.status"/>
+	<result column="T2_C7" property="outBoundGood.weight"/>
+	<result column="T1_C2" property="outboundPacking.outbound_good_id"/>
+	<result column="T1_C3" property="outboundPacking.quantity"/>
+	<result column="T1_C4" property="outboundPacking.warehouseArea_id"/>
+	<result column="T1_C5" property="outboundPacking.shelf_id"/>
+	<result column="T1_C6" property="outboundPacking.outbound_tmparea_id"/>
+	<result column="T1_C7" property="outboundPacking.status"/>
+	<result column="T1_C8" property="outboundPacking.outbound_commodity_name"/>
+	<result column="T1_C9" property="outboundPacking.outBoundOrderID"/>
+</resultMap>
+<select id="getAnonymousStructure_8B7A01F9E9F20DE75E42AAFB1EC465EE" resultMap="AnonymousStructure_8B7A01F9E9F20DE75E42AAFB1EC465EE">
+	 SELECT `OutboundPacking`.`id` `T1_C1`,`OutboundPacking`.`outboundGoodId` `T1_C2`,`OutboundPacking`.`quantity` `T1_C3`,`OutboundPacking`.`warehouseAreaId` `T1_C4`,`OutboundPacking`.`shelfId` `T1_C5`,`OutboundPacking`.`outboundTmpareaId` `T1_C6`,`OutboundPacking`.`status` `T1_C7`,`OutboundPacking`.`outboundCommodityName` `T1_C8`,`OutboundPacking`.`outBoundOrderID` `T1_C9`,`OutBoundGood`.`id` `T2_C1`,`OutBoundGood`.`outboundOrderId` `T2_C2`,`OutBoundGood`.`name` `T2_C3`,`OutBoundGood`.`quantity` `T2_C4`,`OutBoundGood`.`unit` `T2_C5`,`OutBoundGood`.`status` `T2_C6`,`OutBoundGood`.`weight` `T2_C7` FROM `OutboundPacking` LEFT JOIN `OutBoundGood` ON `OutboundPacking`.`outboundGoodId` = `OutBoundGood`.`id` 
+<if test=" sort!=null ">
+	
+<trim prefix = "ORDER BY" suffixOverrides=",">
+	
+<if test=" sort!=null ">
+	
+<trim suffix=",">
+	${sort} 
+<if test=" order!=null ">
+	${@com.weitest.wms.util.SqlInjectCheckUtil@checkAscOrDesc(order)}
+</if>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" size!=null and 1==1 and page!=null ">
+	 LIMIT ${( size * ( page - 1 ) )}, ${size}
+</if>
+</select>
+<select id="countAnonymousStructure_8B7A01F9E9F20DE75E42AAFB1EC465EE" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `OutboundPacking` LEFT JOIN `OutBoundGood` ON `OutboundPacking`.`outboundGoodId` = `OutBoundGood`.`id` 
+</select>
+
+
+</mapper>

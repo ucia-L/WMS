@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated LCAPLogicViewMapping Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.LCAPLogicViewMappingMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.LCAPLogicViewMapping">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="logicIdentifier" jdbcType="VARCHAR" property="logicIdentifier" />
+        <result column="resourceName" jdbcType="VARCHAR" property="resourceName" />
+        <result column="resourceType" jdbcType="VARCHAR" property="resourceType" />
+        <result column="group" jdbcType="BIGINT" property="group" />
+        <result column="changeTime" jdbcType="BIGINT" property="changeTime" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.LCAPLogicViewMapping"  >
+        INSERT INTO `LCAPLogicViewMapping_79f632` (
+            `id`
+            ,`logicIdentifier`
+            ,`resourceName`
+            ,`resourceType`
+            ,`group`
+            ,`changeTime`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{logicIdentifier,jdbcType=VARCHAR}
+            ,#{resourceName,jdbcType=VARCHAR}
+            ,#{resourceType,jdbcType=VARCHAR}
+            ,#{group,jdbcType=BIGINT}
+            ,#{changeTime,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" >
+        INSERT INTO `LCAPLogicViewMapping_79f632` (
+            `id`
+            ,`logicIdentifier`
+            ,`resourceName`
+            ,`resourceType`
+            ,`group`
+            ,`changeTime`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.id,jdbcType=BIGINT}
+            ,#{item.logicIdentifier,jdbcType=VARCHAR}
+            ,#{item.resourceName,jdbcType=VARCHAR}
+            ,#{item.resourceType,jdbcType=VARCHAR}
+            ,#{item.group,jdbcType=BIGINT}
+            ,#{item.changeTime,jdbcType=BIGINT}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.LCAPLogicViewMapping" >
+        UPDATE `LCAPLogicViewMapping_79f632`
+        <set>
+            <if test="updateFields == null or updateFields.contains('logicIdentifier')">`logicIdentifier` = #{bean.logicIdentifier,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('resourceName')">`resourceName` = #{bean.resourceName,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('resourceType')">`resourceType` = #{bean.resourceType,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('group')">`group` = #{bean.group,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('changeTime')">`changeTime` = #{bean.changeTime,jdbcType=BIGINT},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.LCAPLogicViewMapping" >
+        UPDATE `LCAPLogicViewMapping_79f632`
+        <set>
+            <if test="updateFields == null or updateFields.contains('logicIdentifier')">`logicIdentifier` = #{bean.logicIdentifier,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('resourceName')">`resourceName` = #{bean.resourceName,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('resourceType')">`resourceType` = #{bean.resourceType,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('group')">`group` = #{bean.group,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('changeTime')">`changeTime` = #{bean.changeTime,jdbcType=BIGINT},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `LCAPLogicViewMapping_79f632` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `LCAPLogicViewMapping_79f632` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `LCAPLogicViewMapping_79f632`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'logicIdentifier'">
+                    AND `logicIdentifier` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'resourceName'">
+                    AND `resourceName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'resourceType'">
+                    AND `resourceType` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'group'">
+                    AND `group` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'changeTime'">
+                    AND `changeTime` = #{value, jdbcType=BIGINT}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `LCAPLogicViewMapping_79f632` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'logicIdentifier'">
+                    AND `logicIdentifier` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'resourceName'">
+                    AND `resourceName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'resourceType'">
+                    AND `resourceType` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'group'">
+                    AND `group` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'changeTime'">
+                    AND `changeTime` = #{value, jdbcType=BIGINT}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `LCAPLogicViewMapping_79f632` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `LCAPLogicViewMapping_79f632`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `LCAPLogicViewMapping_79f632`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.LCAPLogicViewMapping">
+        INSERT INTO `LCAPLogicViewMapping_79f632` (
+            `id`
+            ,`logicIdentifier`
+            ,`resourceName`
+            ,`resourceType`
+            ,`group`
+            ,`changeTime`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{logicIdentifier,jdbcType=VARCHAR}
+            ,#{resourceName,jdbcType=VARCHAR}
+            ,#{resourceType,jdbcType=VARCHAR}
+            ,#{group,jdbcType=BIGINT}
+            ,#{changeTime,jdbcType=BIGINT}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `LCAPLogicViewMapping_79f632`
+        <set>
+        <if test="updateFields == null or updateFields.contains('logicIdentifier')">`logicIdentifier` = #{bean.logicIdentifier,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('resourceName')">`resourceName` = #{bean.resourceName,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('resourceType')">`resourceType` = #{bean.resourceType,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('group')">`group` = #{bean.group,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('changeTime')">`changeTime` = #{bean.changeTime,jdbcType=BIGINT},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `LCAPLogicViewMapping_79f632` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

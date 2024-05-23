@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated GetOnShelfGoodCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.GetOnShelfGoodCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_DA8A610763611813585B792716CAD46A" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_538C452884504CDF1F5C6F474BB5137B">
+	<id column="T2_C1" property="goods.id"/>
+	<result column="T2_C2" property="goods.category"/>
+	<result column="T2_C3" property="goods.name"/>
+	<result column="T2_C4" property="goods.status"/>
+	<result column="T2_C5" property="goods.quantity"/>
+	<result column="T2_C6" property="goods.unit"/>
+	<result column="T2_C7" property="goods.inbound_date"/>
+	<result column="T2_C8" property="goods.inbound_op"/>
+	<result column="T2_C9" property="goods.outbound_date"/>
+	<result column="T2_C10" property="goods.outbound_op"/>
+	<result column="T2_C11" property="goods.notes"/>
+	<result column="T2_C12" property="goods.inbound_tmp_area"/>
+	<result column="T2_C13" property="goods.warehouse_id"/>
+	<result column="T2_C14" property="goods.storage_area_id"/>
+	<result column="T2_C15" property="goods.shelf_id"/>
+	<result column="T2_C16" property="goods.order_id"/>
+	<result column="T2_C17" property="goods.refuse_reason"/>
+	<result column="T2_C18" property="goods.inbound_price"/>
+	<result column="T2_C19" property="goods.outbound_price"/>
+	<result column="T2_C20" property="goods.id_tag"/>
+	<result column="T2_C21" property="goods.on_shelf_time"/>
+	<result column="T2_C22" property="goods.on_shelf_op"/>
+	<result column="T2_C23" property="goods.commodity_id"/>
+	<result column="T3_C1" property="warehouseArea.name"/>
+	<result column="T1_C1" property="shelf.name"/>
+</resultMap>
+<select id="getAnonymousStructure_DA8A610763611813585B792716CAD46A" resultMap="AnonymousStructure_DA8A610763611813585B792716CAD46A">
+	 SELECT `Shelf`.`name` `T1_C1`,`WarehouseArea`.`name` `T3_C1`,`Goods`.`id` `T2_C1`,`Goods`.`category` `T2_C2`,`Goods`.`name` `T2_C3`,`Goods`.`status` `T2_C4`,`Goods`.`quantity` `T2_C5`,`Goods`.`unit` `T2_C6`,`Goods`.`inboundDate` `T2_C7`,`Goods`.`inboundOp` `T2_C8`,`Goods`.`outboundDate` `T2_C9`,`Goods`.`outboundOp` `T2_C10`,`Goods`.`notes` `T2_C11`,`Goods`.`inboundTmpArea` `T2_C12`,`Goods`.`warehouseId` `T2_C13`,`Goods`.`storageAreaId` `T2_C14`,`Goods`.`shelfId` `T2_C15`,`Goods`.`orderId` `T2_C16`,`Goods`.`refuseReason` `T2_C17`,`Goods`.`inboundPrice` `T2_C18`,`Goods`.`outboundPrice` `T2_C19`,`Goods`.`idTag` `T2_C20`,`Goods`.`onShelfTime` `T2_C21`,`Goods`.`onShelfOp` `T2_C22`,`Goods`.`commodityId` `T2_C23` FROM `Goods` INNER JOIN `Shelf` ON `Goods`.`shelfId` = `Shelf`.`id` INNER JOIN `WarehouseArea` ON `Goods`.`storageAreaId` = `WarehouseArea`.`id` 
+<if test=" 1==1 or warehouse_id!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 ">
+	(( `Goods`.`commodityId` IS NULL ))
+</if> 
+<if test=" 1==1 or warehouse_id!=null ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 ">
+	(`Goods`.`status` = '4')
+</if> 
+<if test=" 1==1 and warehouse_id!=null ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Goods`.`warehouseId` = #{warehouse_id}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_DA8A610763611813585B792716CAD46A" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `Goods` INNER JOIN `Shelf` ON `Goods`.`shelfId` = `Shelf`.`id` INNER JOIN `WarehouseArea` ON `Goods`.`storageAreaId` = `WarehouseArea`.`id` 
+<if test=" 1==1 or warehouse_id!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 ">
+	(( `Goods`.`commodityId` IS NULL ))
+</if> 
+<if test=" 1==1 or warehouse_id!=null ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 ">
+	(`Goods`.`status` = '4')
+</if> 
+<if test=" 1==1 and warehouse_id!=null ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Goods`.`warehouseId` = #{warehouse_id}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if>
+</select>
+
+
+</mapper>

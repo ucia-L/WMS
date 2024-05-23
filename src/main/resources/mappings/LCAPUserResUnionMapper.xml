@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weitest.wms.repository.LCAPUserResUnionMapper">
+    <select id="getUserResourceList" resultType="java.lang.String">
+        SELECT  `LCAPResource_79f632`.`name`
+        FROM `LCAPUserRoleMapping_79f632`
+        INNER JOIN `LCAPRolePerMapping_79f632`
+        ON `LCAPUserRoleMapping_79f632`.`roleId` =
+        `LCAPRolePerMapping_79f632`.`roleId`
+        INNER JOIN `LCAPPerResMapping_79f632`
+        ON `LCAPRolePerMapping_79f632`.`permissionId` =
+        `LCAPPerResMapping_79f632`.`permissionId`
+        INNER JOIN `LCAPResource_79f632`
+        ON `LCAPPerResMapping_79f632`.`resourceId` =
+        `LCAPResource_79f632`.`id`
+        WHERE `LCAPUserRoleMapping_79f632`.`userId` =  #{userId}
+    </select>
+</mapper>

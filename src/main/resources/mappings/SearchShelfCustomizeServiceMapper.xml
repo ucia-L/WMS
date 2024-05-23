@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated SearchShelfCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.SearchShelfCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_3A3C19D4BE4C5471234B195A6833A837" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_83A1AC65E64BEE1D4A4A85DE50C13654">
+	<id column="T1_C1" property="warehouseArea.id"/>
+</resultMap>
+<select id="getAnonymousStructure_3A3C19D4BE4C5471234B195A6833A837" resultMap="AnonymousStructure_3A3C19D4BE4C5471234B195A6833A837">
+	 SELECT `WarehouseArea`.`id` `T1_C1` FROM `WarehouseArea` 
+<if test=" Cargo_area!=null and 1==1 ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`WarehouseArea`.`name` = #{Cargo_area}
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_3A3C19D4BE4C5471234B195A6833A837" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `WarehouseArea` 
+<if test=" Cargo_area!=null and 1==1 ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`WarehouseArea`.`name` = #{Cargo_area}
+</trim>
+</if>
+</select>
+<resultMap id="AnonymousStructure_84CAA2BF9A7CA118C4EFDF7494D8F554" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_1AF446F0FE2D7B6C232132FCD3B29D44">
+	<id column="T1_C2" property="shelf.id"/>
+	<result column="T1_C1" property="shelf.name"/>
+	<result column="T1_C3" property="shelf.currentQuantity"/>
+	<result column="T1_C4" property="shelf.capacity"/>
+</resultMap>
+<select id="getAnonymousStructure_84CAA2BF9A7CA118C4EFDF7494D8F554" resultMap="AnonymousStructure_84CAA2BF9A7CA118C4EFDF7494D8F554">
+	 SELECT `Shelf`.`name` `T1_C1`,`Shelf`.`id` `T1_C2`,`Shelf`.`currentQuantity` `T1_C3`,`Shelf`.`capacity` `T1_C4` FROM `Shelf` 
+<if test=" ( id!=null and id.warehouseArea!=null and id.warehouseArea.id!=null ) and 1==1 ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	#{id.warehouseArea.id} = `Shelf`.`warehouseAreaId`
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_84CAA2BF9A7CA118C4EFDF7494D8F554" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `Shelf` 
+<if test=" ( id!=null and id.warehouseArea!=null and id.warehouseArea.id!=null ) and 1==1 ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	#{id.warehouseArea.id} = `Shelf`.`warehouseAreaId`
+</trim>
+</if>
+</select>
+
+
+</mapper>

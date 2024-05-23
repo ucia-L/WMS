@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated SearchCargo_areaCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.SearchCargo_areaCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_821D7D11F928C9F38F5FEB835A4DD107" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_99E1DEAE53C2D28A1AFEEA89BC2690EF">
+	<id column="T1_C2" property="warehouseArea.id"/>
+	<result column="T1_C1" property="warehouseArea.name"/>
+	<result column="T1_C3" property="warehouseArea.capacity"/>
+	<result column="T1_C4" property="warehouseArea.currentQuantity"/>
+</resultMap>
+<select id="getAnonymousStructure_821D7D11F928C9F38F5FEB835A4DD107" resultMap="AnonymousStructure_821D7D11F928C9F38F5FEB835A4DD107">
+	 SELECT `WarehouseArea`.`name` `T1_C1`,`WarehouseArea`.`id` `T1_C2`,`WarehouseArea`.`capacity` `T1_C3`,`WarehouseArea`.`currentQuantity` `T1_C4` FROM `WarehouseArea` 
+<if test=" 1==1 or ( userInfo!=null and userInfo.warehouse_id!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 and ( userInfo!=null and userInfo.warehouse_id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`WarehouseArea`.`warehouseId` = #{userInfo.warehouse_id}
+</trim>
+</if> 
+<if test=" 1==1 ">
+	
+<trim prefix="and">
+	(`WarehouseArea`.`category` = '1')
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_821D7D11F928C9F38F5FEB835A4DD107" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `WarehouseArea` 
+<if test=" 1==1 or ( userInfo!=null and userInfo.warehouse_id!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 and ( userInfo!=null and userInfo.warehouse_id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`WarehouseArea`.`warehouseId` = #{userInfo.warehouse_id}
+</trim>
+</if> 
+<if test=" 1==1 ">
+	
+<trim prefix="and">
+	(`WarehouseArea`.`category` = '1')
+</trim>
+</if>
+</trim>
+</if>
+</select>
+
+
+</mapper>

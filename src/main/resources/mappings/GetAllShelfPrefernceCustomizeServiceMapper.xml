@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated GetAllShelfPrefernceCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.GetAllShelfPrefernceCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_FD913F7039BB93235C19104CFEA0F401" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_BC30EA51BEF759784391A78DA6D8A137">
+	<id column="T1_C1" property="shelfPreference.id"/>
+	<result column="T1_C2" property="shelfPreference.name"/>
+</resultMap>
+<select id="getAnonymousStructure_FD913F7039BB93235C19104CFEA0F401" resultMap="AnonymousStructure_FD913F7039BB93235C19104CFEA0F401">
+	 SELECT `ShelfPreference`.`id` `T1_C1`,`ShelfPreference`.`name` `T1_C2` FROM `ShelfPreference`  
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_FD913F7039BB93235C19104CFEA0F401" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `ShelfPreference` 
+</select>
+
+
+</mapper>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated OrderGetInfoCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.OrderGetInfoCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_2939E2BD009F159DEECDA97A8CF7E2AE" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_6EDCCE20CF8BA7EDF48C71C6959DE267">
+	<id column="T1_C1" property="orders.id"/>
+	<result column="T1_C2" property="orders.customer_name"/>
+	<result column="T1_C3" property="orders.amount"/>
+	<result column="T1_C4" property="orders.goods_num"/>
+	<result column="T1_C5" property="orders.responsible_person"/>
+	<result column="T1_C6" property="orders.expected_date"/>
+	<result column="T1_C7" property="orders.notes"/>
+	<result column="T1_C8" property="orders.arrival_date"/>
+	<result column="T1_C9" property="orders.status"/>
+	<result column="T1_C10" property="orders.refuse_reason"/>
+</resultMap>
+<select id="getAnonymousStructure_2939E2BD009F159DEECDA97A8CF7E2AE" resultMap="AnonymousStructure_2939E2BD009F159DEECDA97A8CF7E2AE">
+	 SELECT `Orders`.`id` `T1_C1`,`Orders`.`customerName` `T1_C2`,`Orders`.`amount` `T1_C3`,`Orders`.`goodsNum` `T1_C4`,`Orders`.`responsiblePerson` `T1_C5`,`Orders`.`expectedDate` `T1_C6`,`Orders`.`notes` `T1_C7`,`Orders`.`arrivalDate` `T1_C8`,`Orders`.`status` `T1_C9`,`Orders`.`refuseReason` `T1_C10` FROM `Orders` 
+<if test=" ( fliter!=null and fliter.customer_name!=null ) or 1==1 or ( fliter!=null and fliter.arrival_date!=null ) or ( fliter!=null and fliter.responsible_person!=null ) or ( fliter!=null and fliter.status!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 and ( fliter!=null and fliter.status!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Orders`.`status` = #{fliter.status}
+</trim>
+</if> 
+<if test=" ( fliter!=null and fliter.customer_name!=null ) or 1==1 or ( fliter!=null and fliter.arrival_date!=null ) or ( fliter!=null and fliter.responsible_person!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( fliter!=null and fliter.responsible_person!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Orders`.`responsiblePerson` LIKE concat('%', concat(#{fliter.responsible_person}, '%'))
+</trim>
+</if> 
+<if test=" ( fliter!=null and fliter.customer_name!=null ) or 1==1 or ( fliter!=null and fliter.arrival_date!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( fliter!=null and fliter.arrival_date!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Orders`.`arrivalDate` = #{fliter.arrival_date}
+</trim>
+</if> 
+<if test=" ( fliter!=null and fliter.customer_name!=null ) and 1==1 ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Orders`.`customerName` LIKE concat('%', concat(#{fliter.customer_name}, '%'))
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_2939E2BD009F159DEECDA97A8CF7E2AE" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `Orders` 
+<if test=" ( fliter!=null and fliter.customer_name!=null ) or 1==1 or ( fliter!=null and fliter.arrival_date!=null ) or ( fliter!=null and fliter.responsible_person!=null ) or ( fliter!=null and fliter.status!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 and ( fliter!=null and fliter.status!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Orders`.`status` = #{fliter.status}
+</trim>
+</if> 
+<if test=" ( fliter!=null and fliter.customer_name!=null ) or 1==1 or ( fliter!=null and fliter.arrival_date!=null ) or ( fliter!=null and fliter.responsible_person!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( fliter!=null and fliter.responsible_person!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Orders`.`responsiblePerson` LIKE concat('%', concat(#{fliter.responsible_person}, '%'))
+</trim>
+</if> 
+<if test=" ( fliter!=null and fliter.customer_name!=null ) or 1==1 or ( fliter!=null and fliter.arrival_date!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( fliter!=null and fliter.arrival_date!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Orders`.`arrivalDate` = #{fliter.arrival_date}
+</trim>
+</if> 
+<if test=" ( fliter!=null and fliter.customer_name!=null ) and 1==1 ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Orders`.`customerName` LIKE concat('%', concat(#{fliter.customer_name}, '%'))
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if>
+</select>
+
+
+</mapper>

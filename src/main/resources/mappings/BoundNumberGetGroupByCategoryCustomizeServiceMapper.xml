@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated BoundNumberGetGroupByCategoryCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.BoundNumberGetGroupByCategoryCustomizeServiceMapper">
+
+    <resultMap id="defaultDSAnonymousStructure_29A3AAE6B50B0C4A62C995A674529978" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_29A3AAE6B50B0C4A62C995A674529978">
+	<result column="category" property="category"/>
+	<result column="count" property="count"/>
+</resultMap>
+<select id="getSql1" resultMap="defaultDSAnonymousStructure_29A3AAE6B50B0C4A62C995A674529978">
+	SELECT `category` , COUNT( `id`) AS `count` FROM `Goods` 
+<if test=" 1==1 or status!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`category` IS NOT NULL 
+<if test=" status!=null ">
+	
+<trim prefix="and">
+	(`status` = #{status})
+</trim>
+</if>
+</trim>
+</if> GROUP BY `category`
+</select>
+
+
+</mapper>

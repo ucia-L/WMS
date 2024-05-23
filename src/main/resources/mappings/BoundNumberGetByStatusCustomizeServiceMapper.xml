@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated BoundNumberGetByStatusCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.BoundNumberGetByStatusCustomizeServiceMapper">
+
+    <resultMap id="defaultDSAnonymousStructure_AB7FB15BAB94A46A06C92A1474DDDA3E" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_AB7FB15BAB94A46A06C92A1474DDDA3E">
+	<result column="status" property="status"/>
+	<result column="count" property="count"/>
+</resultMap>
+<select id="getSql1" resultMap="defaultDSAnonymousStructure_AB7FB15BAB94A46A06C92A1474DDDA3E">
+	SELECT `status` , COUNT( `id`) AS `count` FROM `Goods` WHERE `status` IS NOT NULL GROUP BY `status`
+</select>
+
+
+</mapper>

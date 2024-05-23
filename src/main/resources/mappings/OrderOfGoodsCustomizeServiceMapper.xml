@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated OrderOfGoodsCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.OrderOfGoodsCustomizeServiceMapper">
+
+    <resultMap id="defaultDSAnonymousStructure_0C0D027B2F4517D501F0843C7B1B8F4B" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_0C0D027B2F4517D501F0843C7B1B8F4B">
+	<result column="id" property="id"/>
+	<result column="createdTime" property="createdTime"/>
+	<result column="updatedTime" property="updatedTime"/>
+	<result column="createdBy" property="createdBy"/>
+	<result column="updatedBy" property="updatedBy"/>
+	<result column="customerName" property="customer_name"/>
+	<result column="amount" property="amount"/>
+	<result column="goodsNum" property="goods_num"/>
+	<result column="responsiblePerson" property="responsible_person"/>
+	<result column="expectedDate" property="expected_date"/>
+	<result column="arrivalDate" property="arrival_date"/>
+	<result column="notes" property="notes"/>
+	<result column="status" property="status"/>
+	<result column="refuseReason" property="refuse_reason"/>
+	<result column="idTag" property="id_tag"/>
+	<result column="goods_list" property="goods_list"/>
+	<result column="goods_quantity_list" property="goods_quantity_list"/>
+	<result column="goods_unit_list" property="goods_unit_list"/>
+</resultMap>
+<select id="getSql1" resultMap="defaultDSAnonymousStructure_0C0D027B2F4517D501F0843C7B1B8F4B">
+	SELECT `Orders`.* , GROUP_CONCAT( `InBoundGood`.`name`) AS `goods_list` , GROUP_CONCAT( `InBoundGood`.`quantity`) AS `goods_quantity_list` , GROUP_CONCAT( `InBoundGood`.`unit`) AS `goods_unit_list` FROM `Orders` LEFT JOIN `InBoundGood` ON `Orders`.`id` = `InBoundGood`.`inboundOrderId` 
+<if test=" ( filter!=null and filter.customer_name!=null ) or ( filter!=null and filter.id!=null ) or ( filter!=null and filter.responsible_person!=null ) or ( filter!=null and filter.arrival_date!=null ) or ( filter!=null and filter.status!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" ( filter!=null and filter.customer_name!=null ) or ( filter!=null and filter.id!=null ) or ( filter!=null and filter.responsible_person!=null ) or ( filter!=null and filter.arrival_date!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.customer_name!=null ) or ( filter!=null and filter.id!=null ) or ( filter!=null and filter.arrival_date!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.customer_name!=null ) or ( filter!=null and filter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.id!=null ) ">
+	(`Orders`.`id` = #{filter.id})
+</if> 
+<if test=" ( filter!=null and filter.customer_name!=null ) ">
+	
+<trim prefix="and">
+	(`Orders`.`customerName` LIKE concat('%', #{filter.customer_name} ,'%'))
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.arrival_date!=null ) ">
+	
+<trim prefix="and">
+	(DATE( `Orders`.`arrivalDate`) = DATE( #{filter.arrival_date}))
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.responsible_person!=null ) ">
+	
+<trim prefix="and">
+	(`Orders`.`responsiblePerson` LIKE concat('%', #{filter.responsible_person} ,'%'))
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.status!=null ) ">
+	
+<trim prefix="and">
+	(`Orders`.`status` = #{filter.status})
+</trim>
+</if>
+</trim>
+</if> GROUP BY `Orders`.`id`
+</select>
+
+
+</mapper>

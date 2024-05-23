@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated GoodsEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.GoodsEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.GoodsEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="category" jdbcType="VARCHAR" property="category" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="quantity" jdbcType="BIGINT" property="quantity" />
+        <result column="unit" jdbcType="VARCHAR" property="unit" />
+        <result column="inboundDate" jdbcType="TIMESTAMP" property="inbound_date" />
+        <result column="inboundOp" jdbcType="VARCHAR" property="inbound_op" />
+        <result column="outboundDate" jdbcType="TIMESTAMP" property="outbound_date" />
+        <result column="outboundOp" jdbcType="VARCHAR" property="outbound_op" />
+        <result column="notes" jdbcType="VARCHAR" property="notes" />
+        <result column="inboundTmpArea" jdbcType="BIGINT" property="inbound_tmp_area" />
+        <result column="warehouseId" jdbcType="BIGINT" property="warehouse_id" />
+        <result column="storageAreaId" jdbcType="BIGINT" property="storage_area_id" />
+        <result column="shelfId" jdbcType="BIGINT" property="shelf_id" />
+        <result column="orderId" jdbcType="BIGINT" property="order_id" />
+        <result column="refuseReason" jdbcType="VARCHAR" property="refuse_reason" />
+        <result column="inboundPrice" jdbcType="DECIMAL" property="inbound_price" />
+        <result column="outboundPrice" jdbcType="DECIMAL" property="outbound_price" />
+        <result column="idTag" jdbcType="VARCHAR" property="id_tag" />
+        <result column="onShelfTime" jdbcType="TIMESTAMP" property="on_shelf_time" />
+        <result column="onShelfOp" jdbcType="VARCHAR" property="on_shelf_op" />
+        <result column="commodityId" jdbcType="BIGINT" property="commodity_id" />
+        <result column="afterSaleId" jdbcType="BIGINT" property="afterSale_id" />
+        <result column="goodCategory" jdbcType="VARCHAR" property="goodCategory" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.GoodsEntity"  keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `Goods` (
+            `category`
+            ,`name`
+            ,`status`
+            ,`quantity`
+            ,`unit`
+            ,`inboundDate`
+            ,`inboundOp`
+            ,`outboundDate`
+            ,`outboundOp`
+            ,`notes`
+            ,`inboundTmpArea`
+            ,`warehouseId`
+            ,`storageAreaId`
+            ,`shelfId`
+            ,`orderId`
+            ,`refuseReason`
+            ,`inboundPrice`
+            ,`outboundPrice`
+            ,`idTag`
+            ,`onShelfTime`
+            ,`onShelfOp`
+            ,`commodityId`
+            ,`afterSaleId`
+            ,`goodCategory`
+        )
+        VALUES (
+            #{category,jdbcType=VARCHAR}
+            ,#{name,jdbcType=VARCHAR}
+            ,#{status,jdbcType=VARCHAR}
+            ,#{quantity,jdbcType=BIGINT}
+            ,#{unit,jdbcType=VARCHAR}
+            ,#{inbound_date,jdbcType=TIMESTAMP}
+            ,#{inbound_op,jdbcType=VARCHAR}
+            ,#{outbound_date,jdbcType=TIMESTAMP}
+            ,#{outbound_op,jdbcType=VARCHAR}
+            ,#{notes,jdbcType=VARCHAR}
+            ,#{inbound_tmp_area,jdbcType=BIGINT}
+            ,#{warehouse_id,jdbcType=BIGINT}
+            ,#{storage_area_id,jdbcType=BIGINT}
+            ,#{shelf_id,jdbcType=BIGINT}
+            ,#{order_id,jdbcType=BIGINT}
+            ,#{refuse_reason,jdbcType=VARCHAR}
+            ,#{inbound_price,jdbcType=DECIMAL}
+            ,#{outbound_price,jdbcType=DECIMAL}
+            ,#{id_tag,jdbcType=VARCHAR}
+            ,#{on_shelf_time,jdbcType=TIMESTAMP}
+            ,#{on_shelf_op,jdbcType=VARCHAR}
+            ,#{commodity_id,jdbcType=BIGINT}
+            ,#{afterSale_id,jdbcType=BIGINT}
+            ,#{goodCategory,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `Goods` (
+            `category`
+            ,`name`
+            ,`status`
+            ,`quantity`
+            ,`unit`
+            ,`inboundDate`
+            ,`inboundOp`
+            ,`outboundDate`
+            ,`outboundOp`
+            ,`notes`
+            ,`inboundTmpArea`
+            ,`warehouseId`
+            ,`storageAreaId`
+            ,`shelfId`
+            ,`orderId`
+            ,`refuseReason`
+            ,`inboundPrice`
+            ,`outboundPrice`
+            ,`idTag`
+            ,`onShelfTime`
+            ,`onShelfOp`
+            ,`commodityId`
+            ,`afterSaleId`
+            ,`goodCategory`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.category,jdbcType=VARCHAR}
+            ,#{item.name,jdbcType=VARCHAR}
+            ,#{item.status,jdbcType=VARCHAR}
+            ,#{item.quantity,jdbcType=BIGINT}
+            ,#{item.unit,jdbcType=VARCHAR}
+            ,#{item.inbound_date,jdbcType=TIMESTAMP}
+            ,#{item.inbound_op,jdbcType=VARCHAR}
+            ,#{item.outbound_date,jdbcType=TIMESTAMP}
+            ,#{item.outbound_op,jdbcType=VARCHAR}
+            ,#{item.notes,jdbcType=VARCHAR}
+            ,#{item.inbound_tmp_area,jdbcType=BIGINT}
+            ,#{item.warehouse_id,jdbcType=BIGINT}
+            ,#{item.storage_area_id,jdbcType=BIGINT}
+            ,#{item.shelf_id,jdbcType=BIGINT}
+            ,#{item.order_id,jdbcType=BIGINT}
+            ,#{item.refuse_reason,jdbcType=VARCHAR}
+            ,#{item.inbound_price,jdbcType=DECIMAL}
+            ,#{item.outbound_price,jdbcType=DECIMAL}
+            ,#{item.id_tag,jdbcType=VARCHAR}
+            ,#{item.on_shelf_time,jdbcType=TIMESTAMP}
+            ,#{item.on_shelf_op,jdbcType=VARCHAR}
+            ,#{item.commodity_id,jdbcType=BIGINT}
+            ,#{item.afterSale_id,jdbcType=BIGINT}
+            ,#{item.goodCategory,jdbcType=VARCHAR}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.GoodsEntity" >
+        UPDATE `Goods`
+        <set>
+            <if test="updateFields == null or updateFields.contains('category')">`category` = #{bean.category,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_date')">`inboundDate` = #{bean.inbound_date,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_op')">`inboundOp` = #{bean.inbound_op,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('outbound_date')">`outboundDate` = #{bean.outbound_date,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('outbound_op')">`outboundOp` = #{bean.outbound_op,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('notes')">`notes` = #{bean.notes,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_tmp_area')">`inboundTmpArea` = #{bean.inbound_tmp_area,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('warehouse_id')">`warehouseId` = #{bean.warehouse_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('storage_area_id')">`storageAreaId` = #{bean.storage_area_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('shelf_id')">`shelfId` = #{bean.shelf_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('order_id')">`orderId` = #{bean.order_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('refuse_reason')">`refuseReason` = #{bean.refuse_reason,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_price')">`inboundPrice` = #{bean.inbound_price,jdbcType=DECIMAL},</if>
+            <if test="updateFields == null or updateFields.contains('outbound_price')">`outboundPrice` = #{bean.outbound_price,jdbcType=DECIMAL},</if>
+            <if test="updateFields == null or updateFields.contains('id_tag')">`idTag` = #{bean.id_tag,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('on_shelf_time')">`onShelfTime` = #{bean.on_shelf_time,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('on_shelf_op')">`onShelfOp` = #{bean.on_shelf_op,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('commodity_id')">`commodityId` = #{bean.commodity_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('afterSale_id')">`afterSaleId` = #{bean.afterSale_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('goodCategory')">`goodCategory` = #{bean.goodCategory,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.GoodsEntity" >
+        UPDATE `Goods`
+        <set>
+            <if test="updateFields == null or updateFields.contains('category')">`category` = #{bean.category,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_date')">`inboundDate` = #{bean.inbound_date,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_op')">`inboundOp` = #{bean.inbound_op,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('outbound_date')">`outboundDate` = #{bean.outbound_date,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('outbound_op')">`outboundOp` = #{bean.outbound_op,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('notes')">`notes` = #{bean.notes,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_tmp_area')">`inboundTmpArea` = #{bean.inbound_tmp_area,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('warehouse_id')">`warehouseId` = #{bean.warehouse_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('storage_area_id')">`storageAreaId` = #{bean.storage_area_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('shelf_id')">`shelfId` = #{bean.shelf_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('order_id')">`orderId` = #{bean.order_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('refuse_reason')">`refuseReason` = #{bean.refuse_reason,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_price')">`inboundPrice` = #{bean.inbound_price,jdbcType=DECIMAL},</if>
+            <if test="updateFields == null or updateFields.contains('outbound_price')">`outboundPrice` = #{bean.outbound_price,jdbcType=DECIMAL},</if>
+            <if test="updateFields == null or updateFields.contains('id_tag')">`idTag` = #{bean.id_tag,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('on_shelf_time')">`onShelfTime` = #{bean.on_shelf_time,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('on_shelf_op')">`onShelfOp` = #{bean.on_shelf_op,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('commodity_id')">`commodityId` = #{bean.commodity_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('afterSale_id')">`afterSaleId` = #{bean.afterSale_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('goodCategory')">`goodCategory` = #{bean.goodCategory,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `Goods` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `Goods` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `Goods`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'category'">
+                    AND `category` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'quantity'">
+                    AND `quantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'unit'">
+                    AND `unit` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'inbound_date'">
+                    AND `inboundDate` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'inbound_op'">
+                    AND `inboundOp` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'outbound_date'">
+                    AND `outboundDate` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'outbound_op'">
+                    AND `outboundOp` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'notes'">
+                    AND `notes` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'inbound_tmp_area'">
+                    AND `inboundTmpArea` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'warehouse_id'">
+                    AND `warehouseId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'storage_area_id'">
+                    AND `storageAreaId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'shelf_id'">
+                    AND `shelfId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'order_id'">
+                    AND `orderId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'refuse_reason'">
+                    AND `refuseReason` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'inbound_price'">
+                    AND `inboundPrice` = #{value, jdbcType=DECIMAL}
+                </when>
+                <when test="property == 'outbound_price'">
+                    AND `outboundPrice` = #{value, jdbcType=DECIMAL}
+                </when>
+                <when test="property == 'id_tag'">
+                    AND `idTag` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'on_shelf_time'">
+                    AND `onShelfTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'on_shelf_op'">
+                    AND `onShelfOp` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'commodity_id'">
+                    AND `commodityId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'afterSale_id'">
+                    AND `afterSaleId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'goodCategory'">
+                    AND `goodCategory` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `Goods` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'category'">
+                    AND `category` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'quantity'">
+                    AND `quantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'unit'">
+                    AND `unit` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'inbound_date'">
+                    AND `inboundDate` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'inbound_op'">
+                    AND `inboundOp` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'outbound_date'">
+                    AND `outboundDate` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'outbound_op'">
+                    AND `outboundOp` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'notes'">
+                    AND `notes` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'inbound_tmp_area'">
+                    AND `inboundTmpArea` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'warehouse_id'">
+                    AND `warehouseId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'storage_area_id'">
+                    AND `storageAreaId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'shelf_id'">
+                    AND `shelfId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'order_id'">
+                    AND `orderId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'refuse_reason'">
+                    AND `refuseReason` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'inbound_price'">
+                    AND `inboundPrice` = #{value, jdbcType=DECIMAL}
+                </when>
+                <when test="property == 'outbound_price'">
+                    AND `outboundPrice` = #{value, jdbcType=DECIMAL}
+                </when>
+                <when test="property == 'id_tag'">
+                    AND `idTag` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'on_shelf_time'">
+                    AND `onShelfTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'on_shelf_op'">
+                    AND `onShelfOp` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'commodity_id'">
+                    AND `commodityId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'afterSale_id'">
+                    AND `afterSaleId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'goodCategory'">
+                    AND `goodCategory` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `Goods` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `Goods`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `Goods`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.GoodsEntity">
+        INSERT INTO `Goods` (
+            `id`
+            ,`category`
+            ,`name`
+            ,`status`
+            ,`quantity`
+            ,`unit`
+            ,`inboundDate`
+            ,`inboundOp`
+            ,`outboundDate`
+            ,`outboundOp`
+            ,`notes`
+            ,`inboundTmpArea`
+            ,`warehouseId`
+            ,`storageAreaId`
+            ,`shelfId`
+            ,`orderId`
+            ,`refuseReason`
+            ,`inboundPrice`
+            ,`outboundPrice`
+            ,`idTag`
+            ,`onShelfTime`
+            ,`onShelfOp`
+            ,`commodityId`
+            ,`afterSaleId`
+            ,`goodCategory`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{category,jdbcType=VARCHAR}
+            ,#{name,jdbcType=VARCHAR}
+            ,#{status,jdbcType=VARCHAR}
+            ,#{quantity,jdbcType=BIGINT}
+            ,#{unit,jdbcType=VARCHAR}
+            ,#{inbound_date,jdbcType=TIMESTAMP}
+            ,#{inbound_op,jdbcType=VARCHAR}
+            ,#{outbound_date,jdbcType=TIMESTAMP}
+            ,#{outbound_op,jdbcType=VARCHAR}
+            ,#{notes,jdbcType=VARCHAR}
+            ,#{inbound_tmp_area,jdbcType=BIGINT}
+            ,#{warehouse_id,jdbcType=BIGINT}
+            ,#{storage_area_id,jdbcType=BIGINT}
+            ,#{shelf_id,jdbcType=BIGINT}
+            ,#{order_id,jdbcType=BIGINT}
+            ,#{refuse_reason,jdbcType=VARCHAR}
+            ,#{inbound_price,jdbcType=DECIMAL}
+            ,#{outbound_price,jdbcType=DECIMAL}
+            ,#{id_tag,jdbcType=VARCHAR}
+            ,#{on_shelf_time,jdbcType=TIMESTAMP}
+            ,#{on_shelf_op,jdbcType=VARCHAR}
+            ,#{commodity_id,jdbcType=BIGINT}
+            ,#{afterSale_id,jdbcType=BIGINT}
+            ,#{goodCategory,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `Goods`
+        <set>
+        <if test="updateFields == null or updateFields.contains('category')">`category` = #{bean.category,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('inbound_date')">`inboundDate` = #{bean.inbound_date,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('inbound_op')">`inboundOp` = #{bean.inbound_op,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('outbound_date')">`outboundDate` = #{bean.outbound_date,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('outbound_op')">`outboundOp` = #{bean.outbound_op,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('notes')">`notes` = #{bean.notes,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('inbound_tmp_area')">`inboundTmpArea` = #{bean.inbound_tmp_area,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('warehouse_id')">`warehouseId` = #{bean.warehouse_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('storage_area_id')">`storageAreaId` = #{bean.storage_area_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('shelf_id')">`shelfId` = #{bean.shelf_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('order_id')">`orderId` = #{bean.order_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('refuse_reason')">`refuseReason` = #{bean.refuse_reason,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('inbound_price')">`inboundPrice` = #{bean.inbound_price,jdbcType=DECIMAL},</if>
+        <if test="updateFields == null or updateFields.contains('outbound_price')">`outboundPrice` = #{bean.outbound_price,jdbcType=DECIMAL},</if>
+        <if test="updateFields == null or updateFields.contains('id_tag')">`idTag` = #{bean.id_tag,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('on_shelf_time')">`onShelfTime` = #{bean.on_shelf_time,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('on_shelf_op')">`onShelfOp` = #{bean.on_shelf_op,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('commodity_id')">`commodityId` = #{bean.commodity_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('afterSale_id')">`afterSaleId` = #{bean.afterSale_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('goodCategory')">`goodCategory` = #{bean.goodCategory,jdbcType=VARCHAR},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `Goods` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

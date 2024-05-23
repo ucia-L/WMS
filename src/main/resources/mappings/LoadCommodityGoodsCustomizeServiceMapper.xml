@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated LoadCommodityGoodsCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.LoadCommodityGoodsCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_066A0DCCF9CBA9BEF52F6A44E6C77E87" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_9C51235C084B53955268CCC880F52D83">
+	<id column="T1_C1" property="goods.id"/>
+	<result column="T1_C2" property="goods.category"/>
+	<result column="T1_C3" property="goods.name"/>
+	<result column="T1_C4" property="goods.status"/>
+	<result column="T1_C5" property="goods.quantity"/>
+	<result column="T1_C6" property="goods.unit"/>
+	<result column="T1_C7" property="goods.inbound_date"/>
+	<result column="T1_C8" property="goods.inbound_op"/>
+	<result column="T1_C9" property="goods.outbound_date"/>
+	<result column="T1_C10" property="goods.outbound_op"/>
+	<result column="T1_C11" property="goods.notes"/>
+	<result column="T1_C12" property="goods.inbound_tmp_area"/>
+	<result column="T1_C13" property="goods.warehouse_id"/>
+	<result column="T1_C14" property="goods.storage_area_id"/>
+	<result column="T1_C15" property="goods.shelf_id"/>
+	<result column="T1_C16" property="goods.order_id"/>
+	<result column="T1_C17" property="goods.refuse_reason"/>
+	<result column="T1_C18" property="goods.inbound_price"/>
+	<result column="T1_C19" property="goods.outbound_price"/>
+	<result column="T1_C20" property="goods.id_tag"/>
+	<result column="T1_C21" property="goods.on_shelf_time"/>
+	<result column="T1_C22" property="goods.on_shelf_op"/>
+	<result column="T1_C23" property="goods.commodity_id"/>
+	<result column="T1_C24" property="goods.afterSale_id"/>
+	<result column="T1_C25" property="goods.goodCategory"/>
+</resultMap>
+<select id="getAnonymousStructure_066A0DCCF9CBA9BEF52F6A44E6C77E87" resultMap="AnonymousStructure_066A0DCCF9CBA9BEF52F6A44E6C77E87">
+	 SELECT `Goods`.`id` `T1_C1`,`Goods`.`category` `T1_C2`,`Goods`.`name` `T1_C3`,`Goods`.`status` `T1_C4`,`Goods`.`quantity` `T1_C5`,`Goods`.`unit` `T1_C6`,`Goods`.`inboundDate` `T1_C7`,`Goods`.`inboundOp` `T1_C8`,`Goods`.`outboundDate` `T1_C9`,`Goods`.`outboundOp` `T1_C10`,`Goods`.`notes` `T1_C11`,`Goods`.`inboundTmpArea` `T1_C12`,`Goods`.`warehouseId` `T1_C13`,`Goods`.`storageAreaId` `T1_C14`,`Goods`.`shelfId` `T1_C15`,`Goods`.`orderId` `T1_C16`,`Goods`.`refuseReason` `T1_C17`,`Goods`.`inboundPrice` `T1_C18`,`Goods`.`outboundPrice` `T1_C19`,`Goods`.`idTag` `T1_C20`,`Goods`.`onShelfTime` `T1_C21`,`Goods`.`onShelfOp` `T1_C22`,`Goods`.`commodityId` `T1_C23`,`Goods`.`afterSaleId` `T1_C24`,`Goods`.`goodCategory` `T1_C25` FROM `Goods` 
+<if test=" CommodityID!=null and 1==1 ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`Goods`.`commodityId` = #{CommodityID}
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_066A0DCCF9CBA9BEF52F6A44E6C77E87" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `Goods` 
+<if test=" CommodityID!=null and 1==1 ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`Goods`.`commodityId` = #{CommodityID}
+</trim>
+</if>
+</select>
+
+
+</mapper>

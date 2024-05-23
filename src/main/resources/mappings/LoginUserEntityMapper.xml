@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated LoginUserEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.LoginUserEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.LoginUserEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="createdTime" jdbcType="TIMESTAMP" property="createdTime" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.LoginUserEntity"  >
+        INSERT INTO `LoginUser` (
+            `id`
+            ,`username`
+            ,`createdTime`
+            ,`password`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{username,jdbcType=VARCHAR}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{password,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" >
+        INSERT INTO `LoginUser` (
+            `id`
+            ,`username`
+            ,`createdTime`
+            ,`password`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.id,jdbcType=BIGINT}
+            ,#{item.username,jdbcType=VARCHAR}
+            ,#{item.createdTime,jdbcType=TIMESTAMP}
+            ,#{item.password,jdbcType=VARCHAR}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.LoginUserEntity" >
+        UPDATE `LoginUser`
+        <set>
+            <if test="updateFields == null or updateFields.contains('username')">`username` = #{bean.username,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('password')">`password` = #{bean.password,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.LoginUserEntity" >
+        UPDATE `LoginUser`
+        <set>
+            <if test="updateFields == null or updateFields.contains('username')">`username` = #{bean.username,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('password')">`password` = #{bean.password,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `LoginUser` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `LoginUser` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `LoginUser`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'username'">
+                    AND `username` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'password'">
+                    AND `password` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `LoginUser` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'username'">
+                    AND `username` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'password'">
+                    AND `password` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `LoginUser` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `LoginUser`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `LoginUser`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.LoginUserEntity">
+        INSERT INTO `LoginUser` (
+            `id`
+            ,`username`
+            ,`createdTime`
+            ,`password`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{username,jdbcType=VARCHAR}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{password,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `LoginUser`
+        <set>
+        <if test="updateFields == null or updateFields.contains('username')">`username` = #{bean.username,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('password')">`password` = #{bean.password,jdbcType=VARCHAR},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `LoginUser` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated GetRankCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.GetRankCustomizeServiceMapper">
+
+    <resultMap id="defaultDSAnonymousStructure_293B78F7E0EEAFF27E0B88A23BB4B26B" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_293B78F7E0EEAFF27E0B88A23BB4B26B">
+	<result column="id" property="id"/>
+	<result column="createdTime" property="createdTime"/>
+	<result column="username" property="username"/>
+	<result column="password" property="password"/>
+	<result column="phone" property="phone"/>
+	<result column="name" property="name"/>
+	<result column="avatar" property="avatar"/>
+	<result column="sex" property="sex"/>
+	<result column="isInbound" property="is_inbound"/>
+	<result column="isOutbound" property="is_outbound"/>
+	<result column="isDistribution" property="is_distribution"/>
+	<result column="isWarefareManage" property="is_warefareManage"/>
+	<result column="isFinance" property="is_finance"/>
+	<result column="isAdmin" property="is_admin"/>
+	<result column="warehouseId" property="warehouse_id"/>
+	<result column="createdBy" property="createdBy"/>
+	<result column="orderInboundCount" property="orderInbound_count"/>
+	<result column="orderOutboundCount" property="orderOutbound_count"/>
+	<result column="afterSaleInboundCount" property="afterSaleInbound_count"/>
+	<result column="afterSaleOutboundCount" property="afterSaleOutbound_count"/>
+	<result column="otherInboundCount" property="otherInbound_count"/>
+	<result column="otherOutboundCount" property="otherOutbound_count"/>
+</resultMap>
+<select id="getSql1" resultMap="defaultDSAnonymousStructure_293B78F7E0EEAFF27E0B88A23BB4B26B">
+	SELECT * FROM `Userinfo` 
+<trim prefix = "ORDER BY" suffixOverrides=",">
+	
+<trim suffix=",">
+	`orderInboundCount` DESC
+</trim>
+</trim>
+</select>
+<select id="getSql2" resultMap="defaultDSAnonymousStructure_293B78F7E0EEAFF27E0B88A23BB4B26B">
+	SELECT * FROM `Userinfo` 
+<trim prefix = "ORDER BY" suffixOverrides=",">
+	
+<trim suffix=",">
+	`afterSaleInboundCount` DESC
+</trim>
+</trim>
+</select>
+<select id="getSql3" resultMap="defaultDSAnonymousStructure_293B78F7E0EEAFF27E0B88A23BB4B26B">
+	SELECT * FROM `Userinfo` 
+<trim prefix = "ORDER BY" suffixOverrides=",">
+	
+<trim suffix=",">
+	`otherInboundCount` DESC
+</trim>
+</trim>
+</select>
+<select id="getSql4" resultMap="defaultDSAnonymousStructure_293B78F7E0EEAFF27E0B88A23BB4B26B">
+	SELECT * FROM `Userinfo` 
+<trim prefix = "ORDER BY" suffixOverrides=",">
+	
+<trim suffix=",">
+	`orderOutboundCount` DESC
+</trim>
+</trim>
+</select>
+<select id="getSql5" resultMap="defaultDSAnonymousStructure_293B78F7E0EEAFF27E0B88A23BB4B26B">
+	SELECT * FROM `Userinfo` 
+<trim prefix = "ORDER BY" suffixOverrides=",">
+	
+<trim suffix=",">
+	`afterSaleOutboundCount` DESC
+</trim>
+</trim>
+</select>
+<select id="getSql6" resultMap="defaultDSAnonymousStructure_293B78F7E0EEAFF27E0B88A23BB4B26B">
+	SELECT * FROM `Userinfo` 
+<trim prefix = "ORDER BY" suffixOverrides=",">
+	
+<trim suffix=",">
+	`otherOutboundCount` DESC
+</trim>
+</trim>
+</select>
+
+
+</mapper>

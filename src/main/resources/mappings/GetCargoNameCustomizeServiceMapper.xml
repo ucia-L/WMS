@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated GetCargoNameCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.GetCargoNameCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_F479C59DEDC4428D4F0EE4EE199E2EDC" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_D1EF128ECC36C32CE1D080378997A52D">
+	<result column="T1_C1" property="warehouseArea.name"/>
+</resultMap>
+<select id="getAnonymousStructure_F479C59DEDC4428D4F0EE4EE199E2EDC" resultMap="AnonymousStructure_F479C59DEDC4428D4F0EE4EE199E2EDC">
+	 SELECT `WarehouseArea`.`name` `T1_C1` FROM `WarehouseArea` 
+<if test=" 1==1 and CargoId!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	#{CargoId} = `WarehouseArea`.`id`
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_F479C59DEDC4428D4F0EE4EE199E2EDC" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `WarehouseArea` 
+<if test=" 1==1 and CargoId!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	#{CargoId} = `WarehouseArea`.`id`
+</trim>
+</if>
+</select>
+
+
+</mapper>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated AfterSaleGoodEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.AfterSaleGoodEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.AfterSaleGoodEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="afterSaleId" jdbcType="BIGINT" property="after_sale_id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="quantity" jdbcType="BIGINT" property="quantity" />
+        <result column="unit" jdbcType="VARCHAR" property="unit" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="notes" jdbcType="VARCHAR" property="notes" />
+        <result column="goodCategory" jdbcType="VARCHAR" property="goodCategory" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.AfterSaleGoodEntity"  keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `AfterSaleGood` (
+            `afterSaleId`
+            ,`name`
+            ,`quantity`
+            ,`unit`
+            ,`status`
+            ,`notes`
+            ,`goodCategory`
+        )
+        VALUES (
+            #{after_sale_id,jdbcType=BIGINT}
+            ,#{name,jdbcType=VARCHAR}
+            ,#{quantity,jdbcType=BIGINT}
+            ,#{unit,jdbcType=VARCHAR}
+            ,#{status,jdbcType=VARCHAR}
+            ,#{notes,jdbcType=VARCHAR}
+            ,#{goodCategory,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `AfterSaleGood` (
+            `afterSaleId`
+            ,`name`
+            ,`quantity`
+            ,`unit`
+            ,`status`
+            ,`notes`
+            ,`goodCategory`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.after_sale_id,jdbcType=BIGINT}
+            ,#{item.name,jdbcType=VARCHAR}
+            ,#{item.quantity,jdbcType=BIGINT}
+            ,#{item.unit,jdbcType=VARCHAR}
+            ,#{item.status,jdbcType=VARCHAR}
+            ,#{item.notes,jdbcType=VARCHAR}
+            ,#{item.goodCategory,jdbcType=VARCHAR}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.AfterSaleGoodEntity" >
+        UPDATE `AfterSaleGood`
+        <set>
+            <if test="updateFields == null or updateFields.contains('after_sale_id')">`afterSaleId` = #{bean.after_sale_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('notes')">`notes` = #{bean.notes,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('goodCategory')">`goodCategory` = #{bean.goodCategory,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.AfterSaleGoodEntity" >
+        UPDATE `AfterSaleGood`
+        <set>
+            <if test="updateFields == null or updateFields.contains('after_sale_id')">`afterSaleId` = #{bean.after_sale_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('notes')">`notes` = #{bean.notes,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('goodCategory')">`goodCategory` = #{bean.goodCategory,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `AfterSaleGood` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `AfterSaleGood` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `AfterSaleGood`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'after_sale_id'">
+                    AND `afterSaleId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'quantity'">
+                    AND `quantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'unit'">
+                    AND `unit` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'notes'">
+                    AND `notes` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'goodCategory'">
+                    AND `goodCategory` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `AfterSaleGood` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'after_sale_id'">
+                    AND `afterSaleId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'quantity'">
+                    AND `quantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'unit'">
+                    AND `unit` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'notes'">
+                    AND `notes` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'goodCategory'">
+                    AND `goodCategory` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `AfterSaleGood` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `AfterSaleGood`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `AfterSaleGood`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.AfterSaleGoodEntity">
+        INSERT INTO `AfterSaleGood` (
+            `id`
+            ,`afterSaleId`
+            ,`name`
+            ,`quantity`
+            ,`unit`
+            ,`status`
+            ,`notes`
+            ,`goodCategory`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{after_sale_id,jdbcType=BIGINT}
+            ,#{name,jdbcType=VARCHAR}
+            ,#{quantity,jdbcType=BIGINT}
+            ,#{unit,jdbcType=VARCHAR}
+            ,#{status,jdbcType=VARCHAR}
+            ,#{notes,jdbcType=VARCHAR}
+            ,#{goodCategory,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `AfterSaleGood`
+        <set>
+        <if test="updateFields == null or updateFields.contains('after_sale_id')">`afterSaleId` = #{bean.after_sale_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('notes')">`notes` = #{bean.notes,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('goodCategory')">`goodCategory` = #{bean.goodCategory,jdbcType=VARCHAR},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `AfterSaleGood` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

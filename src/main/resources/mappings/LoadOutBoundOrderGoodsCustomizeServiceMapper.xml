@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated LoadOutBoundOrderGoodsCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.LoadOutBoundOrderGoodsCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_F4FCBEC33D3E6E7EA4A5B5D36520577A" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_A0E8F3604290BB6B607983E5884603F3">
+	<id column="T1_C1" property="outBoundGood.id"/>
+</resultMap>
+<select id="getAnonymousStructure_F4FCBEC33D3E6E7EA4A5B5D36520577A" resultMap="AnonymousStructure_F4FCBEC33D3E6E7EA4A5B5D36520577A">
+	 SELECT `OutBoundGood`.`id` `T1_C1` FROM `OutBoundGood` 
+<if test=" 1==1 and OrderID!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`OutBoundGood`.`outboundOrderId` = #{OrderID}
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_F4FCBEC33D3E6E7EA4A5B5D36520577A" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `OutBoundGood` 
+<if test=" 1==1 and OrderID!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`OutBoundGood`.`outboundOrderId` = #{OrderID}
+</trim>
+</if>
+</select>
+
+
+</mapper>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated InventoryTaskEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.InventoryTaskEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.InventoryTaskEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="createdTime" jdbcType="TIMESTAMP" property="createdTime" />
+        <result column="createdBy" jdbcType="VARCHAR" property="createdBy" />
+        <result column="idTag" jdbcType="VARCHAR" property="id_tag" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.InventoryTaskEntity"  keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `InventoryTask` (
+            `createdTime`
+            ,`createdBy`
+            ,`idTag`
+            ,`status`
+        )
+        VALUES (
+            #{createdTime,jdbcType=TIMESTAMP}
+            ,#{createdBy,jdbcType=VARCHAR}
+            ,#{id_tag,jdbcType=VARCHAR}
+            ,#{status,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `InventoryTask` (
+            `createdTime`
+            ,`createdBy`
+            ,`idTag`
+            ,`status`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.createdTime,jdbcType=TIMESTAMP}
+            ,#{item.createdBy,jdbcType=VARCHAR}
+            ,#{item.id_tag,jdbcType=VARCHAR}
+            ,#{item.status,jdbcType=VARCHAR}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.InventoryTaskEntity" >
+        UPDATE `InventoryTask`
+        <set>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('id_tag')">`idTag` = #{bean.id_tag,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.InventoryTaskEntity" >
+        UPDATE `InventoryTask`
+        <set>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('id_tag')">`idTag` = #{bean.id_tag,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `InventoryTask` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `InventoryTask` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `InventoryTask`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'createdBy'">
+                    AND `createdBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'id_tag'">
+                    AND `idTag` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `InventoryTask` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'createdBy'">
+                    AND `createdBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'id_tag'">
+                    AND `idTag` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `InventoryTask` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `InventoryTask`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `InventoryTask`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.InventoryTaskEntity">
+        INSERT INTO `InventoryTask` (
+            `id`
+            ,`createdTime`
+            ,`createdBy`
+            ,`idTag`
+            ,`status`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{createdBy,jdbcType=VARCHAR}
+            ,#{id_tag,jdbcType=VARCHAR}
+            ,#{status,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `InventoryTask`
+        <set>
+        <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('id_tag')">`idTag` = #{bean.id_tag,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `InventoryTask` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

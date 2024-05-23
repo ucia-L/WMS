@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated SumWeighGoodsWeightCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.SumWeighGoodsWeightCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_4947911501E711DE9CE7537BC08471D4" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_99F93033A4D47195671A7C16EA108BEB">
+	<result column="outbound_order_id" property="outbound_order_id"/>
+	<result column="allWeight" property="allWeight"/>
+</resultMap>
+<select id="getAnonymousStructure_4947911501E711DE9CE7537BC08471D4" resultMap="AnonymousStructure_4947911501E711DE9CE7537BC08471D4">
+	 SELECT SUM(`OutBoundGood`.`weight`) `allWeight`,`OutBoundGood`.`outboundOrderId` `outbound_order_id` FROM `OutBoundGood` 
+<if test=" 1==1 and OrderID!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`OutBoundGood`.`outboundOrderId` = #{OrderID}
+</trim>
+</if> GROUP BY `OutBoundGood`.`outboundOrderId` 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_4947911501E711DE9CE7537BC08471D4" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM (SELECT SUM(`OutBoundGood`.`weight`) `allWeight`,`OutBoundGood`.`outboundOrderId` `outbound_order_id` FROM `OutBoundGood` 
+<if test=" 1==1 and OrderID!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`OutBoundGood`.`outboundOrderId` = #{OrderID}
+</trim>
+</if> GROUP BY `OutBoundGood`.`outboundOrderId`) AnonymousS
+</select>
+
+
+</mapper>

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated LoadPackagedCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.LoadPackagedCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_3936BC2CAC14076AF3E78DD9CC846982" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_9F8161883D490A0AB37214092BCEC0F7">
+	<id column="T1_C1" property="packaged.id"/>
+	<result column="T1_C2" property="packaged.createdTime"/>
+	<result column="T1_C3" property="packaged.updatedTime"/>
+	<result column="T1_C4" property="packaged.createdBy"/>
+	<result column="T1_C5" property="packaged.updatedBy"/>
+	<result column="T1_C6" property="packaged.outBoundOrderID"/>
+	<result column="T1_C7" property="packaged.packaged_status"/>
+	<result column="T1_C8" property="packaged.packagedWorkerID"/>
+	<result column="T1_C9" property="packaged.packagedWorkerName"/>
+	<result column="T1_C10" property="packaged.packagedTime"/>
+	<result column="T1_C11" property="packaged.box_ID"/>
+	<result column="T1_C12" property="packaged.volume"/>
+	<result column="T2_C1" property="outboundOrder.customer_name"/>
+</resultMap>
+<select id="getAnonymousStructure_3936BC2CAC14076AF3E78DD9CC846982" resultMap="AnonymousStructure_3936BC2CAC14076AF3E78DD9CC846982">
+	 SELECT `Packaged`.`id` `T1_C1`,`Packaged`.`createdTime` `T1_C2`,`Packaged`.`updatedTime` `T1_C3`,`Packaged`.`createdBy` `T1_C4`,`Packaged`.`updatedBy` `T1_C5`,`Packaged`.`outBoundOrderID` `T1_C6`,`Packaged`.`packagedStatus` `T1_C7`,`Packaged`.`packagedWorkerID` `T1_C8`,`Packaged`.`packagedWorkerName` `T1_C9`,`Packaged`.`packagedTime` `T1_C10`,`Packaged`.`boxID` `T1_C11`,`Packaged`.`volume` `T1_C12`,`OutboundOrder`.`customerName` `T2_C1` FROM `Packaged` INNER JOIN `OutboundOrder` ON `Packaged`.`outBoundOrderID` = `OutboundOrder`.`id` 
+<if test=" ( PackageFilter!=null and PackageFilter.packaged_status!=null ) or ( PackageFilter!=null and PackageFilter.volume!=null ) or 1==1 or ( OrderFilter!=null and OrderFilter.customer_name!=null ) or ( PackageFilter!=null and PackageFilter.packagedWorkerID!=null ) or ( PackageFilter!=null and PackageFilter.packagedTime!=null ) or ( PackageFilter!=null and PackageFilter.id!=null ) or ( PackageFilter!=null and PackageFilter.packagedWorkerName!=null ) or ( PackageFilter!=null and PackageFilter.box_ID!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" ( PackageFilter!=null and PackageFilter.packaged_status!=null ) or 1==1 or ( OrderFilter!=null and OrderFilter.customer_name!=null ) or ( PackageFilter!=null and PackageFilter.packagedWorkerID!=null ) or ( PackageFilter!=null and PackageFilter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 or ( OrderFilter!=null and OrderFilter.customer_name!=null ) or ( PackageFilter!=null and PackageFilter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( PackageFilter!=null and PackageFilter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Packaged`.`id` = #{PackageFilter.id}
+</trim>
+</if> 
+<if test=" 1==1 and ( OrderFilter!=null and OrderFilter.customer_name!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutboundOrder`.`customerName` LIKE concat('%', concat(#{OrderFilter.customer_name}, '%'))
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( PackageFilter!=null and PackageFilter.packaged_status!=null ) or 1==1 or ( PackageFilter!=null and PackageFilter.packagedWorkerID!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( PackageFilter!=null and PackageFilter.packaged_status!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Packaged`.`packagedStatus` = #{PackageFilter.packaged_status}
+</trim>
+</if> 
+<if test=" 1==1 and ( PackageFilter!=null and PackageFilter.packagedWorkerID!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Packaged`.`packagedWorkerID` = #{PackageFilter.packagedWorkerID}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( PackageFilter!=null and PackageFilter.volume!=null ) or 1==1 or ( PackageFilter!=null and PackageFilter.packagedTime!=null ) or ( PackageFilter!=null and PackageFilter.packagedWorkerName!=null ) or ( PackageFilter!=null and PackageFilter.box_ID!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 or ( PackageFilter!=null and PackageFilter.packagedTime!=null ) or ( PackageFilter!=null and PackageFilter.packagedWorkerName!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( PackageFilter!=null and PackageFilter.packagedWorkerName!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Packaged`.`packagedWorkerName` LIKE concat('%', concat(#{PackageFilter.packagedWorkerName}, '%'))
+</trim>
+</if> 
+<if test=" 1==1 and ( PackageFilter!=null and PackageFilter.packagedTime!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Packaged`.`packagedTime` = #{PackageFilter.packagedTime}
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( PackageFilter!=null and PackageFilter.volume!=null ) or 1==1 or ( PackageFilter!=null and PackageFilter.box_ID!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( PackageFilter!=null and PackageFilter.box_ID!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Packaged`.`boxID` = #{PackageFilter.box_ID}
+</trim>
+</if> 
+<if test=" ( PackageFilter!=null and PackageFilter.volume!=null ) and 1==1 ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Packaged`.`volume` = #{PackageFilter.volume}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_3936BC2CAC14076AF3E78DD9CC846982" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `Packaged` INNER JOIN `OutboundOrder` ON `Packaged`.`outBoundOrderID` = `OutboundOrder`.`id` 
+<if test=" ( PackageFilter!=null and PackageFilter.packaged_status!=null ) or ( PackageFilter!=null and PackageFilter.volume!=null ) or 1==1 or ( OrderFilter!=null and OrderFilter.customer_name!=null ) or ( PackageFilter!=null and PackageFilter.packagedWorkerID!=null ) or ( PackageFilter!=null and PackageFilter.packagedTime!=null ) or ( PackageFilter!=null and PackageFilter.id!=null ) or ( PackageFilter!=null and PackageFilter.packagedWorkerName!=null ) or ( PackageFilter!=null and PackageFilter.box_ID!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" ( PackageFilter!=null and PackageFilter.packaged_status!=null ) or 1==1 or ( OrderFilter!=null and OrderFilter.customer_name!=null ) or ( PackageFilter!=null and PackageFilter.packagedWorkerID!=null ) or ( PackageFilter!=null and PackageFilter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 or ( OrderFilter!=null and OrderFilter.customer_name!=null ) or ( PackageFilter!=null and PackageFilter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( PackageFilter!=null and PackageFilter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Packaged`.`id` = #{PackageFilter.id}
+</trim>
+</if> 
+<if test=" 1==1 and ( OrderFilter!=null and OrderFilter.customer_name!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutboundOrder`.`customerName` LIKE concat('%', concat(#{OrderFilter.customer_name}, '%'))
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( PackageFilter!=null and PackageFilter.packaged_status!=null ) or 1==1 or ( PackageFilter!=null and PackageFilter.packagedWorkerID!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( PackageFilter!=null and PackageFilter.packaged_status!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Packaged`.`packagedStatus` = #{PackageFilter.packaged_status}
+</trim>
+</if> 
+<if test=" 1==1 and ( PackageFilter!=null and PackageFilter.packagedWorkerID!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Packaged`.`packagedWorkerID` = #{PackageFilter.packagedWorkerID}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( PackageFilter!=null and PackageFilter.volume!=null ) or 1==1 or ( PackageFilter!=null and PackageFilter.packagedTime!=null ) or ( PackageFilter!=null and PackageFilter.packagedWorkerName!=null ) or ( PackageFilter!=null and PackageFilter.box_ID!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 or ( PackageFilter!=null and PackageFilter.packagedTime!=null ) or ( PackageFilter!=null and PackageFilter.packagedWorkerName!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( PackageFilter!=null and PackageFilter.packagedWorkerName!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Packaged`.`packagedWorkerName` LIKE concat('%', concat(#{PackageFilter.packagedWorkerName}, '%'))
+</trim>
+</if> 
+<if test=" 1==1 and ( PackageFilter!=null and PackageFilter.packagedTime!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Packaged`.`packagedTime` = #{PackageFilter.packagedTime}
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( PackageFilter!=null and PackageFilter.volume!=null ) or 1==1 or ( PackageFilter!=null and PackageFilter.box_ID!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( PackageFilter!=null and PackageFilter.box_ID!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Packaged`.`boxID` = #{PackageFilter.box_ID}
+</trim>
+</if> 
+<if test=" ( PackageFilter!=null and PackageFilter.volume!=null ) and 1==1 ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Packaged`.`volume` = #{PackageFilter.volume}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if>
+</select>
+
+
+</mapper>

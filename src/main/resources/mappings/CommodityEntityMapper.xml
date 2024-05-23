@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated CommodityEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.CommodityEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.CommodityEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="createdTime" jdbcType="TIMESTAMP" property="createdTime" />
+        <result column="createdBy" jdbcType="VARCHAR" property="createdBy" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="storageUpperLimit" jdbcType="BIGINT" property="storage_upper_limit" />
+        <result column="storageLowerLimit" jdbcType="BIGINT" property="storage_lower_limit" />
+        <result column="inboundPrice" jdbcType="DECIMAL" property="inbound_price" />
+        <result column="outboundPrice" jdbcType="DECIMAL" property="outbound_price" />
+        <result column="quantity" jdbcType="BIGINT" property="quantity" />
+        <result column="note" jdbcType="VARCHAR" property="note" />
+        <result column="unit" jdbcType="VARCHAR" property="unit" />
+        <result column="imgUrl" jdbcType="VARCHAR" property="img_url" />
+        <result column="updatedTime" jdbcType="TIMESTAMP" property="updatedTime" />
+        <result column="updatedBy" jdbcType="VARCHAR" property="updatedBy" />
+        <result column="warehouseId" jdbcType="BIGINT" property="warehouse_id" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.CommodityEntity"  keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `Commodity` (
+            `createdTime`
+            ,`createdBy`
+            ,`name`
+            ,`storageUpperLimit`
+            ,`storageLowerLimit`
+            ,`inboundPrice`
+            ,`outboundPrice`
+            ,`quantity`
+            ,`note`
+            ,`unit`
+            ,`imgUrl`
+            ,`updatedTime`
+            ,`updatedBy`
+            ,`warehouseId`
+        )
+        VALUES (
+            #{createdTime,jdbcType=TIMESTAMP}
+            ,#{createdBy,jdbcType=VARCHAR}
+            ,#{name,jdbcType=VARCHAR}
+            ,#{storage_upper_limit,jdbcType=BIGINT}
+            ,#{storage_lower_limit,jdbcType=BIGINT}
+            ,#{inbound_price,jdbcType=DECIMAL}
+            ,#{outbound_price,jdbcType=DECIMAL}
+            ,#{quantity,jdbcType=BIGINT}
+            ,#{note,jdbcType=VARCHAR}
+            ,#{unit,jdbcType=VARCHAR}
+            ,#{img_url,jdbcType=VARCHAR}
+            ,#{updatedTime,jdbcType=TIMESTAMP}
+            ,#{updatedBy,jdbcType=VARCHAR}
+            ,#{warehouse_id,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `Commodity` (
+            `createdTime`
+            ,`createdBy`
+            ,`name`
+            ,`storageUpperLimit`
+            ,`storageLowerLimit`
+            ,`inboundPrice`
+            ,`outboundPrice`
+            ,`quantity`
+            ,`note`
+            ,`unit`
+            ,`imgUrl`
+            ,`updatedTime`
+            ,`updatedBy`
+            ,`warehouseId`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.createdTime,jdbcType=TIMESTAMP}
+            ,#{item.createdBy,jdbcType=VARCHAR}
+            ,#{item.name,jdbcType=VARCHAR}
+            ,#{item.storage_upper_limit,jdbcType=BIGINT}
+            ,#{item.storage_lower_limit,jdbcType=BIGINT}
+            ,#{item.inbound_price,jdbcType=DECIMAL}
+            ,#{item.outbound_price,jdbcType=DECIMAL}
+            ,#{item.quantity,jdbcType=BIGINT}
+            ,#{item.note,jdbcType=VARCHAR}
+            ,#{item.unit,jdbcType=VARCHAR}
+            ,#{item.img_url,jdbcType=VARCHAR}
+            ,#{item.updatedTime,jdbcType=TIMESTAMP}
+            ,#{item.updatedBy,jdbcType=VARCHAR}
+            ,#{item.warehouse_id,jdbcType=BIGINT}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.CommodityEntity" >
+        UPDATE `Commodity`
+        <set>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('storage_upper_limit')">`storageUpperLimit` = #{bean.storage_upper_limit,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('storage_lower_limit')">`storageLowerLimit` = #{bean.storage_lower_limit,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_price')">`inboundPrice` = #{bean.inbound_price,jdbcType=DECIMAL},</if>
+            <if test="updateFields == null or updateFields.contains('outbound_price')">`outboundPrice` = #{bean.outbound_price,jdbcType=DECIMAL},</if>
+            <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('note')">`note` = #{bean.note,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('img_url')">`imgUrl` = #{bean.img_url,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('updatedBy')">`updatedBy` = #{bean.updatedBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('warehouse_id')">`warehouseId` = #{bean.warehouse_id,jdbcType=BIGINT},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.CommodityEntity" >
+        UPDATE `Commodity`
+        <set>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('storage_upper_limit')">`storageUpperLimit` = #{bean.storage_upper_limit,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('storage_lower_limit')">`storageLowerLimit` = #{bean.storage_lower_limit,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('inbound_price')">`inboundPrice` = #{bean.inbound_price,jdbcType=DECIMAL},</if>
+            <if test="updateFields == null or updateFields.contains('outbound_price')">`outboundPrice` = #{bean.outbound_price,jdbcType=DECIMAL},</if>
+            <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('note')">`note` = #{bean.note,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('img_url')">`imgUrl` = #{bean.img_url,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('updatedBy')">`updatedBy` = #{bean.updatedBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('warehouse_id')">`warehouseId` = #{bean.warehouse_id,jdbcType=BIGINT},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `Commodity` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `Commodity` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `Commodity`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'createdBy'">
+                    AND `createdBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'storage_upper_limit'">
+                    AND `storageUpperLimit` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'storage_lower_limit'">
+                    AND `storageLowerLimit` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'inbound_price'">
+                    AND `inboundPrice` = #{value, jdbcType=DECIMAL}
+                </when>
+                <when test="property == 'outbound_price'">
+                    AND `outboundPrice` = #{value, jdbcType=DECIMAL}
+                </when>
+                <when test="property == 'quantity'">
+                    AND `quantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'note'">
+                    AND `note` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'unit'">
+                    AND `unit` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'img_url'">
+                    AND `imgUrl` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'updatedTime'">
+                    AND `updatedTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'updatedBy'">
+                    AND `updatedBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'warehouse_id'">
+                    AND `warehouseId` = #{value, jdbcType=BIGINT}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `Commodity` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'createdBy'">
+                    AND `createdBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'storage_upper_limit'">
+                    AND `storageUpperLimit` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'storage_lower_limit'">
+                    AND `storageLowerLimit` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'inbound_price'">
+                    AND `inboundPrice` = #{value, jdbcType=DECIMAL}
+                </when>
+                <when test="property == 'outbound_price'">
+                    AND `outboundPrice` = #{value, jdbcType=DECIMAL}
+                </when>
+                <when test="property == 'quantity'">
+                    AND `quantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'note'">
+                    AND `note` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'unit'">
+                    AND `unit` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'img_url'">
+                    AND `imgUrl` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'updatedTime'">
+                    AND `updatedTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'updatedBy'">
+                    AND `updatedBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'warehouse_id'">
+                    AND `warehouseId` = #{value, jdbcType=BIGINT}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `Commodity` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `Commodity`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `Commodity`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.CommodityEntity">
+        INSERT INTO `Commodity` (
+            `id`
+            ,`createdTime`
+            ,`createdBy`
+            ,`name`
+            ,`storageUpperLimit`
+            ,`storageLowerLimit`
+            ,`inboundPrice`
+            ,`outboundPrice`
+            ,`quantity`
+            ,`note`
+            ,`unit`
+            ,`imgUrl`
+            ,`updatedTime`
+            ,`updatedBy`
+            ,`warehouseId`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{createdBy,jdbcType=VARCHAR}
+            ,#{name,jdbcType=VARCHAR}
+            ,#{storage_upper_limit,jdbcType=BIGINT}
+            ,#{storage_lower_limit,jdbcType=BIGINT}
+            ,#{inbound_price,jdbcType=DECIMAL}
+            ,#{outbound_price,jdbcType=DECIMAL}
+            ,#{quantity,jdbcType=BIGINT}
+            ,#{note,jdbcType=VARCHAR}
+            ,#{unit,jdbcType=VARCHAR}
+            ,#{img_url,jdbcType=VARCHAR}
+            ,#{updatedTime,jdbcType=TIMESTAMP}
+            ,#{updatedBy,jdbcType=VARCHAR}
+            ,#{warehouse_id,jdbcType=BIGINT}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `Commodity`
+        <set>
+        <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('storage_upper_limit')">`storageUpperLimit` = #{bean.storage_upper_limit,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('storage_lower_limit')">`storageLowerLimit` = #{bean.storage_lower_limit,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('inbound_price')">`inboundPrice` = #{bean.inbound_price,jdbcType=DECIMAL},</if>
+        <if test="updateFields == null or updateFields.contains('outbound_price')">`outboundPrice` = #{bean.outbound_price,jdbcType=DECIMAL},</if>
+        <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('note')">`note` = #{bean.note,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('img_url')">`imgUrl` = #{bean.img_url,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('updatedBy')">`updatedBy` = #{bean.updatedBy,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('warehouse_id')">`warehouseId` = #{bean.warehouse_id,jdbcType=BIGINT},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `Commodity` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated GetAllotOutboundGoodsCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.GetAllotOutboundGoodsCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_E3C68F72C1EEC1D0C442E5AC09F7FF07" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_8CA3A2F77CB3DDC8EEE235B112EF9E3A">
+	<id column="T1_C1" property="allotOutbound.id"/>
+	<result column="T1_C2" property="allotOutbound.name"/>
+	<result column="T1_C3" property="allotOutbound.unit"/>
+	<result column="T1_C4" property="allotOutbound.quantity"/>
+	<result column="T1_C5" property="allotOutbound.warehouse_Oid"/>
+	<result column="T1_C6" property="allotOutbound.warehouse_Tid"/>
+	<result column="T1_C7" property="allotOutbound.warehouseArea_Oid"/>
+	<result column="T1_C8" property="allotOutbound.warehouseArea_Tid"/>
+	<result column="T1_C9" property="allotOutbound.shelf_Oid"/>
+	<result column="T1_C10" property="allotOutbound.shelf_Tid"/>
+	<result column="T1_C11" property="allotOutbound.allotTime"/>
+</resultMap>
+<select id="getAnonymousStructure_E3C68F72C1EEC1D0C442E5AC09F7FF07" resultMap="AnonymousStructure_E3C68F72C1EEC1D0C442E5AC09F7FF07">
+	 SELECT `AllotOutbound`.`id` `T1_C1`,`AllotOutbound`.`name` `T1_C2`,`AllotOutbound`.`unit` `T1_C3`,`AllotOutbound`.`quantity` `T1_C4`,`AllotOutbound`.`warehouseOid` `T1_C5`,`AllotOutbound`.`warehouseTid` `T1_C6`,`AllotOutbound`.`warehouseAreaOid` `T1_C7`,`AllotOutbound`.`warehouseAreaTid` `T1_C8`,`AllotOutbound`.`shelfOid` `T1_C9`,`AllotOutbound`.`shelfTid` `T1_C10`,`AllotOutbound`.`allotTime` `T1_C11` FROM `AllotOutbound`  
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_E3C68F72C1EEC1D0C442E5AC09F7FF07" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `AllotOutbound` 
+</select>
+
+
+</mapper>

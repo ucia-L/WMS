@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated LoadOutBoundSortingsCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.LoadOutBoundSortingsCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_163CA7474D26B9AC2BAD752F9E8F8A43" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_A8F4B8AFE158D2E0D7A23F1B1832027C">
+	<id column="T2_C1" property="outBoundSorting.id"/>
+	<result column="T2_C2" property="outBoundSorting.createdTime"/>
+	<result column="T2_C3" property="outBoundSorting.updatedTime"/>
+	<result column="T2_C4" property="outBoundSorting.createdBy"/>
+	<result column="T2_C5" property="outBoundSorting.updatedBy"/>
+	<result column="T2_C6" property="outBoundSorting.packingID"/>
+	<result column="T2_C7" property="outBoundSorting.status"/>
+	<result column="T2_C8" property="outBoundSorting.sortingWorkerID"/>
+	<result column="T2_C9" property="outBoundSorting.sortingWorkerName"/>
+	<result column="T2_C10" property="outBoundSorting.sortingData"/>
+	<result column="T2_C11" property="outBoundSorting.outBoundTmpArea"/>
+	<result column="T1_C1" property="outboundPacking.id"/>
+	<result column="T1_C2" property="outboundPacking.outbound_good_id"/>
+	<result column="T1_C3" property="outboundPacking.quantity"/>
+	<result column="T1_C4" property="outboundPacking.warehouseArea_id"/>
+	<result column="T1_C5" property="outboundPacking.shelf_id"/>
+	<result column="T1_C6" property="outboundPacking.outbound_tmparea_id"/>
+	<result column="T1_C7" property="outboundPacking.status"/>
+	<result column="T1_C8" property="outboundPacking.outbound_commodity_name"/>
+	<result column="T1_C9" property="outboundPacking.outBoundOrderID"/>
+</resultMap>
+<select id="getAnonymousStructure_163CA7474D26B9AC2BAD752F9E8F8A43" resultMap="AnonymousStructure_163CA7474D26B9AC2BAD752F9E8F8A43">
+	 SELECT `OutBoundSorting`.`id` `T2_C1`,`OutBoundSorting`.`createdTime` `T2_C2`,`OutBoundSorting`.`updatedTime` `T2_C3`,`OutBoundSorting`.`createdBy` `T2_C4`,`OutBoundSorting`.`updatedBy` `T2_C5`,`OutBoundSorting`.`packingID` `T2_C6`,`OutBoundSorting`.`status` `T2_C7`,`OutBoundSorting`.`sortingWorkerID` `T2_C8`,`OutBoundSorting`.`sortingWorkerName` `T2_C9`,`OutBoundSorting`.`sortingData` `T2_C10`,`OutBoundSorting`.`outBoundTmpArea` `T2_C11`,`OutboundPacking`.`id` `T1_C1`,`OutboundPacking`.`outboundGoodId` `T1_C2`,`OutboundPacking`.`quantity` `T1_C3`,`OutboundPacking`.`warehouseAreaId` `T1_C4`,`OutboundPacking`.`shelfId` `T1_C5`,`OutboundPacking`.`outboundTmpareaId` `T1_C6`,`OutboundPacking`.`status` `T1_C7`,`OutboundPacking`.`outboundCommodityName` `T1_C8`,`OutboundPacking`.`outBoundOrderID` `T1_C9` FROM `OutBoundSorting` INNER JOIN `OutboundPacking` ON `OutBoundSorting`.`packingID` = `OutboundPacking`.`id` 
+<if test=" ( packingFilter!=null and packingFilter.outbound_commodity_name!=null ) or ( sortingFilter!=null and sortingFilter.sortingWorkerName!=null ) or ( sortingFilter!=null and sortingFilter.status!=null ) or 1==1 or ( packingFilter!=null and packingFilter.outbound_good_id!=null ) or ( sortingFilter!=null and sortingFilter.sortingWorkerID!=null ) or ( sortingFilter!=null and sortingFilter.id!=null ) or ( packingFilter!=null and packingFilter.quantity!=null ) or ( sortingFilter!=null and sortingFilter.sortingData!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" ( packingFilter!=null and packingFilter.outbound_commodity_name!=null ) or 1==1 or ( packingFilter!=null and packingFilter.outbound_good_id!=null ) or ( sortingFilter!=null and sortingFilter.id!=null ) or ( packingFilter!=null and packingFilter.quantity!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 or ( packingFilter!=null and packingFilter.outbound_good_id!=null ) or ( sortingFilter!=null and sortingFilter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( sortingFilter!=null and sortingFilter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutBoundSorting`.`id` = #{sortingFilter.id}
+</trim>
+</if> 
+<if test=" 1==1 and ( packingFilter!=null and packingFilter.outbound_good_id!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutboundPacking`.`outboundGoodId` = #{packingFilter.outbound_good_id}
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( packingFilter!=null and packingFilter.outbound_commodity_name!=null ) or 1==1 or ( packingFilter!=null and packingFilter.quantity!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( packingFilter!=null and packingFilter.outbound_commodity_name!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutboundPacking`.`outboundCommodityName` LIKE concat('%', concat(#{packingFilter.outbound_commodity_name}, '%'))
+</trim>
+</if> 
+<if test=" 1==1 and ( packingFilter!=null and packingFilter.quantity!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutboundPacking`.`quantity` = #{packingFilter.quantity}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( sortingFilter!=null and sortingFilter.sortingWorkerName!=null ) or ( sortingFilter!=null and sortingFilter.status!=null ) or 1==1 or ( sortingFilter!=null and sortingFilter.sortingWorkerID!=null ) or ( sortingFilter!=null and sortingFilter.sortingData!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( sortingFilter!=null and sortingFilter.status!=null ) or 1==1 or ( sortingFilter!=null and sortingFilter.sortingData!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( sortingFilter!=null and sortingFilter.status!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutBoundSorting`.`status` = #{sortingFilter.status}
+</trim>
+</if> 
+<if test=" 1==1 and ( sortingFilter!=null and sortingFilter.sortingData!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutBoundSorting`.`sortingData` = #{sortingFilter.sortingData}
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( sortingFilter!=null and sortingFilter.sortingWorkerName!=null ) or 1==1 or ( sortingFilter!=null and sortingFilter.sortingWorkerID!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( sortingFilter!=null and sortingFilter.sortingWorkerID!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutBoundSorting`.`sortingWorkerID` = #{sortingFilter.sortingWorkerID}
+</trim>
+</if> 
+<if test=" ( sortingFilter!=null and sortingFilter.sortingWorkerName!=null ) and 1==1 ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutBoundSorting`.`sortingWorkerName` LIKE concat('%', concat(#{sortingFilter.sortingWorkerName}, '%'))
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_163CA7474D26B9AC2BAD752F9E8F8A43" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `OutBoundSorting` INNER JOIN `OutboundPacking` ON `OutBoundSorting`.`packingID` = `OutboundPacking`.`id` 
+<if test=" ( packingFilter!=null and packingFilter.outbound_commodity_name!=null ) or ( sortingFilter!=null and sortingFilter.sortingWorkerName!=null ) or ( sortingFilter!=null and sortingFilter.status!=null ) or 1==1 or ( packingFilter!=null and packingFilter.outbound_good_id!=null ) or ( sortingFilter!=null and sortingFilter.sortingWorkerID!=null ) or ( sortingFilter!=null and sortingFilter.id!=null ) or ( packingFilter!=null and packingFilter.quantity!=null ) or ( sortingFilter!=null and sortingFilter.sortingData!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" ( packingFilter!=null and packingFilter.outbound_commodity_name!=null ) or 1==1 or ( packingFilter!=null and packingFilter.outbound_good_id!=null ) or ( sortingFilter!=null and sortingFilter.id!=null ) or ( packingFilter!=null and packingFilter.quantity!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 or ( packingFilter!=null and packingFilter.outbound_good_id!=null ) or ( sortingFilter!=null and sortingFilter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( sortingFilter!=null and sortingFilter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutBoundSorting`.`id` = #{sortingFilter.id}
+</trim>
+</if> 
+<if test=" 1==1 and ( packingFilter!=null and packingFilter.outbound_good_id!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutboundPacking`.`outboundGoodId` = #{packingFilter.outbound_good_id}
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( packingFilter!=null and packingFilter.outbound_commodity_name!=null ) or 1==1 or ( packingFilter!=null and packingFilter.quantity!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( packingFilter!=null and packingFilter.outbound_commodity_name!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutboundPacking`.`outboundCommodityName` LIKE concat('%', concat(#{packingFilter.outbound_commodity_name}, '%'))
+</trim>
+</if> 
+<if test=" 1==1 and ( packingFilter!=null and packingFilter.quantity!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutboundPacking`.`quantity` = #{packingFilter.quantity}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( sortingFilter!=null and sortingFilter.sortingWorkerName!=null ) or ( sortingFilter!=null and sortingFilter.status!=null ) or 1==1 or ( sortingFilter!=null and sortingFilter.sortingWorkerID!=null ) or ( sortingFilter!=null and sortingFilter.sortingData!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( sortingFilter!=null and sortingFilter.status!=null ) or 1==1 or ( sortingFilter!=null and sortingFilter.sortingData!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( sortingFilter!=null and sortingFilter.status!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutBoundSorting`.`status` = #{sortingFilter.status}
+</trim>
+</if> 
+<if test=" 1==1 and ( sortingFilter!=null and sortingFilter.sortingData!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutBoundSorting`.`sortingData` = #{sortingFilter.sortingData}
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( sortingFilter!=null and sortingFilter.sortingWorkerName!=null ) or 1==1 or ( sortingFilter!=null and sortingFilter.sortingWorkerID!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( sortingFilter!=null and sortingFilter.sortingWorkerID!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutBoundSorting`.`sortingWorkerID` = #{sortingFilter.sortingWorkerID}
+</trim>
+</if> 
+<if test=" ( sortingFilter!=null and sortingFilter.sortingWorkerName!=null ) and 1==1 ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutBoundSorting`.`sortingWorkerName` LIKE concat('%', concat(#{sortingFilter.sortingWorkerName}, '%'))
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if>
+</select>
+
+
+</mapper>

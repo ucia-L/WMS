@@ -1,0 +1,132 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.2.9.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'maven-publish'
+}
+
+// all or need
+def profileName = System.getProperty("profile") ?: "need"
+
+repositories {
+    mavenLocal()
+    flatDir(dirs:"libs")
+    maven {
+        url = uri('http://mvn.hz.netease.com/artifactory/repo')
+        allowInsecureProtocol = true
+    }
+    maven {
+        url = uri('http://maven.aliyun.com/nexus/content/groups/public/')
+        allowInsecureProtocol = true
+    }
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+
+}
+
+ext {
+    flowableversion   = "6.6.0-LOWCODE-1.10.0"
+    userauthversion   = "1.0.3"
+    usercenterversion = "1.0.1"
+    lcapauthversion = "1.0.0"
+    lcappermissionversion = "1.0.0"
+}
+
+// 确保本地有依赖和依赖项元信息时不从远程仓库拉取元信息校验
+configurations.all {
+    resolutionStrategy {
+        disableDependencyVerification()
+    }
+}
+
+dependencies {
+    implementation 'org.apache.poi:poi:4.1.2'
+    implementation 'org.apache.poi:poi-ooxml:4.1.2'
+    implementation 'javax.annotation:javax.annotation-api:1.3.2'
+    implementation 'com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.10.5'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5:2.10.5'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hppc:2.10.5'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.10.5'
+    implementation 'com.h2database:h2:1.4.200'
+    implementation 'com.zaxxer:HikariCP:3.4.5'
+    implementation 'org.hibernate.validator:hibernate-validator:6.0.20.Final'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2'
+    implementation 'org.springframework.boot:spring-boot-loader-tools'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation ('org.springframework.boot:spring-boot-starter-log4j2') {
+        exclude group: 'org.apache.logging.log4j', module: 'log4j-api'
+        exclude group: 'org.apache.logging.log4j', module: 'log4j-core'
+        exclude group: 'org.apache.logging.log4j', module: 'log4j-jul'
+        exclude group: 'org.apache.logging.log4j', module: 'log4j-slf4j-impl'
+    }
+    implementation 'org.apache.logging.log4j:log4j-api:2.17.2'
+    implementation 'org.apache.logging.log4j:log4j-core:2.17.2'
+    implementation 'org.apache.logging.log4j:log4j-jul:2.17.2'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.17.2'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.apache.commons:commons-lang3:3.9'
+    implementation 'commons-io:commons-io:2.8.0'
+    implementation 'com.amazonaws:aws-java-sdk-s3:1.12.440'
+    implementation 'com.amazonaws:aws-java-sdk-core:1.12.440'
+    implementation 'org.owasp.encoder:encoder:1.2.3'
+    implementation 'io.micrometer:micrometer-registry-prometheus:1.3.11'
+    implementation 'org.json:json:20230227'
+    implementation 'com.netease.lowcode:encrypt-tool:1.0.7'
+    implementation 'com.netease.cloud:app-client-facade:1.0.0'
+    annotationProcessor 'org.projectlombok:lombok:1.18.2'
+    compileOnly 'org.projectlombok:lombok:1.18.2'
+    if(profileName == 'all') {
+        implementation 'mysql:mysql-connector-java:8.0.16'
+        implementation 'com.oracle.database.jdbc:ojdbc8:21.1.0.0'
+        implementation 'com.oracle.database.nls:orai18n:21.1.0.0'
+        implementation 'com.dameng:DmJdbcDriver18:8.1.2.79'
+        implementation 'com.ibm.db2:jcc:11.5.7.0'
+        implementation 'org.springframework.boot:spring-boot-starter-quartz'
+        implementation 'org.flowable:flowable-engine:6.6.0-LOWCODE-1.10.0'
+        implementation 'com.netease.cloud.nuims:nuims-user-api:'+rootProject.ext.usercenterversion
+        implementation 'com.netease.cloud.nuims:nuims-auth:'+rootProject.ext.userauthversion
+        implementation 'com.netease.lowcode:lcap-auth:'+rootProject.ext.lcapauthversion
+        implementation 'com.netease.lowcode:lcap-permission:'+rootProject.ext.lcappermissionversion
+        implementation 'com.netease.cloud:log4j2appender:1.0.1'
+        implementation 'com.googlecode.aviator:aviator:5.3.0'
+        implementation 'com.netease.lowcode.build:s3-maven:1.0.0'
+    } else {
+        implementation 'com.netease.cloud:app-client-facade:1.0.0'
+implementation 'mysql:mysql-connector-java:8.0.16'
+implementation 'com.netease.lowcode:lcap-auth:1.0.0'
+implementation 'com.netease.lowcode:lcap-permission:1.0.0'
+implementation 'com.netease.email:send-email:1.0.0'
+implementation 'com.googlecode.aviator:aviator:5.3.0'
+implementation 'com.netease.cloud.nuims:nuims-user-api:'+rootProject.ext.usercenterversion
+implementation 'com.netease.cloud.nuims:nuims-auth:'+rootProject.ext.userauthversion
+
+    }
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-test'
+    implementation('org.liquibase:liquibase-core:3.8.9')  {
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+    }
+}
+
+if(profileName == 'all') {
+    group = "com.netease.demo"
+} else {
+    group = 'com.weitest.wms'
+}
+version = '1.0'
+description = 'app generate archetype'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+configurations {
+    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.incremental = true // one flag, and things will get MUCH faster. As you can see in the build scan above, the task was not up-to-date because one of its inputs "timestamp"  has changed, and is forcing the task to be re-run.
+}

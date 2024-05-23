@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated OutboundOrderEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.OutboundOrderEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.OutboundOrderEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="customerName" jdbcType="VARCHAR" property="customer_name" />
+        <result column="amount" jdbcType="DECIMAL" property="amount" />
+        <result column="goodsNum" jdbcType="BIGINT" property="goods_num" />
+        <result column="outboundOrderCreatedTime" jdbcType="TIMESTAMP" property="outbound_order_createdTime" />
+        <result column="responsiblePerson" jdbcType="VARCHAR" property="responsible_person" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="errorDescription" jdbcType="VARCHAR" property="error_description" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.OutboundOrderEntity"  keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `OutboundOrder` (
+            `customerName`
+            ,`amount`
+            ,`goodsNum`
+            ,`outboundOrderCreatedTime`
+            ,`responsiblePerson`
+            ,`status`
+            ,`errorDescription`
+        )
+        VALUES (
+            #{customer_name,jdbcType=VARCHAR}
+            ,#{amount,jdbcType=DECIMAL}
+            ,#{goods_num,jdbcType=BIGINT}
+            ,#{outbound_order_createdTime,jdbcType=TIMESTAMP}
+            ,#{responsible_person,jdbcType=VARCHAR}
+            ,#{status,jdbcType=VARCHAR}
+            ,#{error_description,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `OutboundOrder` (
+            `customerName`
+            ,`amount`
+            ,`goodsNum`
+            ,`outboundOrderCreatedTime`
+            ,`responsiblePerson`
+            ,`status`
+            ,`errorDescription`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.customer_name,jdbcType=VARCHAR}
+            ,#{item.amount,jdbcType=DECIMAL}
+            ,#{item.goods_num,jdbcType=BIGINT}
+            ,#{item.outbound_order_createdTime,jdbcType=TIMESTAMP}
+            ,#{item.responsible_person,jdbcType=VARCHAR}
+            ,#{item.status,jdbcType=VARCHAR}
+            ,#{item.error_description,jdbcType=VARCHAR}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.OutboundOrderEntity" >
+        UPDATE `OutboundOrder`
+        <set>
+            <if test="updateFields == null or updateFields.contains('customer_name')">`customerName` = #{bean.customer_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('amount')">`amount` = #{bean.amount,jdbcType=DECIMAL},</if>
+            <if test="updateFields == null or updateFields.contains('goods_num')">`goodsNum` = #{bean.goods_num,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('outbound_order_createdTime')">`outboundOrderCreatedTime` = #{bean.outbound_order_createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('responsible_person')">`responsiblePerson` = #{bean.responsible_person,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('error_description')">`errorDescription` = #{bean.error_description,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.OutboundOrderEntity" >
+        UPDATE `OutboundOrder`
+        <set>
+            <if test="updateFields == null or updateFields.contains('customer_name')">`customerName` = #{bean.customer_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('amount')">`amount` = #{bean.amount,jdbcType=DECIMAL},</if>
+            <if test="updateFields == null or updateFields.contains('goods_num')">`goodsNum` = #{bean.goods_num,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('outbound_order_createdTime')">`outboundOrderCreatedTime` = #{bean.outbound_order_createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('responsible_person')">`responsiblePerson` = #{bean.responsible_person,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('error_description')">`errorDescription` = #{bean.error_description,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `OutboundOrder` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `OutboundOrder` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `OutboundOrder`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'customer_name'">
+                    AND `customerName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'amount'">
+                    AND `amount` = #{value, jdbcType=DECIMAL}
+                </when>
+                <when test="property == 'goods_num'">
+                    AND `goodsNum` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'outbound_order_createdTime'">
+                    AND `outboundOrderCreatedTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'responsible_person'">
+                    AND `responsiblePerson` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'error_description'">
+                    AND `errorDescription` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `OutboundOrder` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'customer_name'">
+                    AND `customerName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'amount'">
+                    AND `amount` = #{value, jdbcType=DECIMAL}
+                </when>
+                <when test="property == 'goods_num'">
+                    AND `goodsNum` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'outbound_order_createdTime'">
+                    AND `outboundOrderCreatedTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'responsible_person'">
+                    AND `responsiblePerson` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'error_description'">
+                    AND `errorDescription` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `OutboundOrder` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `OutboundOrder`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `OutboundOrder`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.OutboundOrderEntity">
+        INSERT INTO `OutboundOrder` (
+            `id`
+            ,`customerName`
+            ,`amount`
+            ,`goodsNum`
+            ,`outboundOrderCreatedTime`
+            ,`responsiblePerson`
+            ,`status`
+            ,`errorDescription`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{customer_name,jdbcType=VARCHAR}
+            ,#{amount,jdbcType=DECIMAL}
+            ,#{goods_num,jdbcType=BIGINT}
+            ,#{outbound_order_createdTime,jdbcType=TIMESTAMP}
+            ,#{responsible_person,jdbcType=VARCHAR}
+            ,#{status,jdbcType=VARCHAR}
+            ,#{error_description,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `OutboundOrder`
+        <set>
+        <if test="updateFields == null or updateFields.contains('customer_name')">`customerName` = #{bean.customer_name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('amount')">`amount` = #{bean.amount,jdbcType=DECIMAL},</if>
+        <if test="updateFields == null or updateFields.contains('goods_num')">`goodsNum` = #{bean.goods_num,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('outbound_order_createdTime')">`outboundOrderCreatedTime` = #{bean.outbound_order_createdTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('responsible_person')">`responsiblePerson` = #{bean.responsible_person,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('error_description')">`errorDescription` = #{bean.error_description,jdbcType=VARCHAR},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `OutboundOrder` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated OutBoundInspectionEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.OutBoundInspectionEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.OutBoundInspectionEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="createdTime" jdbcType="TIMESTAMP" property="createdTime" />
+        <result column="updatedTime" jdbcType="TIMESTAMP" property="updatedTime" />
+        <result column="createdBy" jdbcType="VARCHAR" property="createdBy" />
+        <result column="updatedBy" jdbcType="VARCHAR" property="updatedBy" />
+        <result column="orderID" jdbcType="BIGINT" property="orderID" />
+        <result column="outBoundGoodID" jdbcType="BIGINT" property="outBoundGoodID" />
+        <result column="inspectionStatus" jdbcType="VARCHAR" property="inspection_status" />
+        <result column="inspectionWorkerID" jdbcType="BIGINT" property="inspectionWorkerID" />
+        <result column="inspectionWorkerName" jdbcType="VARCHAR" property="inspectionWorkerName" />
+        <result column="inspectionTime" jdbcType="TIMESTAMP" property="inspectionTime" />
+        <result column="note" jdbcType="VARCHAR" property="note" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.OutBoundInspectionEntity"  >
+        INSERT INTO `OutBoundInspection` (
+            `id`
+            ,`createdTime`
+            ,`updatedTime`
+            ,`createdBy`
+            ,`updatedBy`
+            ,`orderID`
+            ,`outBoundGoodID`
+            ,`inspectionStatus`
+            ,`inspectionWorkerID`
+            ,`inspectionWorkerName`
+            ,`inspectionTime`
+            ,`note`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{updatedTime,jdbcType=TIMESTAMP}
+            ,#{createdBy,jdbcType=VARCHAR}
+            ,#{updatedBy,jdbcType=VARCHAR}
+            ,#{orderID,jdbcType=BIGINT}
+            ,#{outBoundGoodID,jdbcType=BIGINT}
+            ,#{inspection_status,jdbcType=VARCHAR}
+            ,#{inspectionWorkerID,jdbcType=BIGINT}
+            ,#{inspectionWorkerName,jdbcType=VARCHAR}
+            ,#{inspectionTime,jdbcType=TIMESTAMP}
+            ,#{note,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" >
+        INSERT INTO `OutBoundInspection` (
+            `id`
+            ,`createdTime`
+            ,`updatedTime`
+            ,`createdBy`
+            ,`updatedBy`
+            ,`orderID`
+            ,`outBoundGoodID`
+            ,`inspectionStatus`
+            ,`inspectionWorkerID`
+            ,`inspectionWorkerName`
+            ,`inspectionTime`
+            ,`note`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.id,jdbcType=BIGINT}
+            ,#{item.createdTime,jdbcType=TIMESTAMP}
+            ,#{item.updatedTime,jdbcType=TIMESTAMP}
+            ,#{item.createdBy,jdbcType=VARCHAR}
+            ,#{item.updatedBy,jdbcType=VARCHAR}
+            ,#{item.orderID,jdbcType=BIGINT}
+            ,#{item.outBoundGoodID,jdbcType=BIGINT}
+            ,#{item.inspection_status,jdbcType=VARCHAR}
+            ,#{item.inspectionWorkerID,jdbcType=BIGINT}
+            ,#{item.inspectionWorkerName,jdbcType=VARCHAR}
+            ,#{item.inspectionTime,jdbcType=TIMESTAMP}
+            ,#{item.note,jdbcType=VARCHAR}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.OutBoundInspectionEntity" >
+        UPDATE `OutBoundInspection`
+        <set>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('updatedBy')">`updatedBy` = #{bean.updatedBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('orderID')">`orderID` = #{bean.orderID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('outBoundGoodID')">`outBoundGoodID` = #{bean.outBoundGoodID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('inspection_status')">`inspectionStatus` = #{bean.inspection_status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('inspectionWorkerID')">`inspectionWorkerID` = #{bean.inspectionWorkerID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('inspectionWorkerName')">`inspectionWorkerName` = #{bean.inspectionWorkerName,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('inspectionTime')">`inspectionTime` = #{bean.inspectionTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('note')">`note` = #{bean.note,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.OutBoundInspectionEntity" >
+        UPDATE `OutBoundInspection`
+        <set>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('updatedBy')">`updatedBy` = #{bean.updatedBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('orderID')">`orderID` = #{bean.orderID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('outBoundGoodID')">`outBoundGoodID` = #{bean.outBoundGoodID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('inspection_status')">`inspectionStatus` = #{bean.inspection_status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('inspectionWorkerID')">`inspectionWorkerID` = #{bean.inspectionWorkerID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('inspectionWorkerName')">`inspectionWorkerName` = #{bean.inspectionWorkerName,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('inspectionTime')">`inspectionTime` = #{bean.inspectionTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('note')">`note` = #{bean.note,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `OutBoundInspection` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `OutBoundInspection` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `OutBoundInspection`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'updatedTime'">
+                    AND `updatedTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'createdBy'">
+                    AND `createdBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'updatedBy'">
+                    AND `updatedBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'orderID'">
+                    AND `orderID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'outBoundGoodID'">
+                    AND `outBoundGoodID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'inspection_status'">
+                    AND `inspectionStatus` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'inspectionWorkerID'">
+                    AND `inspectionWorkerID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'inspectionWorkerName'">
+                    AND `inspectionWorkerName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'inspectionTime'">
+                    AND `inspectionTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'note'">
+                    AND `note` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `OutBoundInspection` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'updatedTime'">
+                    AND `updatedTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'createdBy'">
+                    AND `createdBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'updatedBy'">
+                    AND `updatedBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'orderID'">
+                    AND `orderID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'outBoundGoodID'">
+                    AND `outBoundGoodID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'inspection_status'">
+                    AND `inspectionStatus` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'inspectionWorkerID'">
+                    AND `inspectionWorkerID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'inspectionWorkerName'">
+                    AND `inspectionWorkerName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'inspectionTime'">
+                    AND `inspectionTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'note'">
+                    AND `note` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `OutBoundInspection` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `OutBoundInspection`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `OutBoundInspection`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.OutBoundInspectionEntity">
+        INSERT INTO `OutBoundInspection` (
+            `id`
+            ,`createdTime`
+            ,`updatedTime`
+            ,`createdBy`
+            ,`updatedBy`
+            ,`orderID`
+            ,`outBoundGoodID`
+            ,`inspectionStatus`
+            ,`inspectionWorkerID`
+            ,`inspectionWorkerName`
+            ,`inspectionTime`
+            ,`note`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{updatedTime,jdbcType=TIMESTAMP}
+            ,#{createdBy,jdbcType=VARCHAR}
+            ,#{updatedBy,jdbcType=VARCHAR}
+            ,#{orderID,jdbcType=BIGINT}
+            ,#{outBoundGoodID,jdbcType=BIGINT}
+            ,#{inspection_status,jdbcType=VARCHAR}
+            ,#{inspectionWorkerID,jdbcType=BIGINT}
+            ,#{inspectionWorkerName,jdbcType=VARCHAR}
+            ,#{inspectionTime,jdbcType=TIMESTAMP}
+            ,#{note,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `OutBoundInspection`
+        <set>
+        <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('updatedBy')">`updatedBy` = #{bean.updatedBy,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('orderID')">`orderID` = #{bean.orderID,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('outBoundGoodID')">`outBoundGoodID` = #{bean.outBoundGoodID,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('inspection_status')">`inspectionStatus` = #{bean.inspection_status,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('inspectionWorkerID')">`inspectionWorkerID` = #{bean.inspectionWorkerID,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('inspectionWorkerName')">`inspectionWorkerName` = #{bean.inspectionWorkerName,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('inspectionTime')">`inspectionTime` = #{bean.inspectionTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('note')">`note` = #{bean.note,jdbcType=VARCHAR},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `OutBoundInspection` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

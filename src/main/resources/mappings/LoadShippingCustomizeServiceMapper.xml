@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated LoadShippingCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.LoadShippingCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_321904DD212F927DB33236654C2F8994" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_23B1B08B16B24AF1DC6A6EE675730B10">
+	<id column="T2_C1" property="shipping.id"/>
+	<result column="T2_C2" property="shipping.updatedBy"/>
+	<result column="T2_C3" property="shipping.updatedTime"/>
+	<result column="T2_C4" property="shipping.createdBy"/>
+	<result column="T2_C5" property="shipping.createdTime"/>
+	<result column="T2_C6" property="shipping.outBoundOrderID"/>
+	<result column="T2_C7" property="shipping.shippingWorkerID"/>
+	<result column="T2_C8" property="shipping.shippingWorkerName"/>
+	<result column="T2_C9" property="shipping.shipping_status"/>
+	<result column="T2_C10" property="shipping.express_id"/>
+	<result column="T2_C11" property="shipping.express_company"/>
+	<result column="T2_C12" property="shipping.shippingTime"/>
+	<result column="T1_C1" property="outboundOrder.customer_name"/>
+</resultMap>
+<select id="getAnonymousStructure_321904DD212F927DB33236654C2F8994" resultMap="AnonymousStructure_321904DD212F927DB33236654C2F8994">
+	 SELECT `Shipping`.`id` `T2_C1`,`Shipping`.`updatedBy` `T2_C2`,`Shipping`.`updatedTime` `T2_C3`,`Shipping`.`createdBy` `T2_C4`,`Shipping`.`createdTime` `T2_C5`,`Shipping`.`outBoundOrderID` `T2_C6`,`Shipping`.`shippingWorkerID` `T2_C7`,`Shipping`.`shippingWorkerName` `T2_C8`,`Shipping`.`shippingStatus` `T2_C9`,`Shipping`.`expressId` `T2_C10`,`Shipping`.`expressCompany` `T2_C11`,`Shipping`.`shippingTime` `T2_C12`,`OutboundOrder`.`customerName` `T1_C1` FROM `Shipping` INNER JOIN `OutboundOrder` ON `Shipping`.`outBoundOrderID` = `OutboundOrder`.`id` 
+<if test=" ( ShipFilter!=null and ShipFilter.shippingWorkerID!=null ) or ( ShipFilter!=null and ShipFilter.shipping_status!=null ) or ( ShipFilter!=null and ShipFilter.shippingTime!=null ) or ( ShipFilter!=null and ShipFilter.express_company!=null ) or 1==1 or ( OrderFilter!=null and OrderFilter.customer_name!=null ) or ( ShipFilter!=null and ShipFilter.express_id!=null ) or ( ShipFilter!=null and ShipFilter.id!=null ) or ( ShipFilter!=null and ShipFilter.shippingWorkerName!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" ( ShipFilter!=null and ShipFilter.shippingWorkerID!=null ) or 1==1 or ( OrderFilter!=null and OrderFilter.customer_name!=null ) or ( ShipFilter!=null and ShipFilter.id!=null ) or ( ShipFilter!=null and ShipFilter.shippingWorkerName!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 or ( OrderFilter!=null and OrderFilter.customer_name!=null ) or ( ShipFilter!=null and ShipFilter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( ShipFilter!=null and ShipFilter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Shipping`.`id` = #{ShipFilter.id}
+</trim>
+</if> 
+<if test=" 1==1 and ( OrderFilter!=null and OrderFilter.customer_name!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutboundOrder`.`customerName` LIKE concat('%', concat(#{OrderFilter.customer_name}, '%'))
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( ShipFilter!=null and ShipFilter.shippingWorkerID!=null ) or 1==1 or ( ShipFilter!=null and ShipFilter.shippingWorkerName!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( ShipFilter!=null and ShipFilter.shippingWorkerID!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Shipping`.`shippingWorkerID` = #{ShipFilter.shippingWorkerID}
+</trim>
+</if> 
+<if test=" 1==1 and ( ShipFilter!=null and ShipFilter.shippingWorkerName!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Shipping`.`shippingWorkerName` LIKE concat('%', concat(#{ShipFilter.shippingWorkerName}, '%'))
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( ShipFilter!=null and ShipFilter.shipping_status!=null ) or ( ShipFilter!=null and ShipFilter.shippingTime!=null ) or ( ShipFilter!=null and ShipFilter.express_company!=null ) or 1==1 or ( ShipFilter!=null and ShipFilter.express_id!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( ShipFilter!=null and ShipFilter.shipping_status!=null ) or 1==1 or ( ShipFilter!=null and ShipFilter.express_id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( ShipFilter!=null and ShipFilter.shipping_status!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Shipping`.`shippingStatus` = #{ShipFilter.shipping_status}
+</trim>
+</if> 
+<if test=" 1==1 and ( ShipFilter!=null and ShipFilter.express_id!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Shipping`.`expressId` = #{ShipFilter.express_id}
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( ShipFilter!=null and ShipFilter.shippingTime!=null ) or ( ShipFilter!=null and ShipFilter.express_company!=null ) or 1==1 ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( ShipFilter!=null and ShipFilter.shippingTime!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Shipping`.`shippingTime` = #{ShipFilter.shippingTime}
+</trim>
+</if> 
+<if test=" ( ShipFilter!=null and ShipFilter.express_company!=null ) and 1==1 ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Shipping`.`expressCompany` LIKE concat('%', concat(#{ShipFilter.express_company}, '%'))
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_321904DD212F927DB33236654C2F8994" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `Shipping` INNER JOIN `OutboundOrder` ON `Shipping`.`outBoundOrderID` = `OutboundOrder`.`id` 
+<if test=" ( ShipFilter!=null and ShipFilter.shippingWorkerID!=null ) or ( ShipFilter!=null and ShipFilter.shipping_status!=null ) or ( ShipFilter!=null and ShipFilter.shippingTime!=null ) or ( ShipFilter!=null and ShipFilter.express_company!=null ) or 1==1 or ( OrderFilter!=null and OrderFilter.customer_name!=null ) or ( ShipFilter!=null and ShipFilter.express_id!=null ) or ( ShipFilter!=null and ShipFilter.id!=null ) or ( ShipFilter!=null and ShipFilter.shippingWorkerName!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" ( ShipFilter!=null and ShipFilter.shippingWorkerID!=null ) or 1==1 or ( OrderFilter!=null and OrderFilter.customer_name!=null ) or ( ShipFilter!=null and ShipFilter.id!=null ) or ( ShipFilter!=null and ShipFilter.shippingWorkerName!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 or ( OrderFilter!=null and OrderFilter.customer_name!=null ) or ( ShipFilter!=null and ShipFilter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( ShipFilter!=null and ShipFilter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Shipping`.`id` = #{ShipFilter.id}
+</trim>
+</if> 
+<if test=" 1==1 and ( OrderFilter!=null and OrderFilter.customer_name!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutboundOrder`.`customerName` LIKE concat('%', concat(#{OrderFilter.customer_name}, '%'))
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( ShipFilter!=null and ShipFilter.shippingWorkerID!=null ) or 1==1 or ( ShipFilter!=null and ShipFilter.shippingWorkerName!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( ShipFilter!=null and ShipFilter.shippingWorkerID!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Shipping`.`shippingWorkerID` = #{ShipFilter.shippingWorkerID}
+</trim>
+</if> 
+<if test=" 1==1 and ( ShipFilter!=null and ShipFilter.shippingWorkerName!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Shipping`.`shippingWorkerName` LIKE concat('%', concat(#{ShipFilter.shippingWorkerName}, '%'))
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( ShipFilter!=null and ShipFilter.shipping_status!=null ) or ( ShipFilter!=null and ShipFilter.shippingTime!=null ) or ( ShipFilter!=null and ShipFilter.express_company!=null ) or 1==1 or ( ShipFilter!=null and ShipFilter.express_id!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( ShipFilter!=null and ShipFilter.shipping_status!=null ) or 1==1 or ( ShipFilter!=null and ShipFilter.express_id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( ShipFilter!=null and ShipFilter.shipping_status!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Shipping`.`shippingStatus` = #{ShipFilter.shipping_status}
+</trim>
+</if> 
+<if test=" 1==1 and ( ShipFilter!=null and ShipFilter.express_id!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Shipping`.`expressId` = #{ShipFilter.express_id}
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( ShipFilter!=null and ShipFilter.shippingTime!=null ) or ( ShipFilter!=null and ShipFilter.express_company!=null ) or 1==1 ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( ShipFilter!=null and ShipFilter.shippingTime!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Shipping`.`shippingTime` = #{ShipFilter.shippingTime}
+</trim>
+</if> 
+<if test=" ( ShipFilter!=null and ShipFilter.express_company!=null ) and 1==1 ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Shipping`.`expressCompany` LIKE concat('%', concat(#{ShipFilter.express_company}, '%'))
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if>
+</select>
+
+
+</mapper>

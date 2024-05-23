@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated UserInfoCountOfPermissionCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.UserInfoCountOfPermissionCustomizeServiceMapper">
+
+    <resultMap id="defaultDSAnonymousStructure_7234C6E5312DBFBCDE7CA08D9310682F" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_7234C6E5312DBFBCDE7CA08D9310682F">
+	<result column="permission_status" property="permission_status"/>
+	<result column="permission_value" property="permission_value"/>
+	<result column="count" property="count"/>
+</resultMap>
+<select id="getSql1" resultMap="defaultDSAnonymousStructure_7234C6E5312DBFBCDE7CA08D9310682F">
+	SELECT `permission_status` , `permission_value` , COUNT( *) AS `count` FROM ( SELECT 'is_inbound' AS `permission_status` , `isInbound` AS `permission_value` FROM `Userinfo` 
+<if test=" createby!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`createdBy` = #{createby}
+</trim>
+</if> UNION ALL SELECT 'is_out_bound' AS `permission_status` , `isOutbound` AS `permission_value` FROM `Userinfo` 
+<if test=" createby!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`createdBy` = #{createby}
+</trim>
+</if> UNION ALL SELECT 'is_distribution' AS `permission_status` , `isDistribution` AS `permission_value` FROM `Userinfo` 
+<if test=" createby!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`createdBy` = #{createby}
+</trim>
+</if> UNION ALL SELECT 'is_warefare' AS `permission_status` , `isWarefareManage` AS `permission_value` FROM `Userinfo` 
+<if test=" createby!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`createdBy` = #{createby}
+</trim>
+</if> UNION ALL SELECT 'is_finance' AS `permission_status` , `isFinance` AS `permission_value` FROM `Userinfo` 
+<if test=" createby!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`createdBy` = #{createby}
+</trim>
+</if> UNION ALL SELECT 'is_admin' AS `permission_status` , `isAdmin` AS `permission_value` FROM `Userinfo` 
+<if test=" createby!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`createdBy` = #{createby}
+</trim>
+</if> ) `temp_table` WHERE `permission_value` = '1' GROUP BY `permission_status` , `permission_value` 
+<trim prefix = "ORDER BY" suffixOverrides=",">
+	
+<trim suffix=",">
+	`permission_status`
+</trim> 
+<trim suffix=",">
+	`permission_value`
+</trim>
+</trim>
+</select>
+
+
+</mapper>

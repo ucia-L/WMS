@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated LoadInventoryTaskInfoCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.LoadInventoryTaskInfoCustomizeServiceMapper">
+
+    <resultMap id="defaultDSAnonymousStructure_EDE85045E284B51881D5DC0C47E8EDB9" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_EDE85045E284B51881D5DC0C47E8EDB9">
+	<result column="id" property="id"/>
+	<result column="createdTime" property="createdTime"/>
+	<result column="createdBy" property="createdBy"/>
+	<result column="idTag" property="id_tag"/>
+	<result column="status" property="status"/>
+</resultMap>
+<select id="getSql1" resultMap="defaultDSAnonymousStructure_EDE85045E284B51881D5DC0C47E8EDB9">
+	select * from `InventoryTask`
+</select>
+
+
+</mapper>

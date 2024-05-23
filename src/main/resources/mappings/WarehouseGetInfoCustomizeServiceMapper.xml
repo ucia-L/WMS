@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated WarehouseGetInfoCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.WarehouseGetInfoCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_7CC1E5F8E9FC7EB40FE2F6D0BC184542" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_71AFED732D709AF046E771165E69776D">
+	<id column="T1_C1" property="warehouse.id"/>
+	<result column="T1_C2" property="warehouse.name"/>
+	<result column="T1_C3" property="warehouse.id_tag"/>
+</resultMap>
+<select id="getAnonymousStructure_7CC1E5F8E9FC7EB40FE2F6D0BC184542" resultMap="AnonymousStructure_7CC1E5F8E9FC7EB40FE2F6D0BC184542">
+	 SELECT `Warehouse`.`id` `T1_C1`,`Warehouse`.`name` `T1_C2`,`Warehouse`.`idTag` `T1_C3` FROM `Warehouse` 
+<if test=" 1==1 or ( filter!=null and filter.id!=null ) or ( filter!=null and filter.name!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Warehouse`.`id` = #{filter.id}
+</trim>
+</if> 
+<if test=" 1==1 and ( filter!=null and filter.name!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Warehouse`.`name` LIKE concat('%', concat(#{filter.name}, '%'))
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_7CC1E5F8E9FC7EB40FE2F6D0BC184542" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `Warehouse` 
+<if test=" 1==1 or ( filter!=null and filter.id!=null ) or ( filter!=null and filter.name!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Warehouse`.`id` = #{filter.id}
+</trim>
+</if> 
+<if test=" 1==1 and ( filter!=null and filter.name!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Warehouse`.`name` LIKE concat('%', concat(#{filter.name}, '%'))
+</trim>
+</trim>
+</if>
+</trim>
+</if>
+</select>
+
+
+</mapper>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated GetAllUsersOrderByOICustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.GetAllUsersOrderByOICustomizeServiceMapper">
+
+    <resultMap id="defaultDSAnonymousStructure_59771CC8AEA4BC7D0F7B677FCF0323BE" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_59771CC8AEA4BC7D0F7B677FCF0323BE">
+	<result column="username" property="username"/>
+	<result column="avatar" property="avatar"/>
+	<result column="num" property="num"/>
+</resultMap>
+<select id="getSql1" resultMap="defaultDSAnonymousStructure_59771CC8AEA4BC7D0F7B677FCF0323BE">
+	SELECT `name` AS `username` , `avatar` , `orderInboundCount` AS `num` FROM `Userinfo` 
+<trim prefix = "ORDER BY" suffixOverrides=",">
+	
+<trim suffix=",">
+	`orderInboundCount` DESC
+</trim>
+</trim>
+</select>
+<select id="getSql2" resultMap="defaultDSAnonymousStructure_59771CC8AEA4BC7D0F7B677FCF0323BE">
+	SELECT `name` AS `username` , `avatar` , `orderOutboundCount` AS `num` FROM `Userinfo` 
+<trim prefix = "ORDER BY" suffixOverrides=",">
+	
+<trim suffix=",">
+	`orderOutboundCount` DESC
+</trim>
+</trim>
+</select>
+<select id="getSql3" resultMap="defaultDSAnonymousStructure_59771CC8AEA4BC7D0F7B677FCF0323BE">
+	SELECT `name` AS `username` , `avatar` , `afterSaleInboundCount` AS `num` FROM `Userinfo` 
+<trim prefix = "ORDER BY" suffixOverrides=",">
+	
+<trim suffix=",">
+	`afterSaleInboundCount` DESC
+</trim>
+</trim>
+</select>
+<select id="getSql4" resultMap="defaultDSAnonymousStructure_59771CC8AEA4BC7D0F7B677FCF0323BE">
+	SELECT `name` AS `username` , `avatar` , `afterSaleOutboundCount` AS `num` FROM `Userinfo` 
+<trim prefix = "ORDER BY" suffixOverrides=",">
+	
+<trim suffix=",">
+	`afterSaleOutboundCount` DESC
+</trim>
+</trim>
+</select>
+<select id="getSql5" resultMap="defaultDSAnonymousStructure_59771CC8AEA4BC7D0F7B677FCF0323BE">
+	SELECT `name` AS `username` , `avatar` , `otherInboundCount` AS `num` FROM `Userinfo` 
+<trim prefix = "ORDER BY" suffixOverrides=",">
+	
+<trim suffix=",">
+	`otherInboundCount` DESC
+</trim>
+</trim>
+</select>
+<select id="getSql6" resultMap="defaultDSAnonymousStructure_59771CC8AEA4BC7D0F7B677FCF0323BE">
+	SELECT `name` AS `username` , `avatar` , `otherOutboundCount` AS `num` FROM `Userinfo` 
+<trim prefix = "ORDER BY" suffixOverrides=",">
+	
+<trim suffix=",">
+	`otherOutboundCount` DESC
+</trim>
+</trim>
+</select>
+
+
+</mapper>

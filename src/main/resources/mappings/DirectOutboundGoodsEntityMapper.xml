@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated DirectOutboundGoodsEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.DirectOutboundGoodsEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.DirectOutboundGoodsEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="goodId" jdbcType="BIGINT" property="good_id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="unit" jdbcType="VARCHAR" property="unit" />
+        <result column="outboundCount" jdbcType="BIGINT" property="outboundCount" />
+        <result column="outboundDate" jdbcType="TIMESTAMP" property="outboundDate" />
+        <result column="warehouseName" jdbcType="VARCHAR" property="warehouse_name" />
+        <result column="warehouseareaName" jdbcType="VARCHAR" property="warehousearea_name" />
+        <result column="shelfName" jdbcType="VARCHAR" property="shelf_name" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.DirectOutboundGoodsEntity"  keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `DirectOutboundGoods` (
+            `goodId`
+            ,`name`
+            ,`unit`
+            ,`outboundCount`
+            ,`outboundDate`
+            ,`warehouseName`
+            ,`warehouseareaName`
+            ,`shelfName`
+        )
+        VALUES (
+            #{good_id,jdbcType=BIGINT}
+            ,#{name,jdbcType=VARCHAR}
+            ,#{unit,jdbcType=VARCHAR}
+            ,#{outboundCount,jdbcType=BIGINT}
+            ,#{outboundDate,jdbcType=TIMESTAMP}
+            ,#{warehouse_name,jdbcType=VARCHAR}
+            ,#{warehousearea_name,jdbcType=VARCHAR}
+            ,#{shelf_name,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `DirectOutboundGoods` (
+            `goodId`
+            ,`name`
+            ,`unit`
+            ,`outboundCount`
+            ,`outboundDate`
+            ,`warehouseName`
+            ,`warehouseareaName`
+            ,`shelfName`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.good_id,jdbcType=BIGINT}
+            ,#{item.name,jdbcType=VARCHAR}
+            ,#{item.unit,jdbcType=VARCHAR}
+            ,#{item.outboundCount,jdbcType=BIGINT}
+            ,#{item.outboundDate,jdbcType=TIMESTAMP}
+            ,#{item.warehouse_name,jdbcType=VARCHAR}
+            ,#{item.warehousearea_name,jdbcType=VARCHAR}
+            ,#{item.shelf_name,jdbcType=VARCHAR}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.DirectOutboundGoodsEntity" >
+        UPDATE `DirectOutboundGoods`
+        <set>
+            <if test="updateFields == null or updateFields.contains('good_id')">`goodId` = #{bean.good_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('outboundCount')">`outboundCount` = #{bean.outboundCount,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('outboundDate')">`outboundDate` = #{bean.outboundDate,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('warehouse_name')">`warehouseName` = #{bean.warehouse_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('warehousearea_name')">`warehouseareaName` = #{bean.warehousearea_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('shelf_name')">`shelfName` = #{bean.shelf_name,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.DirectOutboundGoodsEntity" >
+        UPDATE `DirectOutboundGoods`
+        <set>
+            <if test="updateFields == null or updateFields.contains('good_id')">`goodId` = #{bean.good_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('outboundCount')">`outboundCount` = #{bean.outboundCount,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('outboundDate')">`outboundDate` = #{bean.outboundDate,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('warehouse_name')">`warehouseName` = #{bean.warehouse_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('warehousearea_name')">`warehouseareaName` = #{bean.warehousearea_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('shelf_name')">`shelfName` = #{bean.shelf_name,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `DirectOutboundGoods` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `DirectOutboundGoods` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `DirectOutboundGoods`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'good_id'">
+                    AND `goodId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'unit'">
+                    AND `unit` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'outboundCount'">
+                    AND `outboundCount` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'outboundDate'">
+                    AND `outboundDate` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'warehouse_name'">
+                    AND `warehouseName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'warehousearea_name'">
+                    AND `warehouseareaName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'shelf_name'">
+                    AND `shelfName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `DirectOutboundGoods` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'good_id'">
+                    AND `goodId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'unit'">
+                    AND `unit` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'outboundCount'">
+                    AND `outboundCount` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'outboundDate'">
+                    AND `outboundDate` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'warehouse_name'">
+                    AND `warehouseName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'warehousearea_name'">
+                    AND `warehouseareaName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'shelf_name'">
+                    AND `shelfName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `DirectOutboundGoods` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `DirectOutboundGoods`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `DirectOutboundGoods`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.DirectOutboundGoodsEntity">
+        INSERT INTO `DirectOutboundGoods` (
+            `id`
+            ,`goodId`
+            ,`name`
+            ,`unit`
+            ,`outboundCount`
+            ,`outboundDate`
+            ,`warehouseName`
+            ,`warehouseareaName`
+            ,`shelfName`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{good_id,jdbcType=BIGINT}
+            ,#{name,jdbcType=VARCHAR}
+            ,#{unit,jdbcType=VARCHAR}
+            ,#{outboundCount,jdbcType=BIGINT}
+            ,#{outboundDate,jdbcType=TIMESTAMP}
+            ,#{warehouse_name,jdbcType=VARCHAR}
+            ,#{warehousearea_name,jdbcType=VARCHAR}
+            ,#{shelf_name,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `DirectOutboundGoods`
+        <set>
+        <if test="updateFields == null or updateFields.contains('good_id')">`goodId` = #{bean.good_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('outboundCount')">`outboundCount` = #{bean.outboundCount,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('outboundDate')">`outboundDate` = #{bean.outboundDate,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('warehouse_name')">`warehouseName` = #{bean.warehouse_name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('warehousearea_name')">`warehouseareaName` = #{bean.warehousearea_name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('shelf_name')">`shelfName` = #{bean.shelf_name,jdbcType=VARCHAR},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `DirectOutboundGoods` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated IventoryGWASEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.IventoryGWASEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.IventoryGWASEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="gid" jdbcType="BIGINT" property="gid" />
+        <result column="gName" jdbcType="VARCHAR" property="g_name" />
+        <result column="gQuantity" jdbcType="BIGINT" property="g_quantity" />
+        <result column="gUnit" jdbcType="VARCHAR" property="g_unit" />
+        <result column="wid" jdbcType="BIGINT" property="wid" />
+        <result column="wName" jdbcType="VARCHAR" property="w_name" />
+        <result column="waid" jdbcType="BIGINT" property="waid" />
+        <result column="waName" jdbcType="VARCHAR" property="wa_name" />
+        <result column="sid" jdbcType="BIGINT" property="sid" />
+        <result column="sName" jdbcType="VARCHAR" property="s_name" />
+        <result column="dateTime" jdbcType="DATE" property="dateTime" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.IventoryGWASEntity"  keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `IventoryGWAS` (
+            `gid`
+            ,`gName`
+            ,`gQuantity`
+            ,`gUnit`
+            ,`wid`
+            ,`wName`
+            ,`waid`
+            ,`waName`
+            ,`sid`
+            ,`sName`
+            ,`dateTime`
+        )
+        VALUES (
+            #{gid,jdbcType=BIGINT}
+            ,#{g_name,jdbcType=VARCHAR}
+            ,#{g_quantity,jdbcType=BIGINT}
+            ,#{g_unit,jdbcType=VARCHAR}
+            ,#{wid,jdbcType=BIGINT}
+            ,#{w_name,jdbcType=VARCHAR}
+            ,#{waid,jdbcType=BIGINT}
+            ,#{wa_name,jdbcType=VARCHAR}
+            ,#{sid,jdbcType=BIGINT}
+            ,#{s_name,jdbcType=VARCHAR}
+            ,#{dateTime,jdbcType=DATE}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `IventoryGWAS` (
+            `gid`
+            ,`gName`
+            ,`gQuantity`
+            ,`gUnit`
+            ,`wid`
+            ,`wName`
+            ,`waid`
+            ,`waName`
+            ,`sid`
+            ,`sName`
+            ,`dateTime`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.gid,jdbcType=BIGINT}
+            ,#{item.g_name,jdbcType=VARCHAR}
+            ,#{item.g_quantity,jdbcType=BIGINT}
+            ,#{item.g_unit,jdbcType=VARCHAR}
+            ,#{item.wid,jdbcType=BIGINT}
+            ,#{item.w_name,jdbcType=VARCHAR}
+            ,#{item.waid,jdbcType=BIGINT}
+            ,#{item.wa_name,jdbcType=VARCHAR}
+            ,#{item.sid,jdbcType=BIGINT}
+            ,#{item.s_name,jdbcType=VARCHAR}
+            ,#{item.dateTime,jdbcType=DATE}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.IventoryGWASEntity" >
+        UPDATE `IventoryGWAS`
+        <set>
+            <if test="updateFields == null or updateFields.contains('gid')">`gid` = #{bean.gid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('g_name')">`gName` = #{bean.g_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('g_quantity')">`gQuantity` = #{bean.g_quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('g_unit')">`gUnit` = #{bean.g_unit,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('wid')">`wid` = #{bean.wid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('w_name')">`wName` = #{bean.w_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('waid')">`waid` = #{bean.waid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('wa_name')">`waName` = #{bean.wa_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('sid')">`sid` = #{bean.sid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('s_name')">`sName` = #{bean.s_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('dateTime')">`dateTime` = #{bean.dateTime,jdbcType=DATE},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.IventoryGWASEntity" >
+        UPDATE `IventoryGWAS`
+        <set>
+            <if test="updateFields == null or updateFields.contains('gid')">`gid` = #{bean.gid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('g_name')">`gName` = #{bean.g_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('g_quantity')">`gQuantity` = #{bean.g_quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('g_unit')">`gUnit` = #{bean.g_unit,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('wid')">`wid` = #{bean.wid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('w_name')">`wName` = #{bean.w_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('waid')">`waid` = #{bean.waid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('wa_name')">`waName` = #{bean.wa_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('sid')">`sid` = #{bean.sid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('s_name')">`sName` = #{bean.s_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('dateTime')">`dateTime` = #{bean.dateTime,jdbcType=DATE},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `IventoryGWAS` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `IventoryGWAS` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `IventoryGWAS`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'gid'">
+                    AND `gid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'g_name'">
+                    AND `gName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'g_quantity'">
+                    AND `gQuantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'g_unit'">
+                    AND `gUnit` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'wid'">
+                    AND `wid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'w_name'">
+                    AND `wName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'waid'">
+                    AND `waid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'wa_name'">
+                    AND `waName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'sid'">
+                    AND `sid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 's_name'">
+                    AND `sName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'dateTime'">
+                    AND `dateTime` = #{value, jdbcType=DATE}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `IventoryGWAS` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'gid'">
+                    AND `gid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'g_name'">
+                    AND `gName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'g_quantity'">
+                    AND `gQuantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'g_unit'">
+                    AND `gUnit` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'wid'">
+                    AND `wid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'w_name'">
+                    AND `wName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'waid'">
+                    AND `waid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'wa_name'">
+                    AND `waName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'sid'">
+                    AND `sid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 's_name'">
+                    AND `sName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'dateTime'">
+                    AND `dateTime` = #{value, jdbcType=DATE}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `IventoryGWAS` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `IventoryGWAS`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `IventoryGWAS`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.IventoryGWASEntity">
+        INSERT INTO `IventoryGWAS` (
+            `id`
+            ,`gid`
+            ,`gName`
+            ,`gQuantity`
+            ,`gUnit`
+            ,`wid`
+            ,`wName`
+            ,`waid`
+            ,`waName`
+            ,`sid`
+            ,`sName`
+            ,`dateTime`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{gid,jdbcType=BIGINT}
+            ,#{g_name,jdbcType=VARCHAR}
+            ,#{g_quantity,jdbcType=BIGINT}
+            ,#{g_unit,jdbcType=VARCHAR}
+            ,#{wid,jdbcType=BIGINT}
+            ,#{w_name,jdbcType=VARCHAR}
+            ,#{waid,jdbcType=BIGINT}
+            ,#{wa_name,jdbcType=VARCHAR}
+            ,#{sid,jdbcType=BIGINT}
+            ,#{s_name,jdbcType=VARCHAR}
+            ,#{dateTime,jdbcType=DATE}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `IventoryGWAS`
+        <set>
+        <if test="updateFields == null or updateFields.contains('gid')">`gid` = #{bean.gid,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('g_name')">`gName` = #{bean.g_name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('g_quantity')">`gQuantity` = #{bean.g_quantity,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('g_unit')">`gUnit` = #{bean.g_unit,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('wid')">`wid` = #{bean.wid,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('w_name')">`wName` = #{bean.w_name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('waid')">`waid` = #{bean.waid,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('wa_name')">`waName` = #{bean.wa_name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('sid')">`sid` = #{bean.sid,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('s_name')">`sName` = #{bean.s_name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('dateTime')">`dateTime` = #{bean.dateTime,jdbcType=DATE},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `IventoryGWAS` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

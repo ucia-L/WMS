@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated InventoryGoodEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.InventoryGoodEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.InventoryGoodEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="warehouseId" jdbcType="BIGINT" property="warehouse_id" />
+        <result column="warehouseAreaId" jdbcType="BIGINT" property="warehouseArea_id" />
+        <result column="shelfId" jdbcType="BIGINT" property="shelf_id" />
+        <result column="quantity" jdbcType="BIGINT" property="quantity" />
+        <result column="realQuantity" jdbcType="BIGINT" property="real_quantity" />
+        <result column="incomeLoss" jdbcType="DECIMAL" property="income_loss" />
+        <result column="taskId" jdbcType="BIGINT" property="task_id" />
+        <result column="goodId" jdbcType="BIGINT" property="good_id" />
+        <result column="unit" jdbcType="VARCHAR" property="unit" />
+        <result column="wName" jdbcType="VARCHAR" property="w_name" />
+        <result column="waName" jdbcType="VARCHAR" property="wa_name" />
+        <result column="sName" jdbcType="VARCHAR" property="s_name" />
+        <result column="price" jdbcType="DECIMAL" property="price" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.InventoryGoodEntity"  keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `InventoryGood` (
+            `name`
+            ,`warehouseId`
+            ,`warehouseAreaId`
+            ,`shelfId`
+            ,`quantity`
+            ,`realQuantity`
+            ,`incomeLoss`
+            ,`taskId`
+            ,`goodId`
+            ,`unit`
+            ,`wName`
+            ,`waName`
+            ,`sName`
+            ,`price`
+        )
+        VALUES (
+            #{name,jdbcType=VARCHAR}
+            ,#{warehouse_id,jdbcType=BIGINT}
+            ,#{warehouseArea_id,jdbcType=BIGINT}
+            ,#{shelf_id,jdbcType=BIGINT}
+            ,#{quantity,jdbcType=BIGINT}
+            ,#{real_quantity,jdbcType=BIGINT}
+            ,#{income_loss,jdbcType=DECIMAL}
+            ,#{task_id,jdbcType=BIGINT}
+            ,#{good_id,jdbcType=BIGINT}
+            ,#{unit,jdbcType=VARCHAR}
+            ,#{w_name,jdbcType=VARCHAR}
+            ,#{wa_name,jdbcType=VARCHAR}
+            ,#{s_name,jdbcType=VARCHAR}
+            ,#{price,jdbcType=DECIMAL}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `InventoryGood` (
+            `name`
+            ,`warehouseId`
+            ,`warehouseAreaId`
+            ,`shelfId`
+            ,`quantity`
+            ,`realQuantity`
+            ,`incomeLoss`
+            ,`taskId`
+            ,`goodId`
+            ,`unit`
+            ,`wName`
+            ,`waName`
+            ,`sName`
+            ,`price`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.name,jdbcType=VARCHAR}
+            ,#{item.warehouse_id,jdbcType=BIGINT}
+            ,#{item.warehouseArea_id,jdbcType=BIGINT}
+            ,#{item.shelf_id,jdbcType=BIGINT}
+            ,#{item.quantity,jdbcType=BIGINT}
+            ,#{item.real_quantity,jdbcType=BIGINT}
+            ,#{item.income_loss,jdbcType=DECIMAL}
+            ,#{item.task_id,jdbcType=BIGINT}
+            ,#{item.good_id,jdbcType=BIGINT}
+            ,#{item.unit,jdbcType=VARCHAR}
+            ,#{item.w_name,jdbcType=VARCHAR}
+            ,#{item.wa_name,jdbcType=VARCHAR}
+            ,#{item.s_name,jdbcType=VARCHAR}
+            ,#{item.price,jdbcType=DECIMAL}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.InventoryGoodEntity" >
+        UPDATE `InventoryGood`
+        <set>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('warehouse_id')">`warehouseId` = #{bean.warehouse_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('warehouseArea_id')">`warehouseAreaId` = #{bean.warehouseArea_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('shelf_id')">`shelfId` = #{bean.shelf_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('real_quantity')">`realQuantity` = #{bean.real_quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('income_loss')">`incomeLoss` = #{bean.income_loss,jdbcType=DECIMAL},</if>
+            <if test="updateFields == null or updateFields.contains('task_id')">`taskId` = #{bean.task_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('good_id')">`goodId` = #{bean.good_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('w_name')">`wName` = #{bean.w_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('wa_name')">`waName` = #{bean.wa_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('s_name')">`sName` = #{bean.s_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('price')">`price` = #{bean.price,jdbcType=DECIMAL},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.InventoryGoodEntity" >
+        UPDATE `InventoryGood`
+        <set>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('warehouse_id')">`warehouseId` = #{bean.warehouse_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('warehouseArea_id')">`warehouseAreaId` = #{bean.warehouseArea_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('shelf_id')">`shelfId` = #{bean.shelf_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('real_quantity')">`realQuantity` = #{bean.real_quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('income_loss')">`incomeLoss` = #{bean.income_loss,jdbcType=DECIMAL},</if>
+            <if test="updateFields == null or updateFields.contains('task_id')">`taskId` = #{bean.task_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('good_id')">`goodId` = #{bean.good_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('w_name')">`wName` = #{bean.w_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('wa_name')">`waName` = #{bean.wa_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('s_name')">`sName` = #{bean.s_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('price')">`price` = #{bean.price,jdbcType=DECIMAL},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `InventoryGood` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `InventoryGood` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `InventoryGood`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'warehouse_id'">
+                    AND `warehouseId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'warehouseArea_id'">
+                    AND `warehouseAreaId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'shelf_id'">
+                    AND `shelfId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'quantity'">
+                    AND `quantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'real_quantity'">
+                    AND `realQuantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'income_loss'">
+                    AND `incomeLoss` = #{value, jdbcType=DECIMAL}
+                </when>
+                <when test="property == 'task_id'">
+                    AND `taskId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'good_id'">
+                    AND `goodId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'unit'">
+                    AND `unit` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'w_name'">
+                    AND `wName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'wa_name'">
+                    AND `waName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 's_name'">
+                    AND `sName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'price'">
+                    AND `price` = #{value, jdbcType=DECIMAL}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `InventoryGood` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'warehouse_id'">
+                    AND `warehouseId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'warehouseArea_id'">
+                    AND `warehouseAreaId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'shelf_id'">
+                    AND `shelfId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'quantity'">
+                    AND `quantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'real_quantity'">
+                    AND `realQuantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'income_loss'">
+                    AND `incomeLoss` = #{value, jdbcType=DECIMAL}
+                </when>
+                <when test="property == 'task_id'">
+                    AND `taskId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'good_id'">
+                    AND `goodId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'unit'">
+                    AND `unit` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'w_name'">
+                    AND `wName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'wa_name'">
+                    AND `waName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 's_name'">
+                    AND `sName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'price'">
+                    AND `price` = #{value, jdbcType=DECIMAL}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `InventoryGood` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `InventoryGood`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `InventoryGood`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.InventoryGoodEntity">
+        INSERT INTO `InventoryGood` (
+            `id`
+            ,`name`
+            ,`warehouseId`
+            ,`warehouseAreaId`
+            ,`shelfId`
+            ,`quantity`
+            ,`realQuantity`
+            ,`incomeLoss`
+            ,`taskId`
+            ,`goodId`
+            ,`unit`
+            ,`wName`
+            ,`waName`
+            ,`sName`
+            ,`price`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{name,jdbcType=VARCHAR}
+            ,#{warehouse_id,jdbcType=BIGINT}
+            ,#{warehouseArea_id,jdbcType=BIGINT}
+            ,#{shelf_id,jdbcType=BIGINT}
+            ,#{quantity,jdbcType=BIGINT}
+            ,#{real_quantity,jdbcType=BIGINT}
+            ,#{income_loss,jdbcType=DECIMAL}
+            ,#{task_id,jdbcType=BIGINT}
+            ,#{good_id,jdbcType=BIGINT}
+            ,#{unit,jdbcType=VARCHAR}
+            ,#{w_name,jdbcType=VARCHAR}
+            ,#{wa_name,jdbcType=VARCHAR}
+            ,#{s_name,jdbcType=VARCHAR}
+            ,#{price,jdbcType=DECIMAL}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `InventoryGood`
+        <set>
+        <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('warehouse_id')">`warehouseId` = #{bean.warehouse_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('warehouseArea_id')">`warehouseAreaId` = #{bean.warehouseArea_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('shelf_id')">`shelfId` = #{bean.shelf_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('real_quantity')">`realQuantity` = #{bean.real_quantity,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('income_loss')">`incomeLoss` = #{bean.income_loss,jdbcType=DECIMAL},</if>
+        <if test="updateFields == null or updateFields.contains('task_id')">`taskId` = #{bean.task_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('good_id')">`goodId` = #{bean.good_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('w_name')">`wName` = #{bean.w_name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('wa_name')">`waName` = #{bean.wa_name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('s_name')">`sName` = #{bean.s_name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('price')">`price` = #{bean.price,jdbcType=DECIMAL},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `InventoryGood` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

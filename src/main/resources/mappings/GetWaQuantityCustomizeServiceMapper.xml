@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated GetWaQuantityCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.GetWaQuantityCustomizeServiceMapper">
+
+    <select id="getSql1" resultType="java.lang.Long">
+	SELECT `currentQuantity` FROM `WarehouseArea` 
+<if test=" waID!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`id` = #{waID}
+</trim>
+</if>
+</select>
+
+
+</mapper>

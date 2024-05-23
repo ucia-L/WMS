@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated GetGoodsByOrderIdCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.GetGoodsByOrderIdCustomizeServiceMapper">
+
+    <resultMap id="defaultDSAnonymousStructure_B830C6CA7886AABBEE1D59B130916DE1" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_B830C6CA7886AABBEE1D59B130916DE1">
+	<result column="orderId" property="order_id"/>
+	<result column="name_list" property="name_list"/>
+</resultMap>
+<select id="getSql1" resultMap="defaultDSAnonymousStructure_B830C6CA7886AABBEE1D59B130916DE1">
+	SELECT `orderId` , GROUP_CONCAT( `name`) AS `name_list` from `Goods` group by `orderId`
+</select>
+
+
+</mapper>

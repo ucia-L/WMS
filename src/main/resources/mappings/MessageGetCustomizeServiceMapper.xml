@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated MessageGetCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.MessageGetCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_37391B25C11ADF7D1902013971D77D9D" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_85E2885473D719772D99312974DB249D">
+	<id column="T1_C1" property="messagee.id"/>
+	<result column="T1_C2" property="messagee.createdTime"/>
+	<result column="T1_C3" property="messagee.text"/>
+	<result column="T1_C4" property="messagee.sender"/>
+	<result column="T1_C5" property="messagee.status"/>
+	<result column="T1_C6" property="messagee.category"/>
+	<result column="T1_C7" property="messagee.subject"/>
+</resultMap>
+<select id="getAnonymousStructure_37391B25C11ADF7D1902013971D77D9D" resultMap="AnonymousStructure_37391B25C11ADF7D1902013971D77D9D">
+	 SELECT `Messagee`.`id` `T1_C1`,`Messagee`.`createdTime` `T1_C2`,`Messagee`.`text` `T1_C3`,`Messagee`.`sender` `T1_C4`,`Messagee`.`status` `T1_C5`,`Messagee`.`category` `T1_C6`,`Messagee`.`subject` `T1_C7` FROM `Messagee` 
+<if test=" ( forSearch!=null and forSearch.sender!=null ) or 1==1 or ( forSearch!=null and forSearch.createdTime!=null ) or ( forSearch!=null and forSearch.id!=null ) or ( forSearch!=null and forSearch.status!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 and ( forSearch!=null and forSearch.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	#{forSearch.id} = `Messagee`.`id`
+</trim>
+</if> 
+<if test=" ( forSearch!=null and forSearch.sender!=null ) or 1==1 or ( forSearch!=null and forSearch.createdTime!=null ) or ( forSearch!=null and forSearch.status!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( forSearch!=null and forSearch.sender!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	#{forSearch.sender} LIKE concat('%', concat(`Messagee`.`sender`, '%'))
+</trim>
+</if> 
+<if test=" 1==1 or ( forSearch!=null and forSearch.createdTime!=null ) or ( forSearch!=null and forSearch.status!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( forSearch!=null and forSearch.createdTime!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	#{forSearch.createdTime} = `Messagee`.`createdTime`
+</trim>
+</if> 
+<if test=" ( forSearch!=null and forSearch.status!=null ) ">
+	
+<trim prefix="and">
+	(#{forSearch.status} = #{forSearch.status})
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_37391B25C11ADF7D1902013971D77D9D" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `Messagee` 
+<if test=" ( forSearch!=null and forSearch.sender!=null ) or 1==1 or ( forSearch!=null and forSearch.createdTime!=null ) or ( forSearch!=null and forSearch.id!=null ) or ( forSearch!=null and forSearch.status!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 and ( forSearch!=null and forSearch.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	#{forSearch.id} = `Messagee`.`id`
+</trim>
+</if> 
+<if test=" ( forSearch!=null and forSearch.sender!=null ) or 1==1 or ( forSearch!=null and forSearch.createdTime!=null ) or ( forSearch!=null and forSearch.status!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( forSearch!=null and forSearch.sender!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	#{forSearch.sender} LIKE concat('%', concat(`Messagee`.`sender`, '%'))
+</trim>
+</if> 
+<if test=" 1==1 or ( forSearch!=null and forSearch.createdTime!=null ) or ( forSearch!=null and forSearch.status!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( forSearch!=null and forSearch.createdTime!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	#{forSearch.createdTime} = `Messagee`.`createdTime`
+</trim>
+</if> 
+<if test=" ( forSearch!=null and forSearch.status!=null ) ">
+	
+<trim prefix="and">
+	(#{forSearch.status} = #{forSearch.status})
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if>
+</select>
+
+
+</mapper>

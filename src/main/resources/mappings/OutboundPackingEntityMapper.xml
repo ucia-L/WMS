@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated OutboundPackingEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.OutboundPackingEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.OutboundPackingEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="outboundGoodId" jdbcType="BIGINT" property="outbound_good_id" />
+        <result column="quantity" jdbcType="BIGINT" property="quantity" />
+        <result column="warehouseAreaId" jdbcType="BIGINT" property="warehouseArea_id" />
+        <result column="shelfId" jdbcType="BIGINT" property="shelf_id" />
+        <result column="outboundTmpareaId" jdbcType="BIGINT" property="outbound_tmparea_id" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="outboundCommodityName" jdbcType="VARCHAR" property="outbound_commodity_name" />
+        <result column="outBoundOrderID" jdbcType="BIGINT" property="outBoundOrderID" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.OutboundPackingEntity"  keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `OutboundPacking` (
+            `outboundGoodId`
+            ,`quantity`
+            ,`warehouseAreaId`
+            ,`shelfId`
+            ,`outboundTmpareaId`
+            ,`status`
+            ,`outboundCommodityName`
+            ,`outBoundOrderID`
+        )
+        VALUES (
+            #{outbound_good_id,jdbcType=BIGINT}
+            ,#{quantity,jdbcType=BIGINT}
+            ,#{warehouseArea_id,jdbcType=BIGINT}
+            ,#{shelf_id,jdbcType=BIGINT}
+            ,#{outbound_tmparea_id,jdbcType=BIGINT}
+            ,#{status,jdbcType=VARCHAR}
+            ,#{outbound_commodity_name,jdbcType=VARCHAR}
+            ,#{outBoundOrderID,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `OutboundPacking` (
+            `outboundGoodId`
+            ,`quantity`
+            ,`warehouseAreaId`
+            ,`shelfId`
+            ,`outboundTmpareaId`
+            ,`status`
+            ,`outboundCommodityName`
+            ,`outBoundOrderID`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.outbound_good_id,jdbcType=BIGINT}
+            ,#{item.quantity,jdbcType=BIGINT}
+            ,#{item.warehouseArea_id,jdbcType=BIGINT}
+            ,#{item.shelf_id,jdbcType=BIGINT}
+            ,#{item.outbound_tmparea_id,jdbcType=BIGINT}
+            ,#{item.status,jdbcType=VARCHAR}
+            ,#{item.outbound_commodity_name,jdbcType=VARCHAR}
+            ,#{item.outBoundOrderID,jdbcType=BIGINT}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.OutboundPackingEntity" >
+        UPDATE `OutboundPacking`
+        <set>
+            <if test="updateFields == null or updateFields.contains('outbound_good_id')">`outboundGoodId` = #{bean.outbound_good_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('warehouseArea_id')">`warehouseAreaId` = #{bean.warehouseArea_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('shelf_id')">`shelfId` = #{bean.shelf_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('outbound_tmparea_id')">`outboundTmpareaId` = #{bean.outbound_tmparea_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('outbound_commodity_name')">`outboundCommodityName` = #{bean.outbound_commodity_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('outBoundOrderID')">`outBoundOrderID` = #{bean.outBoundOrderID,jdbcType=BIGINT},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.OutboundPackingEntity" >
+        UPDATE `OutboundPacking`
+        <set>
+            <if test="updateFields == null or updateFields.contains('outbound_good_id')">`outboundGoodId` = #{bean.outbound_good_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('warehouseArea_id')">`warehouseAreaId` = #{bean.warehouseArea_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('shelf_id')">`shelfId` = #{bean.shelf_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('outbound_tmparea_id')">`outboundTmpareaId` = #{bean.outbound_tmparea_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('outbound_commodity_name')">`outboundCommodityName` = #{bean.outbound_commodity_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('outBoundOrderID')">`outBoundOrderID` = #{bean.outBoundOrderID,jdbcType=BIGINT},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `OutboundPacking` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `OutboundPacking` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `OutboundPacking`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'outbound_good_id'">
+                    AND `outboundGoodId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'quantity'">
+                    AND `quantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'warehouseArea_id'">
+                    AND `warehouseAreaId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'shelf_id'">
+                    AND `shelfId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'outbound_tmparea_id'">
+                    AND `outboundTmpareaId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'outbound_commodity_name'">
+                    AND `outboundCommodityName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'outBoundOrderID'">
+                    AND `outBoundOrderID` = #{value, jdbcType=BIGINT}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `OutboundPacking` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'outbound_good_id'">
+                    AND `outboundGoodId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'quantity'">
+                    AND `quantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'warehouseArea_id'">
+                    AND `warehouseAreaId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'shelf_id'">
+                    AND `shelfId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'outbound_tmparea_id'">
+                    AND `outboundTmpareaId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'outbound_commodity_name'">
+                    AND `outboundCommodityName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'outBoundOrderID'">
+                    AND `outBoundOrderID` = #{value, jdbcType=BIGINT}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `OutboundPacking` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `OutboundPacking`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `OutboundPacking`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.OutboundPackingEntity">
+        INSERT INTO `OutboundPacking` (
+            `id`
+            ,`outboundGoodId`
+            ,`quantity`
+            ,`warehouseAreaId`
+            ,`shelfId`
+            ,`outboundTmpareaId`
+            ,`status`
+            ,`outboundCommodityName`
+            ,`outBoundOrderID`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{outbound_good_id,jdbcType=BIGINT}
+            ,#{quantity,jdbcType=BIGINT}
+            ,#{warehouseArea_id,jdbcType=BIGINT}
+            ,#{shelf_id,jdbcType=BIGINT}
+            ,#{outbound_tmparea_id,jdbcType=BIGINT}
+            ,#{status,jdbcType=VARCHAR}
+            ,#{outbound_commodity_name,jdbcType=VARCHAR}
+            ,#{outBoundOrderID,jdbcType=BIGINT}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `OutboundPacking`
+        <set>
+        <if test="updateFields == null or updateFields.contains('outbound_good_id')">`outboundGoodId` = #{bean.outbound_good_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('warehouseArea_id')">`warehouseAreaId` = #{bean.warehouseArea_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('shelf_id')">`shelfId` = #{bean.shelf_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('outbound_tmparea_id')">`outboundTmpareaId` = #{bean.outbound_tmparea_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('outbound_commodity_name')">`outboundCommodityName` = #{bean.outbound_commodity_name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('outBoundOrderID')">`outBoundOrderID` = #{bean.outBoundOrderID,jdbcType=BIGINT},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `OutboundPacking` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

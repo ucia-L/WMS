@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated GoodsCheckFinishWeighCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.GoodsCheckFinishWeighCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_4EE7EE1E30E7881C7AED96E05B24EEE9" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_0525662B8F4292C798EFF880E786BA4E">
+	<id column="T1_C1" property="outBoundGood.id"/>
+	<result column="T1_C2" property="outBoundGood.outbound_order_id"/>
+	<result column="T1_C3" property="outBoundGood.name"/>
+	<result column="T1_C4" property="outBoundGood.quantity"/>
+	<result column="T1_C5" property="outBoundGood.unit"/>
+	<result column="T1_C6" property="outBoundGood.status"/>
+	<result column="T1_C7" property="outBoundGood.weight"/>
+</resultMap>
+<select id="getAnonymousStructure_4EE7EE1E30E7881C7AED96E05B24EEE9" resultMap="AnonymousStructure_4EE7EE1E30E7881C7AED96E05B24EEE9">
+	 SELECT `OutBoundGood`.`id` `T1_C1`,`OutBoundGood`.`outboundOrderId` `T1_C2`,`OutBoundGood`.`name` `T1_C3`,`OutBoundGood`.`quantity` `T1_C4`,`OutBoundGood`.`unit` `T1_C5`,`OutBoundGood`.`status` `T1_C6`,`OutBoundGood`.`weight` `T1_C7` FROM `OutBoundGood` 
+<if test=" 1==1 or OrderID!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 and OrderID!=null ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutBoundGood`.`outboundOrderId` = #{OrderID}
+</trim>
+</if> 
+<if test=" 1==1 ">
+	
+<trim prefix="and">
+	(`OutBoundGood`.`status` = '0')
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_4EE7EE1E30E7881C7AED96E05B24EEE9" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `OutBoundGood` 
+<if test=" 1==1 or OrderID!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 and OrderID!=null ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`OutBoundGood`.`outboundOrderId` = #{OrderID}
+</trim>
+</if> 
+<if test=" 1==1 ">
+	
+<trim prefix="and">
+	(`OutBoundGood`.`status` = '0')
+</trim>
+</if>
+</trim>
+</if>
+</select>
+
+
+</mapper>

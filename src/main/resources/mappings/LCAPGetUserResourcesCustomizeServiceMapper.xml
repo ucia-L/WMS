@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated LCAPGetUserResourcesCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.LCAPGetUserResourcesCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_FA75F69B8BA9C34178F71FC536D2D824" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_B202841ADEE061731D68863F55003B0E">
+	<id column="T4_C1" property="lCAPUserRoleMapping.id"/>
+	<result column="T3_C1" property="lCAPResource.id"/>
+	<result column="T3_C2" property="lCAPResource.createdTime"/>
+	<result column="T3_C3" property="lCAPResource.updatedTime"/>
+	<result column="T3_C4" property="lCAPResource.createdBy"/>
+	<result column="T3_C5" property="lCAPResource.updatedBy"/>
+	<result column="T3_C6" property="lCAPResource.uuid"/>
+	<result column="T3_C7" property="lCAPResource.name"/>
+	<result column="T3_C8" property="lCAPResource.description"/>
+	<result column="T3_C9" property="lCAPResource.type"/>
+	<result column="T3_C10" property="lCAPResource.clientType"/>
+	<result column="T4_C2" property="lCAPUserRoleMapping.createdTime"/>
+	<result column="T4_C3" property="lCAPUserRoleMapping.updatedTime"/>
+	<result column="T4_C4" property="lCAPUserRoleMapping.createdBy"/>
+	<result column="T4_C5" property="lCAPUserRoleMapping.updatedBy"/>
+	<result column="T4_C6" property="lCAPUserRoleMapping.userId"/>
+	<result column="T4_C7" property="lCAPUserRoleMapping.roleId"/>
+	<result column="T4_C8" property="lCAPUserRoleMapping.userName"/>
+	<result column="T4_C9" property="lCAPUserRoleMapping.source"/>
+	<result column="T1_C1" property="lCAPPerResMapping.id"/>
+	<result column="T1_C2" property="lCAPPerResMapping.createdTime"/>
+	<result column="T1_C3" property="lCAPPerResMapping.updatedTime"/>
+	<result column="T1_C4" property="lCAPPerResMapping.createdBy"/>
+	<result column="T1_C5" property="lCAPPerResMapping.updatedBy"/>
+	<result column="T1_C6" property="lCAPPerResMapping.permissionId"/>
+	<result column="T1_C7" property="lCAPPerResMapping.resourceId"/>
+	<result column="T2_C1" property="lCAPRolePerMapping.id"/>
+	<result column="T2_C2" property="lCAPRolePerMapping.createdTime"/>
+	<result column="T2_C3" property="lCAPRolePerMapping.updatedTime"/>
+	<result column="T2_C4" property="lCAPRolePerMapping.createdBy"/>
+	<result column="T2_C5" property="lCAPRolePerMapping.updatedBy"/>
+	<result column="T2_C6" property="lCAPRolePerMapping.roleId"/>
+	<result column="T2_C7" property="lCAPRolePerMapping.permissionId"/>
+</resultMap>
+<select id="getAnonymousStructure_FA75F69B8BA9C34178F71FC536D2D824" resultMap="AnonymousStructure_FA75F69B8BA9C34178F71FC536D2D824">
+	 SELECT `LCAPUserRoleMapping_79f632`.`id` `T4_C1`,`LCAPUserRoleMapping_79f632`.`createdTime` `T4_C2`,`LCAPUserRoleMapping_79f632`.`updatedTime` `T4_C3`,`LCAPUserRoleMapping_79f632`.`createdBy` `T4_C4`,`LCAPUserRoleMapping_79f632`.`updatedBy` `T4_C5`,`LCAPUserRoleMapping_79f632`.`userId` `T4_C6`,`LCAPUserRoleMapping_79f632`.`roleId` `T4_C7`,`LCAPUserRoleMapping_79f632`.`userName` `T4_C8`,`LCAPUserRoleMapping_79f632`.`source` `T4_C9`,`LCAPRolePerMapping_79f632`.`id` `T2_C1`,`LCAPRolePerMapping_79f632`.`createdTime` `T2_C2`,`LCAPRolePerMapping_79f632`.`updatedTime` `T2_C3`,`LCAPRolePerMapping_79f632`.`createdBy` `T2_C4`,`LCAPRolePerMapping_79f632`.`updatedBy` `T2_C5`,`LCAPRolePerMapping_79f632`.`roleId` `T2_C6`,`LCAPRolePerMapping_79f632`.`permissionId` `T2_C7`,`LCAPPerResMapping_79f632`.`id` `T1_C1`,`LCAPPerResMapping_79f632`.`createdTime` `T1_C2`,`LCAPPerResMapping_79f632`.`updatedTime` `T1_C3`,`LCAPPerResMapping_79f632`.`createdBy` `T1_C4`,`LCAPPerResMapping_79f632`.`updatedBy` `T1_C5`,`LCAPPerResMapping_79f632`.`permissionId` `T1_C6`,`LCAPPerResMapping_79f632`.`resourceId` `T1_C7`,`LCAPResource_79f632`.`id` `T3_C1`,`LCAPResource_79f632`.`createdTime` `T3_C2`,`LCAPResource_79f632`.`updatedTime` `T3_C3`,`LCAPResource_79f632`.`createdBy` `T3_C4`,`LCAPResource_79f632`.`updatedBy` `T3_C5`,`LCAPResource_79f632`.`uuid` `T3_C6`,`LCAPResource_79f632`.`name` `T3_C7`,`LCAPResource_79f632`.`description` `T3_C8`,`LCAPResource_79f632`.`type` `T3_C9`,`LCAPResource_79f632`.`clientType` `T3_C10` FROM `LCAPUserRoleMapping_79f632` INNER JOIN `LCAPRolePerMapping_79f632` ON `LCAPUserRoleMapping_79f632`.`roleId` = `LCAPRolePerMapping_79f632`.`roleId` INNER JOIN `LCAPPerResMapping_79f632` ON `LCAPRolePerMapping_79f632`.`permissionId` = `LCAPPerResMapping_79f632`.`permissionId` INNER JOIN `LCAPResource_79f632` ON `LCAPPerResMapping_79f632`.`resourceId` = `LCAPResource_79f632`.`id` 
+<if test=" 1==1 and userId!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`LCAPUserRoleMapping_79f632`.`userId` = #{userId}
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 2000 * ( 1 - 1 ) )}, ${2000}
+</if>
+</select>
+<select id="countAnonymousStructure_FA75F69B8BA9C34178F71FC536D2D824" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `LCAPUserRoleMapping_79f632` INNER JOIN `LCAPRolePerMapping_79f632` ON `LCAPUserRoleMapping_79f632`.`roleId` = `LCAPRolePerMapping_79f632`.`roleId` INNER JOIN `LCAPPerResMapping_79f632` ON `LCAPRolePerMapping_79f632`.`permissionId` = `LCAPPerResMapping_79f632`.`permissionId` INNER JOIN `LCAPResource_79f632` ON `LCAPPerResMapping_79f632`.`resourceId` = `LCAPResource_79f632`.`id` 
+<if test=" 1==1 and userId!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`LCAPUserRoleMapping_79f632`.`userId` = #{userId}
+</trim>
+</if>
+</select>
+
+
+</mapper>

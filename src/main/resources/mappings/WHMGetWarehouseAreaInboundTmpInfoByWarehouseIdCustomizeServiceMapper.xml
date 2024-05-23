@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated WHMGetWarehouseAreaInboundTmpInfoByWarehouseIdCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.WHMGetWarehouseAreaInboundTmpInfoByWarehouseIdCustomizeServiceMapper">
+
+    <resultMap id="defaultDSAnonymousStructure_C17F1C08552FF64D58AEF610A908B489" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_C17F1C08552FF64D58AEF610A908B489">
+	<result column="id" property="id"/>
+	<result column="name" property="name"/>
+	<result column="warehouseId" property="warehouse_id"/>
+	<result column="category" property="category"/>
+	<result column="idTag" property="id_tag"/>
+	<result column="createdTime" property="createdTime"/>
+	<result column="createdBy" property="createdBy"/>
+	<result column="status" property="status"/>
+	<result column="capacity" property="capacity"/>
+	<result column="currentQuantity" property="currentQuantity"/>
+</resultMap>
+<select id="getSql1" resultMap="defaultDSAnonymousStructure_C17F1C08552FF64D58AEF610A908B489">
+	select * from `WarehouseArea` 
+<if test=" 1==1 or ( filter!=null and filter.createdTime!=null ) or ( filter!=null and filter.name!=null ) or ( filter!=null and filter.createdBy!=null ) or warehouse_id!=null or ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 or ( filter!=null and filter.createdTime!=null ) or ( filter!=null and filter.name!=null ) or warehouse_id!=null or ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 or ( filter!=null and filter.name!=null ) or warehouse_id!=null or ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 or warehouse_id!=null or ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 or warehouse_id!=null ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" warehouse_id!=null ">
+	(`warehouseId` = #{warehouse_id})
+</if> and `category` = '0'
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix="and">
+	(`idTag` like concat('%', #{filter.id_tag} ,'%'))
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.name!=null ) ">
+	
+<trim prefix="and">
+	(`name` like concat('%', #{filter.name} ,'%'))
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.createdTime!=null ) ">
+	
+<trim prefix="and">
+	(`createdTime` = #{filter.createdTime})
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.createdBy!=null ) ">
+	
+<trim prefix="and">
+	(`createdBy` = #{filter.createdBy})
+</trim>
+</if>
+</trim>
+</if>
+</select>
+
+
+</mapper>

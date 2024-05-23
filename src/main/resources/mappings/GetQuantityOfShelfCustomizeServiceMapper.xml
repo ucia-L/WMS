@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated GetQuantityOfShelfCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.GetQuantityOfShelfCustomizeServiceMapper">
+
+    <select id="getSql1" resultType="java.lang.Long">
+	select SUM( `quantity`) FROM `Goods` 
+<if test=" shelfId!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`shelfId` = #{shelfId}
+</trim>
+</if>
+</select>
+
+
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated LoadOutBoundPackingsCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.LoadOutBoundPackingsCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_64727DC0004C83C1CE0D2D2737E9AFAF" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_8E2CA7465AE892F5A14EC35F441B6201">
+	<id column="T1_C1" property="outboundPacking.id"/>
+	<result column="T1_C2" property="outboundPacking.outbound_good_id"/>
+	<result column="T1_C3" property="outboundPacking.quantity"/>
+	<result column="T1_C4" property="outboundPacking.warehouseArea_id"/>
+	<result column="T1_C5" property="outboundPacking.shelf_id"/>
+	<result column="T1_C6" property="outboundPacking.outbound_tmparea_id"/>
+	<result column="T1_C7" property="outboundPacking.status"/>
+	<result column="T1_C8" property="outboundPacking.outbound_commodity_name"/>
+	<result column="T1_C9" property="outboundPacking.outBoundOrderID"/>
+</resultMap>
+<select id="getAnonymousStructure_64727DC0004C83C1CE0D2D2737E9AFAF" resultMap="AnonymousStructure_64727DC0004C83C1CE0D2D2737E9AFAF">
+	 SELECT `OutboundPacking`.`id` `T1_C1`,`OutboundPacking`.`outboundGoodId` `T1_C2`,`OutboundPacking`.`quantity` `T1_C3`,`OutboundPacking`.`warehouseAreaId` `T1_C4`,`OutboundPacking`.`shelfId` `T1_C5`,`OutboundPacking`.`outboundTmpareaId` `T1_C6`,`OutboundPacking`.`status` `T1_C7`,`OutboundPacking`.`outboundCommodityName` `T1_C8`,`OutboundPacking`.`outBoundOrderID` `T1_C9` FROM `OutboundPacking` 
+<if test=" GoodID!=null and 1==1 ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`OutboundPacking`.`outboundGoodId` = #{GoodID}
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_64727DC0004C83C1CE0D2D2737E9AFAF" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `OutboundPacking` 
+<if test=" GoodID!=null and 1==1 ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`OutboundPacking`.`outboundGoodId` = #{GoodID}
+</trim>
+</if>
+</select>
+
+
+</mapper>

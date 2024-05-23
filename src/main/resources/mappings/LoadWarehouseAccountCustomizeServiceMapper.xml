@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated LoadWarehouseAccountCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.LoadWarehouseAccountCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_FF69F0762641F6C693E37CD8B489D3D5" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_4D4C8EF779CEA58C959BF52C7FAAEE70">
+	<id column="T2_C1" property="warehouseAccount.id"/>
+	<result column="T2_C2" property="warehouseAccount.id_tag"/>
+	<result column="T2_C3" property="warehouseAccount.balance"/>
+	<result column="T2_C4" property="warehouseAccount.note"/>
+	<result column="T2_C5" property="warehouseAccount.warehouse_id"/>
+	<result column="T2_C6" property="warehouseAccount.createdTime"/>
+	<result column="T2_C7" property="warehouseAccount.category"/>
+	<result column="T1_C1" property="warehouse.id"/>
+	<result column="T1_C2" property="warehouse.name"/>
+	<result column="T1_C3" property="warehouse.id_tag"/>
+	<result column="T1_C4" property="warehouse.createdTime"/>
+	<result column="T1_C5" property="warehouse.createdBy"/>
+	<result column="T1_C6" property="warehouse.status"/>
+	<result column="T1_C7" property="warehouse.balance"/>
+	<result column="T1_C8" property="warehouse.capacity"/>
+	<result column="T1_C9" property="warehouse.current_quantity"/>
+</resultMap>
+<select id="getAnonymousStructure_FF69F0762641F6C693E37CD8B489D3D5" resultMap="AnonymousStructure_FF69F0762641F6C693E37CD8B489D3D5">
+	 SELECT `WarehouseAccount`.`id` `T2_C1`,`WarehouseAccount`.`idTag` `T2_C2`,`WarehouseAccount`.`balance` `T2_C3`,`WarehouseAccount`.`note` `T2_C4`,`WarehouseAccount`.`warehouseId` `T2_C5`,`WarehouseAccount`.`createdTime` `T2_C6`,`WarehouseAccount`.`category` `T2_C7`,`Warehouse`.`id` `T1_C1`,`Warehouse`.`name` `T1_C2`,`Warehouse`.`idTag` `T1_C3`,`Warehouse`.`createdTime` `T1_C4`,`Warehouse`.`createdBy` `T1_C5`,`Warehouse`.`status` `T1_C6`,`Warehouse`.`balance` `T1_C7`,`Warehouse`.`capacity` `T1_C8`,`Warehouse`.`currentQuantity` `T1_C9` FROM `WarehouseAccount` INNER JOIN `Warehouse` ON `WarehouseAccount`.`warehouseId` = `Warehouse`.`id` 
+<if test=" ( filter!=null and filter.category!=null ) or 1==1 or startTime!=null or endTime!=null or warehouse_id!=null or ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 and warehouse_id!=null ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	#{warehouse_id} = `WarehouseAccount`.`warehouseId`
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.category!=null ) or 1==1 or startTime!=null or endTime!=null or ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.category!=null ) or 1==1 or ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`WarehouseAccount`.`idTag` = #{filter.id_tag}
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.category!=null ) and 1==1 ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`WarehouseAccount`.`category` = #{filter.category}
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 or startTime!=null or endTime!=null ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and startTime!=null ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`WarehouseAccount`.`createdTime` &gt;= #{startTime}
+</trim>
+</if> 
+<if test=" 1==1 and endTime!=null ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`WarehouseAccount`.`createdTime` &lt;= #{endTime}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_FF69F0762641F6C693E37CD8B489D3D5" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `WarehouseAccount` INNER JOIN `Warehouse` ON `WarehouseAccount`.`warehouseId` = `Warehouse`.`id` 
+<if test=" ( filter!=null and filter.category!=null ) or 1==1 or startTime!=null or endTime!=null or warehouse_id!=null or ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 and warehouse_id!=null ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	#{warehouse_id} = `WarehouseAccount`.`warehouseId`
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.category!=null ) or 1==1 or startTime!=null or endTime!=null or ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.category!=null ) or 1==1 or ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`WarehouseAccount`.`idTag` = #{filter.id_tag}
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.category!=null ) and 1==1 ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`WarehouseAccount`.`category` = #{filter.category}
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 or startTime!=null or endTime!=null ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and startTime!=null ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`WarehouseAccount`.`createdTime` &gt;= #{startTime}
+</trim>
+</if> 
+<if test=" 1==1 and endTime!=null ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`WarehouseAccount`.`createdTime` &lt;= #{endTime}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if>
+</select>
+
+
+</mapper>

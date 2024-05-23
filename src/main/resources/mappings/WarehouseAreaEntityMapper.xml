@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated WarehouseAreaEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.WarehouseAreaEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.WarehouseAreaEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="warehouseId" jdbcType="BIGINT" property="warehouse_id" />
+        <result column="category" jdbcType="VARCHAR" property="category" />
+        <result column="idTag" jdbcType="VARCHAR" property="id_tag" />
+        <result column="createdTime" jdbcType="TIMESTAMP" property="createdTime" />
+        <result column="createdBy" jdbcType="VARCHAR" property="createdBy" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="capacity" jdbcType="BIGINT" property="capacity" />
+        <result column="currentQuantity" jdbcType="BIGINT" property="currentQuantity" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.WarehouseAreaEntity"  keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `WarehouseArea` (
+            `name`
+            ,`warehouseId`
+            ,`category`
+            ,`idTag`
+            ,`createdTime`
+            ,`createdBy`
+            ,`status`
+            ,`capacity`
+            ,`currentQuantity`
+        )
+        VALUES (
+            #{name,jdbcType=VARCHAR}
+            ,#{warehouse_id,jdbcType=BIGINT}
+            ,#{category,jdbcType=VARCHAR}
+            ,#{id_tag,jdbcType=VARCHAR}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{createdBy,jdbcType=VARCHAR}
+            ,#{status,jdbcType=VARCHAR}
+            ,#{capacity,jdbcType=BIGINT}
+            ,#{currentQuantity,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `WarehouseArea` (
+            `name`
+            ,`warehouseId`
+            ,`category`
+            ,`idTag`
+            ,`createdTime`
+            ,`createdBy`
+            ,`status`
+            ,`capacity`
+            ,`currentQuantity`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.name,jdbcType=VARCHAR}
+            ,#{item.warehouse_id,jdbcType=BIGINT}
+            ,#{item.category,jdbcType=VARCHAR}
+            ,#{item.id_tag,jdbcType=VARCHAR}
+            ,#{item.createdTime,jdbcType=TIMESTAMP}
+            ,#{item.createdBy,jdbcType=VARCHAR}
+            ,#{item.status,jdbcType=VARCHAR}
+            ,#{item.capacity,jdbcType=BIGINT}
+            ,#{item.currentQuantity,jdbcType=BIGINT}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.WarehouseAreaEntity" >
+        UPDATE `WarehouseArea`
+        <set>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('warehouse_id')">`warehouseId` = #{bean.warehouse_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('category')">`category` = #{bean.category,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('id_tag')">`idTag` = #{bean.id_tag,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('capacity')">`capacity` = #{bean.capacity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('currentQuantity')">`currentQuantity` = #{bean.currentQuantity,jdbcType=BIGINT},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.WarehouseAreaEntity" >
+        UPDATE `WarehouseArea`
+        <set>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('warehouse_id')">`warehouseId` = #{bean.warehouse_id,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('category')">`category` = #{bean.category,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('id_tag')">`idTag` = #{bean.id_tag,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('capacity')">`capacity` = #{bean.capacity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('currentQuantity')">`currentQuantity` = #{bean.currentQuantity,jdbcType=BIGINT},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `WarehouseArea` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `WarehouseArea` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `WarehouseArea`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'warehouse_id'">
+                    AND `warehouseId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'category'">
+                    AND `category` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'id_tag'">
+                    AND `idTag` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'createdBy'">
+                    AND `createdBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'capacity'">
+                    AND `capacity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'currentQuantity'">
+                    AND `currentQuantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `WarehouseArea` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'warehouse_id'">
+                    AND `warehouseId` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'category'">
+                    AND `category` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'id_tag'">
+                    AND `idTag` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'createdBy'">
+                    AND `createdBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'capacity'">
+                    AND `capacity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'currentQuantity'">
+                    AND `currentQuantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `WarehouseArea` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `WarehouseArea`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `WarehouseArea`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.WarehouseAreaEntity">
+        INSERT INTO `WarehouseArea` (
+            `id`
+            ,`name`
+            ,`warehouseId`
+            ,`category`
+            ,`idTag`
+            ,`createdTime`
+            ,`createdBy`
+            ,`status`
+            ,`capacity`
+            ,`currentQuantity`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{name,jdbcType=VARCHAR}
+            ,#{warehouse_id,jdbcType=BIGINT}
+            ,#{category,jdbcType=VARCHAR}
+            ,#{id_tag,jdbcType=VARCHAR}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{createdBy,jdbcType=VARCHAR}
+            ,#{status,jdbcType=VARCHAR}
+            ,#{capacity,jdbcType=BIGINT}
+            ,#{currentQuantity,jdbcType=BIGINT}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `WarehouseArea`
+        <set>
+        <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('warehouse_id')">`warehouseId` = #{bean.warehouse_id,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('category')">`category` = #{bean.category,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('id_tag')">`idTag` = #{bean.id_tag,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('capacity')">`capacity` = #{bean.capacity,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('currentQuantity')">`currentQuantity` = #{bean.currentQuantity,jdbcType=BIGINT},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `WarehouseArea` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

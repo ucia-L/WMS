@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated AfterSalesOrderEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.AfterSalesOrderEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.AfterSalesOrderEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="customerName" jdbcType="VARCHAR" property="customer_name" />
+        <result column="responsible" jdbcType="VARCHAR" property="responsible" />
+        <result column="totalAmount" jdbcType="DECIMAL" property="total_amount" />
+        <result column="numberOfCargoEntries" jdbcType="BIGINT" property="number_of_cargo_entries" />
+        <result column="notes" jdbcType="VARCHAR" property="notes" />
+        <result column="idTag" jdbcType="VARCHAR" property="id_tag" />
+        <result column="orderDateTime" jdbcType="TIMESTAMP" property="order_dateTime" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.AfterSalesOrderEntity"  keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `AfterSalesOrder` (
+            `customerName`
+            ,`responsible`
+            ,`totalAmount`
+            ,`numberOfCargoEntries`
+            ,`notes`
+            ,`idTag`
+            ,`orderDateTime`
+            ,`status`
+        )
+        VALUES (
+            #{customer_name,jdbcType=VARCHAR}
+            ,#{responsible,jdbcType=VARCHAR}
+            ,#{total_amount,jdbcType=DECIMAL}
+            ,#{number_of_cargo_entries,jdbcType=BIGINT}
+            ,#{notes,jdbcType=VARCHAR}
+            ,#{id_tag,jdbcType=VARCHAR}
+            ,#{order_dateTime,jdbcType=TIMESTAMP}
+            ,#{status,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `AfterSalesOrder` (
+            `customerName`
+            ,`responsible`
+            ,`totalAmount`
+            ,`numberOfCargoEntries`
+            ,`notes`
+            ,`idTag`
+            ,`orderDateTime`
+            ,`status`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.customer_name,jdbcType=VARCHAR}
+            ,#{item.responsible,jdbcType=VARCHAR}
+            ,#{item.total_amount,jdbcType=DECIMAL}
+            ,#{item.number_of_cargo_entries,jdbcType=BIGINT}
+            ,#{item.notes,jdbcType=VARCHAR}
+            ,#{item.id_tag,jdbcType=VARCHAR}
+            ,#{item.order_dateTime,jdbcType=TIMESTAMP}
+            ,#{item.status,jdbcType=VARCHAR}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.AfterSalesOrderEntity" >
+        UPDATE `AfterSalesOrder`
+        <set>
+            <if test="updateFields == null or updateFields.contains('customer_name')">`customerName` = #{bean.customer_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('responsible')">`responsible` = #{bean.responsible,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('total_amount')">`totalAmount` = #{bean.total_amount,jdbcType=DECIMAL},</if>
+            <if test="updateFields == null or updateFields.contains('number_of_cargo_entries')">`numberOfCargoEntries` = #{bean.number_of_cargo_entries,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('notes')">`notes` = #{bean.notes,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('id_tag')">`idTag` = #{bean.id_tag,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('order_dateTime')">`orderDateTime` = #{bean.order_dateTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.AfterSalesOrderEntity" >
+        UPDATE `AfterSalesOrder`
+        <set>
+            <if test="updateFields == null or updateFields.contains('customer_name')">`customerName` = #{bean.customer_name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('responsible')">`responsible` = #{bean.responsible,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('total_amount')">`totalAmount` = #{bean.total_amount,jdbcType=DECIMAL},</if>
+            <if test="updateFields == null or updateFields.contains('number_of_cargo_entries')">`numberOfCargoEntries` = #{bean.number_of_cargo_entries,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('notes')">`notes` = #{bean.notes,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('id_tag')">`idTag` = #{bean.id_tag,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('order_dateTime')">`orderDateTime` = #{bean.order_dateTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `AfterSalesOrder` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `AfterSalesOrder` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `AfterSalesOrder`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'customer_name'">
+                    AND `customerName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'responsible'">
+                    AND `responsible` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'total_amount'">
+                    AND `totalAmount` = #{value, jdbcType=DECIMAL}
+                </when>
+                <when test="property == 'number_of_cargo_entries'">
+                    AND `numberOfCargoEntries` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'notes'">
+                    AND `notes` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'id_tag'">
+                    AND `idTag` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'order_dateTime'">
+                    AND `orderDateTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `AfterSalesOrder` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'customer_name'">
+                    AND `customerName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'responsible'">
+                    AND `responsible` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'total_amount'">
+                    AND `totalAmount` = #{value, jdbcType=DECIMAL}
+                </when>
+                <when test="property == 'number_of_cargo_entries'">
+                    AND `numberOfCargoEntries` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'notes'">
+                    AND `notes` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'id_tag'">
+                    AND `idTag` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'order_dateTime'">
+                    AND `orderDateTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `AfterSalesOrder` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `AfterSalesOrder`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `AfterSalesOrder`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.AfterSalesOrderEntity">
+        INSERT INTO `AfterSalesOrder` (
+            `id`
+            ,`customerName`
+            ,`responsible`
+            ,`totalAmount`
+            ,`numberOfCargoEntries`
+            ,`notes`
+            ,`idTag`
+            ,`orderDateTime`
+            ,`status`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{customer_name,jdbcType=VARCHAR}
+            ,#{responsible,jdbcType=VARCHAR}
+            ,#{total_amount,jdbcType=DECIMAL}
+            ,#{number_of_cargo_entries,jdbcType=BIGINT}
+            ,#{notes,jdbcType=VARCHAR}
+            ,#{id_tag,jdbcType=VARCHAR}
+            ,#{order_dateTime,jdbcType=TIMESTAMP}
+            ,#{status,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `AfterSalesOrder`
+        <set>
+        <if test="updateFields == null or updateFields.contains('customer_name')">`customerName` = #{bean.customer_name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('responsible')">`responsible` = #{bean.responsible,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('total_amount')">`totalAmount` = #{bean.total_amount,jdbcType=DECIMAL},</if>
+        <if test="updateFields == null or updateFields.contains('number_of_cargo_entries')">`numberOfCargoEntries` = #{bean.number_of_cargo_entries,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('notes')">`notes` = #{bean.notes,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('id_tag')">`idTag` = #{bean.id_tag,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('order_dateTime')">`orderDateTime` = #{bean.order_dateTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `AfterSalesOrder` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

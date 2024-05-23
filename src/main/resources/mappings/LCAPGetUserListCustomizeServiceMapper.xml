@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated LCAPGetUserListCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.LCAPGetUserListCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_90BB04F104917B26166C550B4A1B0632" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_47C167E7217746A55100F50A57F637C0">
+	<id column="T1_C1" property="lCAPUser.id"/>
+	<result column="T1_C2" property="lCAPUser.createdTime"/>
+	<result column="T1_C3" property="lCAPUser.updatedTime"/>
+	<result column="T1_C4" property="lCAPUser.userId"/>
+	<result column="T1_C5" property="lCAPUser.userName"/>
+	<result column="T1_C6" property="lCAPUser.password"/>
+	<result column="T1_C7" property="lCAPUser.phone"/>
+	<result column="T1_C8" property="lCAPUser.email"/>
+	<result column="T1_C9" property="lCAPUser.displayName"/>
+	<result column="T1_C10" property="lCAPUser.status"/>
+	<result column="T1_C11" property="lCAPUser.source"/>
+</resultMap>
+<select id="getAnonymousStructure_90BB04F104917B26166C550B4A1B0632" resultMap="AnonymousStructure_90BB04F104917B26166C550B4A1B0632">
+	 SELECT `LCAPUser_79f632`.`id` `T1_C1`,`LCAPUser_79f632`.`createdTime` `T1_C2`,`LCAPUser_79f632`.`updatedTime` `T1_C3`,`LCAPUser_79f632`.`userId` `T1_C4`,`LCAPUser_79f632`.`userName` `T1_C5`,`LCAPUser_79f632`.`password` `T1_C6`,`LCAPUser_79f632`.`phone` `T1_C7`,`LCAPUser_79f632`.`email` `T1_C8`,`LCAPUser_79f632`.`displayName` `T1_C9`,`LCAPUser_79f632`.`status` `T1_C10`,`LCAPUser_79f632`.`source` `T1_C11` FROM `LCAPUser_79f632` 
+<if test=" 1==1 and queryParam!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`LCAPUser_79f632`.`userName` LIKE concat('%', concat(#{queryParam}, '%'))
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 2000 * ( 1 - 1 ) )}, ${2000}
+</if>
+</select>
+<select id="countAnonymousStructure_90BB04F104917B26166C550B4A1B0632" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `LCAPUser_79f632` 
+<if test=" 1==1 and queryParam!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`LCAPUser_79f632`.`userName` LIKE concat('%', concat(#{queryParam}, '%'))
+</trim>
+</if>
+</select>
+
+
+</mapper>

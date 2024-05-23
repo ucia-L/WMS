@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated GetShelfByIdCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.GetShelfByIdCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_7F0FC9CD7C0E19CDEBEF556E681E6B3C" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_F30C4D4796DE57EC4963423784B62512">
+	<id column="T1_C1" property="shelf.id"/>
+	<result column="T1_C2" property="shelf.name"/>
+	<result column="T1_C3" property="shelf.warehouseArea_id"/>
+	<result column="T1_C4" property="shelf.createdTime"/>
+	<result column="T1_C5" property="shelf.createdBy"/>
+	<result column="T1_C6" property="shelf.id_tag"/>
+	<result column="T1_C7" property="shelf.status"/>
+	<result column="T1_C8" property="shelf.capacity"/>
+	<result column="T1_C9" property="shelf.currentQuantity"/>
+	<result column="T1_C10" property="shelf.preference"/>
+</resultMap>
+<select id="getAnonymousStructure_7F0FC9CD7C0E19CDEBEF556E681E6B3C" resultMap="AnonymousStructure_7F0FC9CD7C0E19CDEBEF556E681E6B3C">
+	 SELECT `Shelf`.`id` `T1_C1`,`Shelf`.`name` `T1_C2`,`Shelf`.`warehouseAreaId` `T1_C3`,`Shelf`.`createdTime` `T1_C4`,`Shelf`.`createdBy` `T1_C5`,`Shelf`.`idTag` `T1_C6`,`Shelf`.`status` `T1_C7`,`Shelf`.`capacity` `T1_C8`,`Shelf`.`currentQuantity` `T1_C9`,`Shelf`.`preference` `T1_C10` FROM `Shelf` 
+<if test=" 1==1 and id!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`Shelf`.`id` = #{id}
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_7F0FC9CD7C0E19CDEBEF556E681E6B3C" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `Shelf` 
+<if test=" 1==1 and id!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`Shelf`.`id` = #{id}
+</trim>
+</if>
+</select>
+
+
+</mapper>

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated LCAPUser Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.LCAPUserMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.LCAPUser">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="createdTime" jdbcType="TIMESTAMP" property="createdTime" />
+        <result column="updatedTime" jdbcType="TIMESTAMP" property="updatedTime" />
+        <result column="userId" jdbcType="VARCHAR" property="userId" />
+        <result column="userName" jdbcType="VARCHAR" property="userName" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="displayName" jdbcType="VARCHAR" property="displayName" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="source" jdbcType="VARCHAR" property="source" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.LCAPUser"  >
+        INSERT INTO `LCAPUser_79f632` (
+            `id`
+            ,`createdTime`
+            ,`updatedTime`
+            ,`userId`
+            ,`userName`
+            ,`password`
+            ,`phone`
+            ,`email`
+            ,`displayName`
+            ,`status`
+            ,`source`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{updatedTime,jdbcType=TIMESTAMP}
+            ,#{userId,jdbcType=VARCHAR}
+            ,#{userName,jdbcType=VARCHAR}
+            ,#{password,jdbcType=VARCHAR}
+            ,#{phone,jdbcType=VARCHAR}
+            ,#{email,jdbcType=VARCHAR}
+            ,#{displayName,jdbcType=VARCHAR}
+            ,#{status,jdbcType=VARCHAR}
+            ,#{source,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" >
+        INSERT INTO `LCAPUser_79f632` (
+            `id`
+            ,`createdTime`
+            ,`updatedTime`
+            ,`userId`
+            ,`userName`
+            ,`password`
+            ,`phone`
+            ,`email`
+            ,`displayName`
+            ,`status`
+            ,`source`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.id,jdbcType=BIGINT}
+            ,#{item.createdTime,jdbcType=TIMESTAMP}
+            ,#{item.updatedTime,jdbcType=TIMESTAMP}
+            ,#{item.userId,jdbcType=VARCHAR}
+            ,#{item.userName,jdbcType=VARCHAR}
+            ,#{item.password,jdbcType=VARCHAR}
+            ,#{item.phone,jdbcType=VARCHAR}
+            ,#{item.email,jdbcType=VARCHAR}
+            ,#{item.displayName,jdbcType=VARCHAR}
+            ,#{item.status,jdbcType=VARCHAR}
+            ,#{item.source,jdbcType=VARCHAR}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.LCAPUser" >
+        UPDATE `LCAPUser_79f632`
+        <set>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('userId')">`userId` = #{bean.userId,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('userName')">`userName` = #{bean.userName,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('password')">`password` = #{bean.password,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('phone')">`phone` = #{bean.phone,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('email')">`email` = #{bean.email,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('displayName')">`displayName` = #{bean.displayName,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('source')">`source` = #{bean.source,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.LCAPUser" >
+        UPDATE `LCAPUser_79f632`
+        <set>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('userId')">`userId` = #{bean.userId,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('userName')">`userName` = #{bean.userName,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('password')">`password` = #{bean.password,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('phone')">`phone` = #{bean.phone,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('email')">`email` = #{bean.email,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('displayName')">`displayName` = #{bean.displayName,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('source')">`source` = #{bean.source,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `LCAPUser_79f632` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `LCAPUser_79f632` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `LCAPUser_79f632`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'updatedTime'">
+                    AND `updatedTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'userId'">
+                    AND `userId` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'userName'">
+                    AND `userName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'password'">
+                    AND `password` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'phone'">
+                    AND `phone` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'email'">
+                    AND `email` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'displayName'">
+                    AND `displayName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'source'">
+                    AND `source` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `LCAPUser_79f632` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'updatedTime'">
+                    AND `updatedTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'userId'">
+                    AND `userId` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'userName'">
+                    AND `userName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'password'">
+                    AND `password` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'phone'">
+                    AND `phone` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'email'">
+                    AND `email` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'displayName'">
+                    AND `displayName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'source'">
+                    AND `source` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `LCAPUser_79f632` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `LCAPUser_79f632`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `LCAPUser_79f632`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.LCAPUser">
+        INSERT INTO `LCAPUser_79f632` (
+            `id`
+            ,`createdTime`
+            ,`updatedTime`
+            ,`userId`
+            ,`userName`
+            ,`password`
+            ,`phone`
+            ,`email`
+            ,`displayName`
+            ,`status`
+            ,`source`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{updatedTime,jdbcType=TIMESTAMP}
+            ,#{userId,jdbcType=VARCHAR}
+            ,#{userName,jdbcType=VARCHAR}
+            ,#{password,jdbcType=VARCHAR}
+            ,#{phone,jdbcType=VARCHAR}
+            ,#{email,jdbcType=VARCHAR}
+            ,#{displayName,jdbcType=VARCHAR}
+            ,#{status,jdbcType=VARCHAR}
+            ,#{source,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `LCAPUser_79f632`
+        <set>
+        <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('userId')">`userId` = #{bean.userId,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('userName')">`userName` = #{bean.userName,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('password')">`password` = #{bean.password,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('phone')">`phone` = #{bean.phone,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('email')">`email` = #{bean.email,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('displayName')">`displayName` = #{bean.displayName,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('source')">`source` = #{bean.source,jdbcType=VARCHAR},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `LCAPUser_79f632` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

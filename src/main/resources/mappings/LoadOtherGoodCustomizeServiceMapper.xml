@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated LoadOtherGoodCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.LoadOtherGoodCustomizeServiceMapper">
+
+    <resultMap id="defaultDSAnonymousStructure_A4D859148AAE9F95F73B990BB6297A2A" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_A4D859148AAE9F95F73B990BB6297A2A">
+	<result column="id" property="id"/>
+	<result column="idTag" property="id_tag"/>
+	<result column="name" property="name"/>
+	<result column="inboundPrice" property="inbound_price"/>
+	<result column="inboundOp" property="inbound_op"/>
+	<result column="note" property="note"/>
+	<result column="quantity" property="quantity"/>
+	<result column="unit" property="unit"/>
+	<result column="status" property="status"/>
+	<result column="inboundTime" property="inbound_time"/>
+	<result column="refuseReason" property="refuse_reason"/>
+	<result column="goodCategory" property="goodCategory"/>
+</resultMap>
+<select id="getSql1" resultMap="defaultDSAnonymousStructure_A4D859148AAE9F95F73B990BB6297A2A">
+	select * from `OtherInoundGood` 
+<if test=" ( filter!=null and filter.othergood!=null and filter.othergood.status!=null ) or ( filter!=null and filter.othergood!=null and filter.othergood.inbound_op!=null ) or ( filter!=null and filter.othergood!=null and filter.othergood.id_tag!=null ) or ( filter!=null and filter.othergood!=null and filter.othergood.name!=null ) or ( filter!=null and filter.endTime!=null ) or ( filter!=null and filter.beginTime!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" ( filter!=null and filter.othergood!=null and filter.othergood.status!=null ) or ( filter!=null and filter.othergood!=null and filter.othergood.inbound_op!=null ) or ( filter!=null and filter.othergood!=null and filter.othergood.id_tag!=null ) or ( filter!=null and filter.othergood!=null and filter.othergood.name!=null ) or ( filter!=null and filter.beginTime!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.othergood!=null and filter.othergood.status!=null ) or ( filter!=null and filter.othergood!=null and filter.othergood.inbound_op!=null ) or ( filter!=null and filter.othergood!=null and filter.othergood.id_tag!=null ) or ( filter!=null and filter.othergood!=null and filter.othergood.name!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.othergood!=null and filter.othergood.status!=null ) or ( filter!=null and filter.othergood!=null and filter.othergood.id_tag!=null ) or ( filter!=null and filter.othergood!=null and filter.othergood.name!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.othergood!=null and filter.othergood.id_tag!=null ) or ( filter!=null and filter.othergood!=null and filter.othergood.name!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.othergood!=null and filter.othergood.id_tag!=null ) ">
+	(`idTag` like concat('%', #{filter.othergood.id_tag} ,'%'))
+</if> 
+<if test=" ( filter!=null and filter.othergood!=null and filter.othergood.name!=null ) ">
+	
+<trim prefix="and">
+	(`name` like concat('%', #{filter.othergood.name} ,'%'))
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.othergood!=null and filter.othergood.status!=null ) ">
+	
+<trim prefix="and">
+	(`status` = #{filter.othergood.status})
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.othergood!=null and filter.othergood.inbound_op!=null ) ">
+	
+<trim prefix="and">
+	(`inboundOp` like concat('%', #{filter.othergood.inbound_op} ,'%'))
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.beginTime!=null ) ">
+	
+<trim prefix="and">
+	(`inboundTime` &gt;= #{filter.beginTime})
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.endTime!=null ) ">
+	
+<trim prefix="and">
+	(`inboundTime` &lt;= DATE_ADD( #{filter.endTime} , INTERVAL 1 DAY))
+</trim>
+</if>
+</trim>
+</if>
+</select>
+
+
+</mapper>

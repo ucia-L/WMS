@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated UsersGetInfoCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.UsersGetInfoCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_CEA46914E8B41B3EA46132D72F048689" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_2057AF86534DB39D024DB52971831007">
+	<id column="T1_C1" property="userinfo.id"/>
+	<result column="T1_C2" property="userinfo.createdTime"/>
+	<result column="T1_C3" property="userinfo.username"/>
+	<result column="T1_C4" property="userinfo.password"/>
+	<result column="T1_C5" property="userinfo.phone"/>
+	<result column="T1_C6" property="userinfo.name"/>
+	<result column="T1_C7" property="userinfo.avatar"/>
+	<result column="T1_C8" property="userinfo.sex"/>
+	<result column="T1_C9" property="userinfo.is_inbound"/>
+	<result column="T1_C10" property="userinfo.is_outbound"/>
+	<result column="T1_C11" property="userinfo.is_distribution"/>
+	<result column="T1_C12" property="userinfo.is_warefareManage"/>
+	<result column="T1_C13" property="userinfo.is_finance"/>
+	<result column="T1_C14" property="userinfo.is_admin"/>
+	<result column="T1_C15" property="userinfo.warehouse_id"/>
+	<result column="T1_C16" property="userinfo.createdBy"/>
+	<result column="T1_C17" property="userinfo.orderInbound_count"/>
+	<result column="T1_C18" property="userinfo.orderOutbound_count"/>
+	<result column="T1_C19" property="userinfo.afterSaleInbound_count"/>
+	<result column="T1_C20" property="userinfo.afterSaleOutbound_count"/>
+	<result column="T1_C21" property="userinfo.otherInbound_count"/>
+	<result column="T1_C22" property="userinfo.otherOutbound_count"/>
+</resultMap>
+<select id="getAnonymousStructure_CEA46914E8B41B3EA46132D72F048689" resultMap="AnonymousStructure_CEA46914E8B41B3EA46132D72F048689">
+	 SELECT `Userinfo`.`id` `T1_C1`,`Userinfo`.`createdTime` `T1_C2`,`Userinfo`.`username` `T1_C3`,`Userinfo`.`password` `T1_C4`,`Userinfo`.`phone` `T1_C5`,`Userinfo`.`name` `T1_C6`,`Userinfo`.`avatar` `T1_C7`,`Userinfo`.`sex` `T1_C8`,`Userinfo`.`isInbound` `T1_C9`,`Userinfo`.`isOutbound` `T1_C10`,`Userinfo`.`isDistribution` `T1_C11`,`Userinfo`.`isWarefareManage` `T1_C12`,`Userinfo`.`isFinance` `T1_C13`,`Userinfo`.`isAdmin` `T1_C14`,`Userinfo`.`warehouseId` `T1_C15`,`Userinfo`.`createdBy` `T1_C16`,`Userinfo`.`orderInboundCount` `T1_C17`,`Userinfo`.`orderOutboundCount` `T1_C18`,`Userinfo`.`afterSaleInboundCount` `T1_C19`,`Userinfo`.`afterSaleOutboundCount` `T1_C20`,`Userinfo`.`otherInboundCount` `T1_C21`,`Userinfo`.`otherOutboundCount` `T1_C22` FROM `Userinfo` 
+<if test=" ( filter!=null and filter.is_outbound!=null ) or ( filter!=null and filter.username!=null ) or ( filter!=null and filter.phone!=null ) or ( filter!=null and filter.is_distribution!=null ) or 1==1 or ( filter!=null and filter.is_inbound!=null ) or ( filter!=null and filter.password!=null ) or ( filter!=null and filter.is_warefareManage!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" ( filter!=null and filter.is_outbound!=null ) or ( filter!=null and filter.username!=null ) or ( filter!=null and filter.is_distribution!=null ) or 1==1 or ( filter!=null and filter.is_inbound!=null ) or ( filter!=null and filter.password!=null ) or ( filter!=null and filter.is_warefareManage!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.username!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Userinfo`.`username` = #{filter.username}
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.is_outbound!=null ) or ( filter!=null and filter.is_distribution!=null ) or 1==1 or ( filter!=null and filter.is_inbound!=null ) or ( filter!=null and filter.password!=null ) or ( filter!=null and filter.is_warefareManage!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.password!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Userinfo`.`password` = #{filter.password}
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.is_outbound!=null ) or ( filter!=null and filter.is_distribution!=null ) or 1==1 or ( filter!=null and filter.is_inbound!=null ) or ( filter!=null and filter.is_warefareManage!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.is_inbound!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Userinfo`.`isInbound` = #{filter.is_inbound}
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.is_outbound!=null ) or ( filter!=null and filter.is_distribution!=null ) or 1==1 or ( filter!=null and filter.is_warefareManage!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.is_outbound!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Userinfo`.`isOutbound` = #{filter.is_outbound}
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.is_distribution!=null ) or 1==1 or ( filter!=null and filter.is_warefareManage!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.is_distribution!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Userinfo`.`isDistribution` = #{filter.is_distribution}
+</trim>
+</if> 
+<if test=" 1==1 and ( filter!=null and filter.is_warefareManage!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Userinfo`.`isWarefareManage` = #{filter.is_warefareManage}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.phone!=null ) and 1==1 ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Userinfo`.`phone` = #{filter.phone}
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_CEA46914E8B41B3EA46132D72F048689" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `Userinfo` 
+<if test=" ( filter!=null and filter.is_outbound!=null ) or ( filter!=null and filter.username!=null ) or ( filter!=null and filter.phone!=null ) or ( filter!=null and filter.is_distribution!=null ) or 1==1 or ( filter!=null and filter.is_inbound!=null ) or ( filter!=null and filter.password!=null ) or ( filter!=null and filter.is_warefareManage!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" ( filter!=null and filter.is_outbound!=null ) or ( filter!=null and filter.username!=null ) or ( filter!=null and filter.is_distribution!=null ) or 1==1 or ( filter!=null and filter.is_inbound!=null ) or ( filter!=null and filter.password!=null ) or ( filter!=null and filter.is_warefareManage!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.username!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Userinfo`.`username` = #{filter.username}
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.is_outbound!=null ) or ( filter!=null and filter.is_distribution!=null ) or 1==1 or ( filter!=null and filter.is_inbound!=null ) or ( filter!=null and filter.password!=null ) or ( filter!=null and filter.is_warefareManage!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.password!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Userinfo`.`password` = #{filter.password}
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.is_outbound!=null ) or ( filter!=null and filter.is_distribution!=null ) or 1==1 or ( filter!=null and filter.is_inbound!=null ) or ( filter!=null and filter.is_warefareManage!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.is_inbound!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Userinfo`.`isInbound` = #{filter.is_inbound}
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.is_outbound!=null ) or ( filter!=null and filter.is_distribution!=null ) or 1==1 or ( filter!=null and filter.is_warefareManage!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.is_outbound!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Userinfo`.`isOutbound` = #{filter.is_outbound}
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.is_distribution!=null ) or 1==1 or ( filter!=null and filter.is_warefareManage!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.is_distribution!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Userinfo`.`isDistribution` = #{filter.is_distribution}
+</trim>
+</if> 
+<if test=" 1==1 and ( filter!=null and filter.is_warefareManage!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Userinfo`.`isWarefareManage` = #{filter.is_warefareManage}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.phone!=null ) and 1==1 ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`Userinfo`.`phone` = #{filter.phone}
+</trim>
+</trim>
+</if>
+</trim>
+</if>
+</select>
+
+
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated LoadWareHouseAreaCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.LoadWareHouseAreaCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_C4FA1D15D6667A010FD16DE68FF5F6F8" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_46C8A8E71B06F587D170236042B53479">
+	<id column="T1_C1" property="warehouseArea.id"/>
+	<result column="T1_C2" property="warehouseArea.name"/>
+	<result column="T1_C3" property="warehouseArea.warehouse_id"/>
+	<result column="T1_C4" property="warehouseArea.category"/>
+	<result column="T1_C5" property="warehouseArea.id_tag"/>
+	<result column="T1_C6" property="warehouseArea.createdTime"/>
+	<result column="T1_C7" property="warehouseArea.createdBy"/>
+	<result column="T1_C8" property="warehouseArea.status"/>
+	<result column="T1_C9" property="warehouseArea.capacity"/>
+	<result column="T1_C10" property="warehouseArea.currentQuantity"/>
+</resultMap>
+<select id="getAnonymousStructure_C4FA1D15D6667A010FD16DE68FF5F6F8" resultMap="AnonymousStructure_C4FA1D15D6667A010FD16DE68FF5F6F8">
+	 SELECT `WarehouseArea`.`id` `T1_C1`,`WarehouseArea`.`name` `T1_C2`,`WarehouseArea`.`warehouseId` `T1_C3`,`WarehouseArea`.`category` `T1_C4`,`WarehouseArea`.`idTag` `T1_C5`,`WarehouseArea`.`createdTime` `T1_C6`,`WarehouseArea`.`createdBy` `T1_C7`,`WarehouseArea`.`status` `T1_C8`,`WarehouseArea`.`capacity` `T1_C9`,`WarehouseArea`.`currentQuantity` `T1_C10` FROM `WarehouseArea` 
+<if test=" 1==1 and wareHouseID!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`WarehouseArea`.`warehouseId` = #{wareHouseID}
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_C4FA1D15D6667A010FD16DE68FF5F6F8" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `WarehouseArea` 
+<if test=" 1==1 and wareHouseID!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`WarehouseArea`.`warehouseId` = #{wareHouseID}
+</trim>
+</if>
+</select>
+
+
+</mapper>

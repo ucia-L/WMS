@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated AllotOutboundEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.AllotOutboundEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.AllotOutboundEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="unit" jdbcType="VARCHAR" property="unit" />
+        <result column="quantity" jdbcType="BIGINT" property="quantity" />
+        <result column="warehouseOid" jdbcType="BIGINT" property="warehouse_Oid" />
+        <result column="warehouseTid" jdbcType="BIGINT" property="warehouse_Tid" />
+        <result column="warehouseAreaOid" jdbcType="BIGINT" property="warehouseArea_Oid" />
+        <result column="warehouseAreaTid" jdbcType="BIGINT" property="warehouseArea_Tid" />
+        <result column="shelfOid" jdbcType="BIGINT" property="shelf_Oid" />
+        <result column="shelfTid" jdbcType="BIGINT" property="shelf_Tid" />
+        <result column="allotTime" jdbcType="TIMESTAMP" property="allotTime" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.AllotOutboundEntity"  keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `AllotOutbound` (
+            `name`
+            ,`unit`
+            ,`quantity`
+            ,`warehouseOid`
+            ,`warehouseTid`
+            ,`warehouseAreaOid`
+            ,`warehouseAreaTid`
+            ,`shelfOid`
+            ,`shelfTid`
+            ,`allotTime`
+        )
+        VALUES (
+            #{name,jdbcType=VARCHAR}
+            ,#{unit,jdbcType=VARCHAR}
+            ,#{quantity,jdbcType=BIGINT}
+            ,#{warehouse_Oid,jdbcType=BIGINT}
+            ,#{warehouse_Tid,jdbcType=BIGINT}
+            ,#{warehouseArea_Oid,jdbcType=BIGINT}
+            ,#{warehouseArea_Tid,jdbcType=BIGINT}
+            ,#{shelf_Oid,jdbcType=BIGINT}
+            ,#{shelf_Tid,jdbcType=BIGINT}
+            ,#{allotTime,jdbcType=TIMESTAMP}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `AllotOutbound` (
+            `name`
+            ,`unit`
+            ,`quantity`
+            ,`warehouseOid`
+            ,`warehouseTid`
+            ,`warehouseAreaOid`
+            ,`warehouseAreaTid`
+            ,`shelfOid`
+            ,`shelfTid`
+            ,`allotTime`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.name,jdbcType=VARCHAR}
+            ,#{item.unit,jdbcType=VARCHAR}
+            ,#{item.quantity,jdbcType=BIGINT}
+            ,#{item.warehouse_Oid,jdbcType=BIGINT}
+            ,#{item.warehouse_Tid,jdbcType=BIGINT}
+            ,#{item.warehouseArea_Oid,jdbcType=BIGINT}
+            ,#{item.warehouseArea_Tid,jdbcType=BIGINT}
+            ,#{item.shelf_Oid,jdbcType=BIGINT}
+            ,#{item.shelf_Tid,jdbcType=BIGINT}
+            ,#{item.allotTime,jdbcType=TIMESTAMP}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.AllotOutboundEntity" >
+        UPDATE `AllotOutbound`
+        <set>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('warehouse_Oid')">`warehouseOid` = #{bean.warehouse_Oid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('warehouse_Tid')">`warehouseTid` = #{bean.warehouse_Tid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('warehouseArea_Oid')">`warehouseAreaOid` = #{bean.warehouseArea_Oid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('warehouseArea_Tid')">`warehouseAreaTid` = #{bean.warehouseArea_Tid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('shelf_Oid')">`shelfOid` = #{bean.shelf_Oid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('shelf_Tid')">`shelfTid` = #{bean.shelf_Tid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('allotTime')">`allotTime` = #{bean.allotTime,jdbcType=TIMESTAMP},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.AllotOutboundEntity" >
+        UPDATE `AllotOutbound`
+        <set>
+            <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('warehouse_Oid')">`warehouseOid` = #{bean.warehouse_Oid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('warehouse_Tid')">`warehouseTid` = #{bean.warehouse_Tid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('warehouseArea_Oid')">`warehouseAreaOid` = #{bean.warehouseArea_Oid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('warehouseArea_Tid')">`warehouseAreaTid` = #{bean.warehouseArea_Tid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('shelf_Oid')">`shelfOid` = #{bean.shelf_Oid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('shelf_Tid')">`shelfTid` = #{bean.shelf_Tid,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('allotTime')">`allotTime` = #{bean.allotTime,jdbcType=TIMESTAMP},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `AllotOutbound` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `AllotOutbound` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `AllotOutbound`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'unit'">
+                    AND `unit` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'quantity'">
+                    AND `quantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'warehouse_Oid'">
+                    AND `warehouseOid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'warehouse_Tid'">
+                    AND `warehouseTid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'warehouseArea_Oid'">
+                    AND `warehouseAreaOid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'warehouseArea_Tid'">
+                    AND `warehouseAreaTid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'shelf_Oid'">
+                    AND `shelfOid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'shelf_Tid'">
+                    AND `shelfTid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'allotTime'">
+                    AND `allotTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `AllotOutbound` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'name'">
+                    AND `name` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'unit'">
+                    AND `unit` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'quantity'">
+                    AND `quantity` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'warehouse_Oid'">
+                    AND `warehouseOid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'warehouse_Tid'">
+                    AND `warehouseTid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'warehouseArea_Oid'">
+                    AND `warehouseAreaOid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'warehouseArea_Tid'">
+                    AND `warehouseAreaTid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'shelf_Oid'">
+                    AND `shelfOid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'shelf_Tid'">
+                    AND `shelfTid` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'allotTime'">
+                    AND `allotTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `AllotOutbound` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `AllotOutbound`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `AllotOutbound`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.AllotOutboundEntity">
+        INSERT INTO `AllotOutbound` (
+            `id`
+            ,`name`
+            ,`unit`
+            ,`quantity`
+            ,`warehouseOid`
+            ,`warehouseTid`
+            ,`warehouseAreaOid`
+            ,`warehouseAreaTid`
+            ,`shelfOid`
+            ,`shelfTid`
+            ,`allotTime`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{name,jdbcType=VARCHAR}
+            ,#{unit,jdbcType=VARCHAR}
+            ,#{quantity,jdbcType=BIGINT}
+            ,#{warehouse_Oid,jdbcType=BIGINT}
+            ,#{warehouse_Tid,jdbcType=BIGINT}
+            ,#{warehouseArea_Oid,jdbcType=BIGINT}
+            ,#{warehouseArea_Tid,jdbcType=BIGINT}
+            ,#{shelf_Oid,jdbcType=BIGINT}
+            ,#{shelf_Tid,jdbcType=BIGINT}
+            ,#{allotTime,jdbcType=TIMESTAMP}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `AllotOutbound`
+        <set>
+        <if test="updateFields == null or updateFields.contains('name')">`name` = #{bean.name,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('unit')">`unit` = #{bean.unit,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('quantity')">`quantity` = #{bean.quantity,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('warehouse_Oid')">`warehouseOid` = #{bean.warehouse_Oid,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('warehouse_Tid')">`warehouseTid` = #{bean.warehouse_Tid,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('warehouseArea_Oid')">`warehouseAreaOid` = #{bean.warehouseArea_Oid,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('warehouseArea_Tid')">`warehouseAreaTid` = #{bean.warehouseArea_Tid,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('shelf_Oid')">`shelfOid` = #{bean.shelf_Oid,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('shelf_Tid')">`shelfTid` = #{bean.shelf_Tid,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('allotTime')">`allotTime` = #{bean.allotTime,jdbcType=TIMESTAMP},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `AllotOutbound` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

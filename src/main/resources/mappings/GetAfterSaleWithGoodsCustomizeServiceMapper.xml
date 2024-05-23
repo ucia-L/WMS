@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated GetAfterSaleWithGoodsCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.GetAfterSaleWithGoodsCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_B68304FA575E7E3C6172C58A216669D4" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_700A1909C69274C7EF524520E99699D1">
+	<id column="T1_C1" property="afterSalesOrder.id"/>
+	<result column="T1_C2" property="afterSalesOrder.customer_name"/>
+	<result column="T1_C3" property="afterSalesOrder.responsible"/>
+	<result column="T1_C4" property="afterSalesOrder.total_amount"/>
+	<result column="T1_C5" property="afterSalesOrder.number_of_cargo_entries"/>
+	<result column="T1_C6" property="afterSalesOrder.notes"/>
+	<result column="T1_C7" property="afterSalesOrder.id_tag"/>
+	<result column="T1_C8" property="afterSalesOrder.order_dateTime"/>
+	<result column="T1_C9" property="afterSalesOrder.status"/>
+</resultMap>
+<select id="getAnonymousStructure_B68304FA575E7E3C6172C58A216669D4" resultMap="AnonymousStructure_B68304FA575E7E3C6172C58A216669D4">
+	 SELECT `AfterSalesOrder`.`id` `T1_C1`,`AfterSalesOrder`.`customerName` `T1_C2`,`AfterSalesOrder`.`responsible` `T1_C3`,`AfterSalesOrder`.`totalAmount` `T1_C4`,`AfterSalesOrder`.`numberOfCargoEntries` `T1_C5`,`AfterSalesOrder`.`notes` `T1_C6`,`AfterSalesOrder`.`idTag` `T1_C7`,`AfterSalesOrder`.`orderDateTime` `T1_C8`,`AfterSalesOrder`.`status` `T1_C9` FROM `AfterSalesOrder` 
+<if test=" ( filter!=null and filter.customer_name!=null ) or 1==1 or ( filter!=null and filter.id!=null ) or ( filter!=null and filter.responsible!=null ) or startTime!=null or endTime!=null or ( filter!=null and filter.order_dateTime!=null ) or ( filter!=null and filter.status!=null ) or ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" ( filter!=null and filter.customer_name!=null ) or 1==1 or ( filter!=null and filter.id!=null ) or ( filter!=null and filter.responsible!=null ) or ( filter!=null and filter.order_dateTime!=null ) or ( filter!=null and filter.status!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`AfterSalesOrder`.`id` = #{filter.id}
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.customer_name!=null ) or 1==1 or ( filter!=null and filter.responsible!=null ) or ( filter!=null and filter.order_dateTime!=null ) or ( filter!=null and filter.status!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.customer_name!=null ) or 1==1 or ( filter!=null and filter.responsible!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.customer_name!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`AfterSalesOrder`.`customerName` LIKE concat('%', concat(#{filter.customer_name}, '%'))
+</trim>
+</if> 
+<if test=" 1==1 and ( filter!=null and filter.responsible!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`AfterSalesOrder`.`responsible` LIKE concat('%', concat(#{filter.responsible}, '%'))
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 or ( filter!=null and filter.order_dateTime!=null ) or ( filter!=null and filter.status!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.order_dateTime!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`AfterSalesOrder`.`orderDateTime` = #{filter.order_dateTime}
+</trim>
+</if> 
+<if test=" 1==1 and ( filter!=null and filter.status!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`AfterSalesOrder`.`status` = #{filter.status}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 or startTime!=null or endTime!=null or ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`AfterSalesOrder`.`idTag` LIKE concat('%', concat(#{filter.id_tag}, '%'))
+</trim>
+</if> 
+<if test=" 1==1 or startTime!=null or endTime!=null ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and startTime!=null ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`AfterSalesOrder`.`orderDateTime` &gt; #{startTime}
+</trim>
+</if> 
+<if test=" 1==1 and endTime!=null ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`AfterSalesOrder`.`orderDateTime` &lt; #{endTime}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_B68304FA575E7E3C6172C58A216669D4" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `AfterSalesOrder` 
+<if test=" ( filter!=null and filter.customer_name!=null ) or 1==1 or ( filter!=null and filter.id!=null ) or ( filter!=null and filter.responsible!=null ) or startTime!=null or endTime!=null or ( filter!=null and filter.order_dateTime!=null ) or ( filter!=null and filter.status!=null ) or ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" ( filter!=null and filter.customer_name!=null ) or 1==1 or ( filter!=null and filter.id!=null ) or ( filter!=null and filter.responsible!=null ) or ( filter!=null and filter.order_dateTime!=null ) or ( filter!=null and filter.status!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`AfterSalesOrder`.`id` = #{filter.id}
+</trim>
+</if> 
+<if test=" ( filter!=null and filter.customer_name!=null ) or 1==1 or ( filter!=null and filter.responsible!=null ) or ( filter!=null and filter.order_dateTime!=null ) or ( filter!=null and filter.status!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.customer_name!=null ) or 1==1 or ( filter!=null and filter.responsible!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" ( filter!=null and filter.customer_name!=null ) and 1==1 ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`AfterSalesOrder`.`customerName` LIKE concat('%', concat(#{filter.customer_name}, '%'))
+</trim>
+</if> 
+<if test=" 1==1 and ( filter!=null and filter.responsible!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`AfterSalesOrder`.`responsible` LIKE concat('%', concat(#{filter.responsible}, '%'))
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 or ( filter!=null and filter.order_dateTime!=null ) or ( filter!=null and filter.status!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.order_dateTime!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`AfterSalesOrder`.`orderDateTime` = #{filter.order_dateTime}
+</trim>
+</if> 
+<if test=" 1==1 and ( filter!=null and filter.status!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`AfterSalesOrder`.`status` = #{filter.status}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 or startTime!=null or endTime!=null or ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.id_tag!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`AfterSalesOrder`.`idTag` LIKE concat('%', concat(#{filter.id_tag}, '%'))
+</trim>
+</if> 
+<if test=" 1==1 or startTime!=null or endTime!=null ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and startTime!=null ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`AfterSalesOrder`.`orderDateTime` &gt; #{startTime}
+</trim>
+</if> 
+<if test=" 1==1 and endTime!=null ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`AfterSalesOrder`.`orderDateTime` &lt; #{endTime}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if>
+</select>
+<resultMap id="AnonymousStructure_B6021528EA8063DE04918A525D9D601D" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_C536A748AD5BD93EDD4558A2682AE5EA">
+	<id column="T1_C1" property="afterSaleGood.id"/>
+	<result column="T1_C2" property="afterSaleGood.after_sale_id"/>
+	<result column="T1_C3" property="afterSaleGood.name"/>
+	<result column="T1_C4" property="afterSaleGood.quantity"/>
+	<result column="T1_C5" property="afterSaleGood.unit"/>
+	<result column="T1_C6" property="afterSaleGood.status"/>
+	<result column="T1_C7" property="afterSaleGood.notes"/>
+	<result column="T1_C8" property="afterSaleGood.goodCategory"/>
+</resultMap>
+<select id="getAnonymousStructure_B6021528EA8063DE04918A525D9D601D" resultMap="AnonymousStructure_B6021528EA8063DE04918A525D9D601D">
+	 SELECT `AfterSaleGood`.`id` `T1_C1`,`AfterSaleGood`.`afterSaleId` `T1_C2`,`AfterSaleGood`.`name` `T1_C3`,`AfterSaleGood`.`quantity` `T1_C4`,`AfterSaleGood`.`unit` `T1_C5`,`AfterSaleGood`.`status` `T1_C6`,`AfterSaleGood`.`notes` `T1_C7`,`AfterSaleGood`.`goodCategory` `T1_C8` FROM `AfterSaleGood` 
+<if test=" 1==1 and ( item!=null and item.afterSalesOrder!=null and item.afterSalesOrder.id!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`AfterSaleGood`.`afterSaleId` = #{item.afterSalesOrder.id}
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_B6021528EA8063DE04918A525D9D601D" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `AfterSaleGood` 
+<if test=" 1==1 and ( item!=null and item.afterSalesOrder!=null and item.afterSalesOrder.id!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`AfterSaleGood`.`afterSaleId` = #{item.afterSalesOrder.id}
+</trim>
+</if>
+</select>
+<select id="getStructure1" resultType="java.lang.Long">
+	 SELECT COUNT(`AfterSaleGood`.`id`) `count` FROM `AfterSaleGood` 
+<if test=" 1==1 or ( item!=null and item.afterSalesOrder!=null and item.afterSalesOrder.id!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 and ( item!=null and item.afterSalesOrder!=null and item.afterSalesOrder.id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`AfterSaleGood`.`afterSaleId` = #{item.afterSalesOrder.id}
+</trim>
+</if> 
+<if test=" 1==1 ">
+	
+<trim prefix="and">
+	(`AfterSaleGood`.`status` = '0')
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+
+
+</mapper>

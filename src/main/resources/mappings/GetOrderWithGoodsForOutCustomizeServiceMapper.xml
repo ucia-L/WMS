@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated GetOrderWithGoodsForOutCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.GetOrderWithGoodsForOutCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_B68304FA575E7E3C6172C58A216669D4" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_700A1909C69274C7EF524520E99699D1">
+	<id column="T1_C1" property="afterSalesOrder.id"/>
+	<result column="T1_C2" property="afterSalesOrder.customer_name"/>
+	<result column="T1_C3" property="afterSalesOrder.responsible"/>
+	<result column="T1_C4" property="afterSalesOrder.total_amount"/>
+	<result column="T1_C5" property="afterSalesOrder.number_of_cargo_entries"/>
+	<result column="T1_C6" property="afterSalesOrder.notes"/>
+	<result column="T1_C7" property="afterSalesOrder.id_tag"/>
+	<result column="T1_C8" property="afterSalesOrder.order_dateTime"/>
+	<result column="T1_C9" property="afterSalesOrder.status"/>
+</resultMap>
+<select id="getAnonymousStructure_B68304FA575E7E3C6172C58A216669D4" resultMap="AnonymousStructure_B68304FA575E7E3C6172C58A216669D4">
+	 SELECT `AfterSalesOrder`.`id` `T1_C1`,`AfterSalesOrder`.`customerName` `T1_C2`,`AfterSalesOrder`.`responsible` `T1_C3`,`AfterSalesOrder`.`totalAmount` `T1_C4`,`AfterSalesOrder`.`numberOfCargoEntries` `T1_C5`,`AfterSalesOrder`.`notes` `T1_C6`,`AfterSalesOrder`.`idTag` `T1_C7`,`AfterSalesOrder`.`orderDateTime` `T1_C8`,`AfterSalesOrder`.`status` `T1_C9` FROM `AfterSalesOrder`  
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_B68304FA575E7E3C6172C58A216669D4" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `AfterSalesOrder` 
+</select>
+
+
+</mapper>

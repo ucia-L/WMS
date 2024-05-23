@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated ShippingEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.ShippingEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.ShippingEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="updatedBy" jdbcType="VARCHAR" property="updatedBy" />
+        <result column="updatedTime" jdbcType="TIMESTAMP" property="updatedTime" />
+        <result column="createdBy" jdbcType="VARCHAR" property="createdBy" />
+        <result column="createdTime" jdbcType="TIMESTAMP" property="createdTime" />
+        <result column="outBoundOrderID" jdbcType="BIGINT" property="outBoundOrderID" />
+        <result column="shippingWorkerID" jdbcType="BIGINT" property="shippingWorkerID" />
+        <result column="shippingWorkerName" jdbcType="VARCHAR" property="shippingWorkerName" />
+        <result column="shippingStatus" jdbcType="VARCHAR" property="shipping_status" />
+        <result column="expressId" jdbcType="VARCHAR" property="express_id" />
+        <result column="expressCompany" jdbcType="VARCHAR" property="express_company" />
+        <result column="shippingTime" jdbcType="TIMESTAMP" property="shippingTime" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.ShippingEntity"  >
+        INSERT INTO `Shipping` (
+            `id`
+            ,`updatedBy`
+            ,`updatedTime`
+            ,`createdBy`
+            ,`createdTime`
+            ,`outBoundOrderID`
+            ,`shippingWorkerID`
+            ,`shippingWorkerName`
+            ,`shippingStatus`
+            ,`expressId`
+            ,`expressCompany`
+            ,`shippingTime`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{updatedBy,jdbcType=VARCHAR}
+            ,#{updatedTime,jdbcType=TIMESTAMP}
+            ,#{createdBy,jdbcType=VARCHAR}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{outBoundOrderID,jdbcType=BIGINT}
+            ,#{shippingWorkerID,jdbcType=BIGINT}
+            ,#{shippingWorkerName,jdbcType=VARCHAR}
+            ,#{shipping_status,jdbcType=VARCHAR}
+            ,#{express_id,jdbcType=VARCHAR}
+            ,#{express_company,jdbcType=VARCHAR}
+            ,#{shippingTime,jdbcType=TIMESTAMP}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" >
+        INSERT INTO `Shipping` (
+            `id`
+            ,`updatedBy`
+            ,`updatedTime`
+            ,`createdBy`
+            ,`createdTime`
+            ,`outBoundOrderID`
+            ,`shippingWorkerID`
+            ,`shippingWorkerName`
+            ,`shippingStatus`
+            ,`expressId`
+            ,`expressCompany`
+            ,`shippingTime`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.id,jdbcType=BIGINT}
+            ,#{item.updatedBy,jdbcType=VARCHAR}
+            ,#{item.updatedTime,jdbcType=TIMESTAMP}
+            ,#{item.createdBy,jdbcType=VARCHAR}
+            ,#{item.createdTime,jdbcType=TIMESTAMP}
+            ,#{item.outBoundOrderID,jdbcType=BIGINT}
+            ,#{item.shippingWorkerID,jdbcType=BIGINT}
+            ,#{item.shippingWorkerName,jdbcType=VARCHAR}
+            ,#{item.shipping_status,jdbcType=VARCHAR}
+            ,#{item.express_id,jdbcType=VARCHAR}
+            ,#{item.express_company,jdbcType=VARCHAR}
+            ,#{item.shippingTime,jdbcType=TIMESTAMP}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.ShippingEntity" >
+        UPDATE `Shipping`
+        <set>
+            <if test="updateFields == null or updateFields.contains('updatedBy')">`updatedBy` = #{bean.updatedBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('outBoundOrderID')">`outBoundOrderID` = #{bean.outBoundOrderID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('shippingWorkerID')">`shippingWorkerID` = #{bean.shippingWorkerID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('shippingWorkerName')">`shippingWorkerName` = #{bean.shippingWorkerName,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('shipping_status')">`shippingStatus` = #{bean.shipping_status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('express_id')">`expressId` = #{bean.express_id,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('express_company')">`expressCompany` = #{bean.express_company,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('shippingTime')">`shippingTime` = #{bean.shippingTime,jdbcType=TIMESTAMP},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.ShippingEntity" >
+        UPDATE `Shipping`
+        <set>
+            <if test="updateFields == null or updateFields.contains('updatedBy')">`updatedBy` = #{bean.updatedBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('outBoundOrderID')">`outBoundOrderID` = #{bean.outBoundOrderID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('shippingWorkerID')">`shippingWorkerID` = #{bean.shippingWorkerID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('shippingWorkerName')">`shippingWorkerName` = #{bean.shippingWorkerName,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('shipping_status')">`shippingStatus` = #{bean.shipping_status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('express_id')">`expressId` = #{bean.express_id,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('express_company')">`expressCompany` = #{bean.express_company,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('shippingTime')">`shippingTime` = #{bean.shippingTime,jdbcType=TIMESTAMP},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `Shipping` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `Shipping` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `Shipping`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'updatedBy'">
+                    AND `updatedBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'updatedTime'">
+                    AND `updatedTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'createdBy'">
+                    AND `createdBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'outBoundOrderID'">
+                    AND `outBoundOrderID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'shippingWorkerID'">
+                    AND `shippingWorkerID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'shippingWorkerName'">
+                    AND `shippingWorkerName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'shipping_status'">
+                    AND `shippingStatus` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'express_id'">
+                    AND `expressId` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'express_company'">
+                    AND `expressCompany` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'shippingTime'">
+                    AND `shippingTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `Shipping` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'updatedBy'">
+                    AND `updatedBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'updatedTime'">
+                    AND `updatedTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'createdBy'">
+                    AND `createdBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'outBoundOrderID'">
+                    AND `outBoundOrderID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'shippingWorkerID'">
+                    AND `shippingWorkerID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'shippingWorkerName'">
+                    AND `shippingWorkerName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'shipping_status'">
+                    AND `shippingStatus` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'express_id'">
+                    AND `expressId` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'express_company'">
+                    AND `expressCompany` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'shippingTime'">
+                    AND `shippingTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `Shipping` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `Shipping`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `Shipping`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.ShippingEntity">
+        INSERT INTO `Shipping` (
+            `id`
+            ,`updatedBy`
+            ,`updatedTime`
+            ,`createdBy`
+            ,`createdTime`
+            ,`outBoundOrderID`
+            ,`shippingWorkerID`
+            ,`shippingWorkerName`
+            ,`shippingStatus`
+            ,`expressId`
+            ,`expressCompany`
+            ,`shippingTime`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{updatedBy,jdbcType=VARCHAR}
+            ,#{updatedTime,jdbcType=TIMESTAMP}
+            ,#{createdBy,jdbcType=VARCHAR}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{outBoundOrderID,jdbcType=BIGINT}
+            ,#{shippingWorkerID,jdbcType=BIGINT}
+            ,#{shippingWorkerName,jdbcType=VARCHAR}
+            ,#{shipping_status,jdbcType=VARCHAR}
+            ,#{express_id,jdbcType=VARCHAR}
+            ,#{express_company,jdbcType=VARCHAR}
+            ,#{shippingTime,jdbcType=TIMESTAMP}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `Shipping`
+        <set>
+        <if test="updateFields == null or updateFields.contains('updatedBy')">`updatedBy` = #{bean.updatedBy,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('outBoundOrderID')">`outBoundOrderID` = #{bean.outBoundOrderID,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('shippingWorkerID')">`shippingWorkerID` = #{bean.shippingWorkerID,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('shippingWorkerName')">`shippingWorkerName` = #{bean.shippingWorkerName,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('shipping_status')">`shippingStatus` = #{bean.shipping_status,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('express_id')">`expressId` = #{bean.express_id,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('express_company')">`expressCompany` = #{bean.express_company,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('shippingTime')">`shippingTime` = #{bean.shippingTime,jdbcType=TIMESTAMP},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `Shipping` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated LoadInventoryGoodCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.LoadInventoryGoodCustomizeServiceMapper">
+
+    <resultMap id="AnonymousStructure_115E9C4C0500FD78F13E094BE9D1634A" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_95099195743EB2065E42C28888106EDB">
+	<id column="T1_C1" property="inventoryGood.id"/>
+	<result column="T1_C2" property="inventoryGood.name"/>
+	<result column="T1_C3" property="inventoryGood.warehouse_id"/>
+	<result column="T1_C4" property="inventoryGood.warehouseArea_id"/>
+	<result column="T1_C5" property="inventoryGood.shelf_id"/>
+	<result column="T1_C6" property="inventoryGood.quantity"/>
+	<result column="T1_C7" property="inventoryGood.real_quantity"/>
+	<result column="T1_C8" property="inventoryGood.income_loss"/>
+	<result column="T1_C9" property="inventoryGood.task_id"/>
+	<result column="T1_C10" property="inventoryGood.good_id"/>
+	<result column="T1_C11" property="inventoryGood.unit"/>
+	<result column="T1_C12" property="inventoryGood.w_name"/>
+	<result column="T1_C13" property="inventoryGood.wa_name"/>
+	<result column="T1_C14" property="inventoryGood.s_name"/>
+	<result column="T1_C15" property="inventoryGood.price"/>
+</resultMap>
+<select id="getAnonymousStructure_115E9C4C0500FD78F13E094BE9D1634A" resultMap="AnonymousStructure_115E9C4C0500FD78F13E094BE9D1634A">
+	 SELECT `InventoryGood`.`id` `T1_C1`,`InventoryGood`.`name` `T1_C2`,`InventoryGood`.`warehouseId` `T1_C3`,`InventoryGood`.`warehouseAreaId` `T1_C4`,`InventoryGood`.`shelfId` `T1_C5`,`InventoryGood`.`quantity` `T1_C6`,`InventoryGood`.`realQuantity` `T1_C7`,`InventoryGood`.`incomeLoss` `T1_C8`,`InventoryGood`.`taskId` `T1_C9`,`InventoryGood`.`goodId` `T1_C10`,`InventoryGood`.`unit` `T1_C11`,`InventoryGood`.`wName` `T1_C12`,`InventoryGood`.`waName` `T1_C13`,`InventoryGood`.`sName` `T1_C14`,`InventoryGood`.`price` `T1_C15` FROM `InventoryGood` 
+<if test=" 1==1 or ( filter!=null and filter.shelf_id!=null ) or ( filter!=null and filter.warehouseArea_id!=null ) or ( filter!=null and filter.name!=null ) or ( filter!=null and filter.warehouse_id!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 ">
+	(( `InventoryGood`.`incomeLoss` IS NULL ))
+</if> 
+<if test=" 1==1 or ( filter!=null and filter.shelf_id!=null ) or ( filter!=null and filter.warehouseArea_id!=null ) or ( filter!=null and filter.name!=null ) or ( filter!=null and filter.warehouse_id!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.name!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`InventoryGood`.`name` LIKE concat('%', concat(#{filter.name}, '%'))
+</trim>
+</if> 
+<if test=" 1==1 or ( filter!=null and filter.shelf_id!=null ) or ( filter!=null and filter.warehouseArea_id!=null ) or ( filter!=null and filter.warehouse_id!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.warehouse_id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`InventoryGood`.`warehouseId` = #{filter.warehouse_id}
+</trim>
+</if> 
+<if test=" 1==1 or ( filter!=null and filter.shelf_id!=null ) or ( filter!=null and filter.warehouseArea_id!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.warehouseArea_id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`InventoryGood`.`warehouseAreaId` = #{filter.warehouseArea_id}
+</trim>
+</if> 
+<if test=" 1==1 and ( filter!=null and filter.shelf_id!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`InventoryGood`.`shelfId` = #{filter.shelf_id}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if> 
+<if test=" 1==1 ">
+	 LIMIT ${( 1000 * ( 1 - 1 ) )}, ${1000}
+</if>
+</select>
+<select id="countAnonymousStructure_115E9C4C0500FD78F13E094BE9D1634A" resultType="java.lang.Long">
+	SELECT COUNT(*) FROM `InventoryGood` 
+<if test=" 1==1 or ( filter!=null and filter.shelf_id!=null ) or ( filter!=null and filter.warehouseArea_id!=null ) or ( filter!=null and filter.name!=null ) or ( filter!=null and filter.warehouse_id!=null ) ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" 1==1 ">
+	(( `InventoryGood`.`incomeLoss` IS NULL ))
+</if> 
+<if test=" 1==1 or ( filter!=null and filter.shelf_id!=null ) or ( filter!=null and filter.warehouseArea_id!=null ) or ( filter!=null and filter.name!=null ) or ( filter!=null and filter.warehouse_id!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.name!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`InventoryGood`.`name` LIKE concat('%', concat(#{filter.name}, '%'))
+</trim>
+</if> 
+<if test=" 1==1 or ( filter!=null and filter.shelf_id!=null ) or ( filter!=null and filter.warehouseArea_id!=null ) or ( filter!=null and filter.warehouse_id!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.warehouse_id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`InventoryGood`.`warehouseId` = #{filter.warehouse_id}
+</trim>
+</if> 
+<if test=" 1==1 or ( filter!=null and filter.shelf_id!=null ) or ( filter!=null and filter.warehouseArea_id!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	
+<if test=" 1==1 and ( filter!=null and filter.warehouseArea_id!=null ) ">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`InventoryGood`.`warehouseAreaId` = #{filter.warehouseArea_id}
+</trim>
+</if> 
+<if test=" 1==1 and ( filter!=null and filter.shelf_id!=null ) ">
+	
+<trim prefix="and">
+	
+<trim prefix="(" suffix=")" prefixOverrides="and |or">
+	`InventoryGood`.`shelfId` = #{filter.shelf_id}
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</trim>
+</if>
+</trim>
+</if>
+</select>
+
+
+</mapper>

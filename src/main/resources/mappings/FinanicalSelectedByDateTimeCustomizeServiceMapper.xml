@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated FinanicalSelectedByDateTimeCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.FinanicalSelectedByDateTimeCustomizeServiceMapper">
+
+    <resultMap id="defaultDSAnonymousStructure_5A14F9A92CC4897170A1082F2B4A9FCF" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_5A14F9A92CC4897170A1082F2B4A9FCF">
+	<result column="formatted_date" property="formatted_date"/>
+	<result column="count" property="count"/>
+</resultMap>
+<select id="getSql1" resultMap="defaultDSAnonymousStructure_5A14F9A92CC4897170A1082F2B4A9FCF">
+	SELECT DATE_FORMAT( `createdTime` , '%Y-%m-%d') AS `formatted_date` , sum( `balance`) AS `count` FROM `WarehouseAccount` GROUP BY DATE_FORMAT( `createdTime` , '%Y-%m-%d') 
+<trim prefix = "ORDER BY" suffixOverrides=",">
+	
+<trim suffix=",">
+	`formatted_date` ASC
+</trim>
+</trim>
+</select>
+
+
+</mapper>

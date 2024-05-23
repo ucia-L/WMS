@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated OutBoundSortingEntity Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.entities.OutBoundSortingEntityMapper">
+    <resultMap id="BaseResultMap" type="com.weitest.wms.domain.entities.OutBoundSortingEntity">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="createdTime" jdbcType="TIMESTAMP" property="createdTime" />
+        <result column="updatedTime" jdbcType="TIMESTAMP" property="updatedTime" />
+        <result column="createdBy" jdbcType="VARCHAR" property="createdBy" />
+        <result column="updatedBy" jdbcType="VARCHAR" property="updatedBy" />
+        <result column="packingID" jdbcType="BIGINT" property="packingID" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="sortingWorkerID" jdbcType="BIGINT" property="sortingWorkerID" />
+        <result column="sortingWorkerName" jdbcType="VARCHAR" property="sortingWorkerName" />
+        <result column="sortingData" jdbcType="TIMESTAMP" property="sortingData" />
+        <result column="outBoundTmpArea" jdbcType="VARCHAR" property="outBoundTmpArea" />
+    </resultMap>
+
+    <!--
+       ###################################################
+       ######### mysql
+       ###################################################
+     -->
+    <insert id="insert" parameterType="com.weitest.wms.domain.entities.OutBoundSortingEntity"  >
+        INSERT INTO `OutBoundSorting` (
+            `id`
+            ,`createdTime`
+            ,`updatedTime`
+            ,`createdBy`
+            ,`updatedBy`
+            ,`packingID`
+            ,`status`
+            ,`sortingWorkerID`
+            ,`sortingWorkerName`
+            ,`sortingData`
+            ,`outBoundTmpArea`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{updatedTime,jdbcType=TIMESTAMP}
+            ,#{createdBy,jdbcType=VARCHAR}
+            ,#{updatedBy,jdbcType=VARCHAR}
+            ,#{packingID,jdbcType=BIGINT}
+            ,#{status,jdbcType=VARCHAR}
+            ,#{sortingWorkerID,jdbcType=BIGINT}
+            ,#{sortingWorkerName,jdbcType=VARCHAR}
+            ,#{sortingData,jdbcType=TIMESTAMP}
+            ,#{outBoundTmpArea,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <insert id="batchInsert"  parameterType="java.util.List" >
+        INSERT INTO `OutBoundSorting` (
+            `id`
+            ,`createdTime`
+            ,`updatedTime`
+            ,`createdBy`
+            ,`updatedBy`
+            ,`packingID`
+            ,`status`
+            ,`sortingWorkerID`
+            ,`sortingWorkerName`
+            ,`sortingData`
+            ,`outBoundTmpArea`
+        )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+        (
+            #{item.id,jdbcType=BIGINT}
+            ,#{item.createdTime,jdbcType=TIMESTAMP}
+            ,#{item.updatedTime,jdbcType=TIMESTAMP}
+            ,#{item.createdBy,jdbcType=VARCHAR}
+            ,#{item.updatedBy,jdbcType=VARCHAR}
+            ,#{item.packingID,jdbcType=BIGINT}
+            ,#{item.status,jdbcType=VARCHAR}
+            ,#{item.sortingWorkerID,jdbcType=BIGINT}
+            ,#{item.sortingWorkerName,jdbcType=VARCHAR}
+            ,#{item.sortingData,jdbcType=TIMESTAMP}
+            ,#{item.outBoundTmpArea,jdbcType=VARCHAR}
+         )
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.weitest.wms.domain.entities.OutBoundSortingEntity" >
+        UPDATE `OutBoundSorting`
+        <set>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('updatedBy')">`updatedBy` = #{bean.updatedBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('packingID')">`packingID` = #{bean.packingID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('sortingWorkerID')">`sortingWorkerID` = #{bean.sortingWorkerID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('sortingWorkerName')">`sortingWorkerName` = #{bean.sortingWorkerName,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('sortingData')">`sortingData` = #{bean.sortingData,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('outBoundTmpArea')">`outBoundTmpArea` = #{bean.outBoundTmpArea,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+    <!-- todo -->
+    <update id="batchUpdate" parameterType="com.weitest.wms.domain.entities.OutBoundSortingEntity" >
+        UPDATE `OutBoundSorting`
+        <set>
+            <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('updatedBy')">`updatedBy` = #{bean.updatedBy,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('packingID')">`packingID` = #{bean.packingID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('sortingWorkerID')">`sortingWorkerID` = #{bean.sortingWorkerID,jdbcType=BIGINT},</if>
+            <if test="updateFields == null or updateFields.contains('sortingWorkerName')">`sortingWorkerName` = #{bean.sortingWorkerName,jdbcType=VARCHAR},</if>
+            <if test="updateFields == null or updateFields.contains('sortingData')">`sortingData` = #{bean.sortingData,jdbcType=TIMESTAMP},</if>
+            <if test="updateFields == null or updateFields.contains('outBoundTmpArea')">`outBoundTmpArea` = #{bean.outBoundTmpArea,jdbcType=VARCHAR},</if>
+        </set>
+        where `id` = #{bean.id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM `OutBoundSorting` where `id` = #{id}
+    </delete>
+
+
+    <delete id="batchDelete" >
+        DELETE FROM `OutBoundSorting` where `id` in
+        <foreach collection="list" item="pkValueItem" index="index"  separator="," open="(" close=")">
+            #{pkValueItem}
+        </foreach>
+    </delete>
+
+    <delete id="deleteReference">
+        DELETE FROM `OutBoundSorting`
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'updatedTime'">
+                    AND `updatedTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'createdBy'">
+                    AND `createdBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'updatedBy'">
+                    AND `updatedBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'packingID'">
+                    AND `packingID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'sortingWorkerID'">
+                    AND `sortingWorkerID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'sortingWorkerName'">
+                    AND `sortingWorkerName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'sortingData'">
+                    AND `sortingData` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'outBoundTmpArea'">
+                    AND `outBoundTmpArea` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="existReference" resultType="java.lang.Long" >
+        select `id` from `OutBoundSorting` 
+        <where>
+            <choose>
+                <when test="property == 'id'">
+                    AND `id` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'createdTime'">
+                    AND `createdTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'updatedTime'">
+                    AND `updatedTime` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'createdBy'">
+                    AND `createdBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'updatedBy'">
+                    AND `updatedBy` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'packingID'">
+                    AND `packingID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'status'">
+                    AND `status` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'sortingWorkerID'">
+                    AND `sortingWorkerID` = #{value, jdbcType=BIGINT}
+                </when>
+                <when test="property == 'sortingWorkerName'">
+                    AND `sortingWorkerName` = #{value, jdbcType=VARCHAR}
+                </when>
+                <when test="property == 'sortingData'">
+                    AND `sortingData` = #{value, jdbcType=TIMESTAMP}
+                </when>
+                <when test="property == 'outBoundTmpArea'">
+                    AND `outBoundTmpArea` = #{value, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    MUST BE ERROR
+                </otherwise>
+            </choose>
+        </where>
+         LIMIT 1
+    </select>
+
+
+    <select id="selectOne" resultMap="BaseResultMap" >
+        select * from `OutBoundSorting` where `id`=#{id}
+    </select>
+
+    <select id="selectList" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultMap="BaseResultMap" >
+        select * from `OutBoundSorting`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter" resultType="java.lang.Integer" >
+        select count(1) from `OutBoundSorting`
+        <where>
+            ${filter.sql("mysql")}
+        </where>
+    </select>
+
+    <insert id="createOrUpdate" parameterType="com.weitest.wms.domain.entities.OutBoundSortingEntity">
+        INSERT INTO `OutBoundSorting` (
+            `id`
+            ,`createdTime`
+            ,`updatedTime`
+            ,`createdBy`
+            ,`updatedBy`
+            ,`packingID`
+            ,`status`
+            ,`sortingWorkerID`
+            ,`sortingWorkerName`
+            ,`sortingData`
+            ,`outBoundTmpArea`
+        )
+        VALUES (
+            #{id,jdbcType=BIGINT}
+            ,#{createdTime,jdbcType=TIMESTAMP}
+            ,#{updatedTime,jdbcType=TIMESTAMP}
+            ,#{createdBy,jdbcType=VARCHAR}
+            ,#{updatedBy,jdbcType=VARCHAR}
+            ,#{packingID,jdbcType=BIGINT}
+            ,#{status,jdbcType=VARCHAR}
+            ,#{sortingWorkerID,jdbcType=BIGINT}
+            ,#{sortingWorkerName,jdbcType=VARCHAR}
+            ,#{sortingData,jdbcType=TIMESTAMP}
+            ,#{outBoundTmpArea,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+    <update id="updateBy">
+        UPDATE `OutBoundSorting`
+        <set>
+        <if test="updateFields == null or updateFields.contains('createdTime')">`createdTime` = #{bean.createdTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('updatedTime')">`updatedTime` = #{bean.updatedTime,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('createdBy')">`createdBy` = #{bean.createdBy,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('updatedBy')">`updatedBy` = #{bean.updatedBy,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('packingID')">`packingID` = #{bean.packingID,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('status')">`status` = #{bean.status,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('sortingWorkerID')">`sortingWorkerID` = #{bean.sortingWorkerID,jdbcType=BIGINT},</if>
+        <if test="updateFields == null or updateFields.contains('sortingWorkerName')">`sortingWorkerName` = #{bean.sortingWorkerName,jdbcType=VARCHAR},</if>
+        <if test="updateFields == null or updateFields.contains('sortingData')">`sortingData` = #{bean.sortingData,jdbcType=TIMESTAMP},</if>
+        <if test="updateFields == null or updateFields.contains('outBoundTmpArea')">`outBoundTmpArea` = #{bean.outBoundTmpArea,jdbcType=VARCHAR},</if>
+        </set>
+        where ${filter.sql("mysql")}
+    </update>
+
+    <delete id="deleteBy" parameterType="com.weitest.wms.service.dto.filters.AbstractQueryFilter">
+        DELETE FROM `OutBoundSorting` where ${filter.sql("mysql")}
+    </delete>
+</mapper>

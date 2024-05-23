@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated GetGWASInfoByShelfIdCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.GetGWASInfoByShelfIdCustomizeServiceMapper">
+
+    <resultMap id="defaultDSAnonymousStructure_01D52BAD13AF54738626B5A28BFE5BC8" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_01D52BAD13AF54738626B5A28BFE5BC8">
+	<result column="warehouse_name" property="warehouse_name"/>
+	<result column="w_id" property="w_id"/>
+	<result column="warehouse_area_name" property="warehouse_area_name"/>
+	<result column="wa_id" property="wa_id"/>
+	<result column="shelf_name" property="shelf_name"/>
+	<result column="s_id" property="s_id"/>
+	<result column="g_id" property="g_id"/>
+	<result column="g_name" property="g_name"/>
+	<result column="g_quantity" property="g_quantity"/>
+	<result column="g_unit" property="g_unit"/>
+	<result column="g_inboundPrice" property="g_inboundPrice"/>
+</resultMap>
+<select id="getSql1" resultMap="defaultDSAnonymousStructure_01D52BAD13AF54738626B5A28BFE5BC8">
+	SELECT `w`.`name` AS `warehouse_name` , `w`.`id` AS `w_id` , `wa`.`name` AS `warehouse_area_name` , `wa`.`id` AS `wa_id` , `s`.`name` AS `shelf_name` , `s`.`id` AS `s_id` , `g`.`id` AS `g_id` , `g`.`name` AS `g_name` , `g`.`quantity` AS `g_quantity` , `g`.`unit` as `g_unit` , `g`.`inboundPrice` AS `g_inboundPrice` FROM `Shelf` `s` JOIN `WarehouseArea` `wa` ON `s`.`warehouseAreaId` = `wa`.`id` JOIN `Warehouse` `w` ON `wa`.`warehouseId` = `w`.`id` JOIN `Goods` `g` ON `s`.`id` = `g`.`shelfId` 
+<if test=" shelfId!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`s`.`id` = #{shelfId}
+</trim>
+</if>
+</select>
+
+
+</mapper>

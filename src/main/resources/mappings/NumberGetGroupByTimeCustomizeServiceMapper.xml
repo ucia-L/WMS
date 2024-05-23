@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  automatically generated NumberGetGroupByTimeCustomizeService Mapper xml
+-->
+<mapper namespace="com.weitest.wms.repository.NumberGetGroupByTimeCustomizeServiceMapper">
+
+    <resultMap id="defaultDSAnonymousStructure_77D54F32F3F9CC14A0EA5BBAD9D1D9BE" type="com.weitest.wms.domain.structure.anonymous.AnonymousStructure_77D54F32F3F9CC14A0EA5BBAD9D1D9BE">
+	<result column="formatted_date" property="formatted_date"/>
+	<result column="name_list" property="name_list"/>
+	<result column="count" property="count"/>
+</resultMap>
+<select id="getSql1" resultMap="defaultDSAnonymousStructure_77D54F32F3F9CC14A0EA5BBAD9D1D9BE">
+	SELECT DATE_FORMAT( `inboundDate` , '%Y-%m-%d') AS `formatted_date` , GROUP_CONCAT( `name`) AS `name_list` , sum( `quantity`) AS `count` FROM `Goods` 
+<if test=" category!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	`category` = #{category}
+</trim>
+</if> GROUP BY DATE_FORMAT( `inboundDate` , '%Y-%m-%d')
+</select>
+<select id="getSql2" resultMap="defaultDSAnonymousStructure_77D54F32F3F9CC14A0EA5BBAD9D1D9BE">
+	SELECT DATE_FORMAT( `outboundDate` , '%Y-%m-%d') AS `formatted_date` , GROUP_CONCAT( `name`) AS `name_list` , sum( `quantity`) AS `count` FROM `Goods` 
+<if test=" 1==1 or category!=null ">
+	
+<trim prefix = "WHERE" prefixOverrides = "and |or">
+	
+<if test=" category!=null ">
+	(`category` = #{category})
+</if> and `status` = '1'
+</trim>
+</if> GROUP BY DATE_FORMAT( `outboundDate` , '%Y-%m-%d')
+</select>
+
+
+</mapper>
